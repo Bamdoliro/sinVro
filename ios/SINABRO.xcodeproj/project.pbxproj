@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SINABROTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SINABROTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-SINABRO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-SINABRO.a */; };
+		04D693E1E4F742D4909C4BAC /* Ownglyph_Summerinmyhouse-Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		432A915D26404560A5E1192B /* Onglyph_alz_sanghee-Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4BD978B492D47899BA3AF1B /* Onglyph_alz_sanghee-Rg.ttf */; };
 		5B3A497497F614EADF867C80 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9195BD4CCA7CC84372BC00E2 /* PrivacyInfo.xcprivacy */; };
-		7699B88040F8A987B510C191 /* libPods-SINABRO-SINABROTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SINABRO-SINABROTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		879221B499C4494CF02A73A6 /* libPods-SINABRO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F082AF2D0706F0E1C857FF /* libPods-SINABRO.a */; };
+		A8C558C4D433921E0C39E4FD /* libPods-SINABRO-SINABROTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530D28C76A442BC4C6C60BB /* libPods-SINABRO-SINABROTests.a */; };
 		CCD06858F04540C0B619A205 /* NanumEongGeongKwiCe.otf in Resources */ = {isa = PBXBuildFile; fileRef = 075578CFFFA140C1817322DF /* NanumEongGeongKwiCe.otf */; };
 		E329C6F4FE1046AB8F3A970C /* AppleSDGothicNeoR00.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A31272FC04762A017E0AC /* AppleSDGothicNeoR00.otf */; };
 		E38510F7CE624A299F752A06 /* Diphylleia-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78A0797393C44759B55FF6DD /* Diphylleia-Regular.otf */; };
@@ -44,17 +46,19 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SINABRO/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SINABRO/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SINABRO/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-SINABRO-SINABROTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO-SINABROTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A1473000E783E33FC3E6B29 /* Pods-SINABRO-SINABROTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO-SINABROTests.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A1A31272FC04762A017E0AC /* AppleSDGothicNeoR00.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppleSDGothicNeoR00.otf; path = ../packages/fonts/AppleSDGothicNeoR00.otf; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-SINABRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-SINABRO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.release.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-SINABRO-SINABROTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO-SINABROTests.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-SINABRO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F082AF2D0706F0E1C857FF /* libPods-SINABRO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7530D28C76A442BC4C6C60BB /* libPods-SINABRO-SINABROTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO-SINABROTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A0797393C44759B55FF6DD /* Diphylleia-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Diphylleia-Regular.otf"; path = "../packages/fonts/Diphylleia-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SINABRO/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-SINABRO-SINABROTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO-SINABROTests.release.xcconfig"; path = "Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests.release.xcconfig"; sourceTree = "<group>"; };
 		9195BD4CCA7CC84372BC00E2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = SINABRO/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9CD8FBDA68BFE526451A6DC4 /* Pods-SINABRO-SINABROTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO-SINABROTests.release.xcconfig"; path = "Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests.release.xcconfig"; sourceTree = "<group>"; };
+		B4BD978B492D47899BA3AF1B /* Onglyph_alz_sanghee-Rg.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Onglyph_alz_sanghee-Rg.ttf"; path = "../packages/fonts/Onglyph_alz_sanghee-Rg.ttf"; sourceTree = "<group>"; };
+		D84EC0A09EA58D568780C974 /* Pods-SINABRO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.release.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.release.xcconfig"; sourceTree = "<group>"; };
+		EA1B6EEF834094DC9D52D220 /* Pods-SINABRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ownglyph_Summerinmyhouse-Rg.ttf"; path = "../packages/fonts/Ownglyph_Summerinmyhouse-Rg.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-SINABRO-SINABROTests.a in Frameworks */,
+				A8C558C4D433921E0C39E4FD /* libPods-SINABRO-SINABROTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-SINABRO.a in Frameworks */,
+				879221B499C4494CF02A73A6 /* libPods-SINABRO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-SINABRO.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-SINABRO-SINABROTests.a */,
+				71F082AF2D0706F0E1C857FF /* libPods-SINABRO.a */,
+				7530D28C76A442BC4C6C60BB /* libPods-SINABRO-SINABROTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,10 +158,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-SINABRO.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-SINABRO.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-SINABRO-SINABROTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-SINABRO-SINABROTests.release.xcconfig */,
+				EA1B6EEF834094DC9D52D220 /* Pods-SINABRO.debug.xcconfig */,
+				D84EC0A09EA58D568780C974 /* Pods-SINABRO.release.xcconfig */,
+				1A1473000E783E33FC3E6B29 /* Pods-SINABRO-SINABROTests.debug.xcconfig */,
+				9CD8FBDA68BFE526451A6DC4 /* Pods-SINABRO-SINABROTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -169,6 +173,8 @@
 				78A0797393C44759B55FF6DD /* Diphylleia-Regular.otf */,
 				075578CFFFA140C1817322DF /* NanumEongGeongKwiCe.otf */,
 				0DB5AEF152234FC98C2D3621 /* RIDIBatang.otf */,
+				B4BD978B492D47899BA3AF1B /* Onglyph_alz_sanghee-Rg.ttf */,
+				F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -181,12 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SINABROTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				637C76FD4D8395DC02A49321 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				F58487E8974557112B3C5F8C /* [CP] Embed Pods Frameworks */,
+				ED9BF8369E551F8CC2750C9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,13 +208,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SINABRO" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				4B5F2A9C18BA20F1FDAEFBDE /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				59954B3079AAE0DB9AB99F06 /* [CP] Embed Pods Frameworks */,
+				5D2E915F6E3079924D8F6942 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +280,8 @@
 				E38510F7CE624A299F752A06 /* Diphylleia-Regular.otf in Resources */,
 				CCD06858F04540C0B619A205 /* NanumEongGeongKwiCe.otf in Resources */,
 				E5D669BEA5F54584AC138A8D /* RIDIBatang.otf in Resources */,
+				432A915D26404560A5E1192B /* Onglyph_alz_sanghee-Rg.ttf in Resources */,
+				04D693E1E4F742D4909C4BAC /* Ownglyph_Summerinmyhouse-Rg.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,46 +304,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SINABRO-SINABROTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		4B5F2A9C18BA20F1FDAEFBDE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,24 +326,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		59954B3079AAE0DB9AB99F06 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		5D2E915F6E3079924D8F6942 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,7 +360,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO/Pods-SINABRO-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		637C76FD4D8395DC02A49321 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SINABRO-SINABROTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED9BF8369E551F8CC2750C9D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,6 +397,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F58487E8974557112B3C5F8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -441,7 +449,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-SINABRO-SINABROTests.debug.xcconfig */;
+			baseConfigurationReference = 1A1473000E783E33FC3E6B29 /* Pods-SINABRO-SINABROTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -468,7 +476,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-SINABRO-SINABROTests.release.xcconfig */;
+			baseConfigurationReference = 9CD8FBDA68BFE526451A6DC4 /* Pods-SINABRO-SINABROTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -492,7 +500,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-SINABRO.debug.xcconfig */;
+			baseConfigurationReference = EA1B6EEF834094DC9D52D220 /* Pods-SINABRO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -519,7 +527,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-SINABRO.release.xcconfig */;
+			baseConfigurationReference = D84EC0A09EA58D568780C974 /* Pods-SINABRO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
