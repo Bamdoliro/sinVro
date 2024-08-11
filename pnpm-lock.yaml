@@ -17,6 +17,9 @@ dependencies:
   react-native:
     specifier: 0.74.4
     version: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+  react-native-linear-gradient:
+    specifier: ^2.8.3
+    version: 2.8.3(react-native@0.74.4)(react@18.2.0)
   react-native-svg:
     specifier: ^15.5.0
     version: 15.5.0(react-native@0.74.4)(react@18.2.0)
@@ -6414,6 +6417,16 @@ packages:
 
   /react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  /react-native-linear-gradient@2.8.3(react-native@0.74.4)(react@18.2.0):
+    resolution: {integrity: sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+    dev: false
 
   /react-native-svg-transformer@1.5.0(react-native-svg@15.5.0)(react-native@0.74.4)(typescript@5.0.4):
     resolution: {integrity: sha512-RG5fSWJT7mjCQYocgYFUo1KYPLOoypPVG5LQab+pZZO7m4ciGaQIe0mhok3W4R5jLQsEXKo0u+aQGkZV/bZG7w==}
