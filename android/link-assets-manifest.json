@@ -14,6 +14,14 @@
       "sha1": "7982526099b239069c333f193ed7c93ed27afc2f"
     },
     {
+      "path": "packages/fonts/Onglyph_alz_sanghee-Rg.ttf",
+      "sha1": "60a94f15febc6fbd0181060d770553576c4e2ddb"
+    },
+    {
+      "path": "packages/fonts/Ownglyph_Summerinmyhouse-Rg.ttf",
+      "sha1": "cc3a9455efd998f3740425d16a90cffe3efc1439"
+    },
+    {
       "path": "packages/fonts/RIDIBatang.otf",
       "sha1": "24885b6ad9bc407081d95335f51fc792d9293f3e"
     }

@@ -28,12 +28,14 @@ const font = {
   B3: fontGenerator('RIDIBatang', 400, 20, 160, -0.2),
   B4: fontGenerator('RIDIBatang', 400, 16, 160, -0.2),
   B5: fontGenerator('RIDIBatang', 400, 14, 160, -0.2),
+  B5Letter: fontGenerator('RIDIBatang', 400, 14, 200, -0.2),
   B6: fontGenerator('RIDIBatang', 400, 12, 160, -0.2),
-  B6_letter: fontGenerator('RIDIBatang', 400, 12, 200, 2.0),
 
   caption: fontGenerator('AppleSDGothicNeoR00', 400, 12, 160, -0.2),
   cursive1: fontGenerator('NanumEongGeongKwiCe', 400, 24, 120, -0.2),
   cursive2: fontGenerator('NanumEongGeongKwiCe', 400, 20, 140, 1.0),
+  letterHeon: fontGenerator('Onglyph_alz_sanghee-Rg', 400, 18, 160, 0),
+  letterSol: fontGenerator('Ownglyph_Summerinmyhouse-Rg', 400, 20, 140, 0),
 };
 
 export default font;

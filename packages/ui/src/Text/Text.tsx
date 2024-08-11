@@ -1,6 +1,6 @@
+import { font } from '@sinabro/design-token';
 import { ReactNode } from 'react';
 import { TextProps, Text, TextStyle } from 'react-native';
-import { font } from '../../../design-token';
 import styled, { css } from 'styled-components/native';
 
 type Font = keyof typeof font;

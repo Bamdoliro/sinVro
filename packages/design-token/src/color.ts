@@ -19,6 +19,12 @@ const color = {
 
   pale_yellow: '#FBFCF7',
   primary: '#FF7433',
+
+  sinabroBlue: '#087FE7',
+  sinabroSkyBlue: '#6CC4FA',
+
+  sinabroPink: '#F376BB',
+  sinabroCream: '#EFE6CE',
 };
 
 export default color;
