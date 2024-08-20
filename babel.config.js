@@ -21,6 +21,7 @@ module.exports = {
           '@sinabro/design-token': './packages/design-token',
           '@sinabro/ui': './packages/ui',
           '@sinabro/icon': './packages/icon',
+          '@sinabro/util': './packages/util',
         },
       },
     ],
