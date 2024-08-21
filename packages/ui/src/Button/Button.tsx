@@ -3,10 +3,14 @@ import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
 import { flex } from '@sinabro/util';
 import { ButtonIcon, ButtonSize, ButtonStyleType } from './Button.type';
-import { getButtonPadding, getButtonSize, getButtonStyle } from './Button.style';
+import {
+  getButtonIconPadding,
+  getButtonSizePadding,
+  getButtonStyle,
+} from './Button.style';
 import { color } from '@sinabro/design-token';
-import { IconBlackArrow } from '@sinabro/icon';
 import Row from '../Flex/Row';
+import { IconBlackArrow } from '@sinabro/icon';
 
 type Props = {
   children: ReactNode;
@@ -27,6 +31,11 @@ const Button = ({
   style,
   disabled,
 }: Props) => {
+  const isWhite = styleType === 'WHITE';
+  const shouldUseBlackFont = isWhite || icon === 'BLACKARROW_ICON' || size === 'SMALL';
+  const fontColor = shouldUseBlackFont ? color.gray900 : color.white100;
+  const fontType = size === 'LARGE' ? 'B4' : 'B5';
+
   return (
     <StyledButton
       onPress={onPress}
@@ -37,7 +46,7 @@ const Button = ({
       disabled={disabled || styleType === 'DISABLED'}
     >
       <Row alignItems="center">
-        <CustomText fontType="B4" color={color.white100}>
+        <CustomText fontType={fontType} color={fontColor}>
           {children}
         </CustomText>
         {icon === 'BLACKARROW_ICON' && <IconBlackArrow width={24} height={16} />}
@@ -57,7 +66,7 @@ const StyledButton = styled.TouchableOpacity<{
   border-radius: 6px;
   word-break: keep-all;
 
-  ${(props: Props) => props.icon !== undefined && getButtonPadding[props.icon]};
-  ${(props: Props) => props.styleType !== undefined && getButtonStyle[props.styleType]};
-  ${(props: Props) => props.size !== undefined && getButtonSize[props.size]};
+  ${(props: Props) => props.size && getButtonSizePadding[props.size]};
+  ${(props: Props) => props.icon && getButtonIconPadding[props.icon]};
+  ${(props: Props) => props.styleType && getButtonStyle[props.styleType]};
 `;

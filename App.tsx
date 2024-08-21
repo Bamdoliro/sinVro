@@ -5,11 +5,9 @@
  * @format
  */
 
-import { Button } from '@sinabro/ui';
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
-  Linking,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -26,7 +24,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import styled from 'styled-components/native';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -92,14 +89,6 @@ function App(): React.JSX.Element {
           </Section>
           <Section title="Learn More">Read the docs to discover what to do next:</Section>
           <LearnMoreLinks />
-          <Center>
-            <Button
-              onPress={() => Linking.openURL('https://github.com/junghongseop')}
-              size="SMALL"
-            >
-              선택 완료
-            </Button>
-          </Center>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -124,11 +113,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-const Center = styled(View)`
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-`;
 
 export default App;

@@ -1,13 +1,34 @@
 import { css } from 'styled-components/native';
 import { color } from '@sinabro/design-token';
+import { Dimensions } from 'react-native';
 
-export const getButtonPadding = {
+const { width: screenWidth } = Dimensions.get('window');
+
+const iPhone13MiniWidth = 375;
+
+const calculatePadding = (basePadding: number) => {
+  return (screenWidth / iPhone13MiniWidth) * basePadding;
+};
+
+export const getButtonSizePadding = {
+  LARGE: css`
+    padding: ${calculatePadding(16)}px ${calculatePadding(120)}px;
+  `,
+  SMALL: css`
+    padding: ${calculatePadding(12)}px ${calculatePadding(54)}px;
+  `,
+} as const;
+
+export const getButtonIconPadding = {
   NONE: css`
-    padding: 16px 120px;
+    padding: ${calculatePadding(16)}px ${calculatePadding(120)}px;
+  `,
+  SMALL: css`
+    padding: ${calculatePadding(12)}px ${calculatePadding(54)}px;
   `,
   BLACKARROW_ICON: css`
-    gap: 12px;
-    padding: 16px 120px;
+    gap: ${calculatePadding(12)}px;
+    padding: ${calculatePadding(12)}px ${calculatePadding(44)}px ${calculatePadding(12)}px ${calculatePadding(44)}px;
   `,
 } as const;
 
@@ -27,14 +48,5 @@ export const getButtonStyle = {
   GLASS: css`
     background-color: ${color.glass_stroke};
     color: ${color.white100};
-  `,
-} as const;
-
-export const getButtonSize = {
-  LARGE: css`
-    height: 56px;
-  `,
-  SMALL: css`
-    height: 46px;
   `,
 } as const;
