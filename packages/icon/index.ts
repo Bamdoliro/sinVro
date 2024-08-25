@@ -31,3 +31,4 @@ export { default as IconWriter1 } from './src/IconWriter1';
 export { default as IconWriter2 } from './src/IconWriter2';
 export { default as IconPad1 } from './src/IconPad1';
 export { default as IconPad2 } from './src/IconPad2';
+export { default as IconNextBlackArrow } from './src/IconNextBlackArrow';
