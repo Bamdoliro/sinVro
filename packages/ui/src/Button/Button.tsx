@@ -10,7 +10,7 @@ import {
 } from './Button.style';
 import { color } from '@sinabro/design-token';
 import Row from '../Flex/Row';
-import { IconBlackArrow } from '@sinabro/icon';
+import { IconBlackArrow, IconNextBlackArrow } from '@sinabro/icon';
 
 type Props = {
   children: ReactNode;
@@ -49,7 +49,7 @@ const Button = ({
         <CustomText fontType={fontType} color={fontColor}>
           {children}
         </CustomText>
-        {icon === 'BLACKARROW_ICON' && <IconBlackArrow width={24} height={16} />}
+        {icon === 'BLACKARROW_ICON' && <IconNextBlackArrow width={24} height={16} />}
       </Row>
     </StyledButton>
   );
