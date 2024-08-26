@@ -13,16 +13,10 @@ import isoWeek from 'dayjs/plugin/isoWeek';
 dayjs.extend(isoWeek);
 
 const { width: screenWidth } = Dimensions.get('window');
-const { height: screenHeight } = Dimensions.get('window');
 const iPhone13MiniWidth = 375;
-const iPhone13MiniHeight = 780;
 
 const calculateWidth = (baseWidth: number) => {
   return (screenWidth / iPhone13MiniWidth) * baseWidth;
-};
-
-const calculateHeight = (baseHeight: number) => {
-  return (screenHeight / iPhone13MiniHeight) * baseHeight;
 };
 
 const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일'];
@@ -59,7 +53,7 @@ const Calender = () => {
 
   return (
     <StyledCalender>
-      <Column alignItems="center" gap={15}>
+      <Column alignItems="center" gap={calculateWidth(15)}>
         <Row alignItems="center" gap={20}>
           <TouchableOpacity onPress={handlePreviousMonth}>
             <IconPrevious width={10} height={20} />
@@ -72,7 +66,7 @@ const Calender = () => {
           </TouchableOpacity>
         </Row>
         <CalenderBox>
-          <Row gap={0} style={{ marginBottom: calculateHeight(31) }}>
+          <Row gap={0} style={{ marginBottom: calculateWidth(31) }}>
             {daysOfWeek.map((dayName, index) => (
               <DayColumn key={index}>
                 <CustomText fontType="B5" color={color.white100}>
@@ -91,7 +85,7 @@ const Calender = () => {
                   marginBottom:
                     rowIndex === Math.ceil(daysInMonth.length / 7) - 1
                       ? 0
-                      : calculateHeight(30),
+                      : calculateWidth(30),
                 }}
               >
                 {daysInMonth.slice(rowIndex * 7, rowIndex * 7 + 7).map((day, index) => (
@@ -118,25 +112,24 @@ export default Calender;
 
 const DayColumn = styled(View)`
   width: 14.28%;
-  height: ${calculateHeight(31)}px;
+  height: ${calculateWidth(31)}px;
   align-items: center;
   justify-content: center;
 `;
 
 const StyledCalender = styled(View)`
   ${flex({ justifyContent: 'flex-start', alignItems: 'center' })}
-  height: ${calculateHeight(430)}px;
   width: ${calculateWidth(335)}px;
-  background-color: none;
+  height: auto;
   border-radius: 16px;
 `;
 
 const CalenderBox = styled(View)`
   ${flex({ alignItems: 'center' })}
-  padding-top: ${calculateHeight(31)}px;
-  padding-bottom: ${calculateHeight(30)}px;
-  height: ${calculateHeight(401)}px;
+  padding-top: ${calculateWidth(31)}px;
+  padding-bottom: ${calculateWidth(31)}px;
   width: ${calculateWidth(335)}px;
+  height: auto;
   border-radius: 16px;
   background-color: ${color.glassWhite};
 `;
