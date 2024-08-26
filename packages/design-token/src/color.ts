@@ -10,14 +10,14 @@ const color = {
   gray800: '#333333',
   gray900: '#191919',
 
-  glass_white: '#FFFFFF1A',
-  glass_dark: '#FFFFFF4D',
-  glass_stroke: '#FFFFFF1A',
+  glassWhite: '#FFFFFF1A',
+  glassDark: '#FFFFFF4D',
+  glassStroke: '#FFFFFF1A',
 
   white80: '#FFFFFFCC',
   white100: '#FFFFFF',
 
-  pale_yellow: '#FBFCF7',
+  paleYellow: '#FBFCF7',
   primary: '#FF7433',
 
   sinabroBlue: '#087FE7',
