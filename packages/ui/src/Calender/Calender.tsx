@@ -39,7 +39,6 @@ const Calender = () => {
   };
 
   const currentMonth = currentDate.format('M월');
-  const currentYear = currentDate.format('YYYY');
 
   const startOfMonth = currentDate.startOf('month');
   const endOfMonth = currentDate.endOf('month');
@@ -66,7 +65,7 @@ const Calender = () => {
             <IconPrevious width={10} height={20} />
           </TouchableOpacity>
           <CustomText fontType="H3" color={color.white100}>
-            {currentMonth} {currentYear}
+            {currentMonth}
           </CustomText>
           <TouchableOpacity onPress={handleNextMonth}>
             <IconNext width={10} height={20} />
