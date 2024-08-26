@@ -10,7 +10,7 @@ import {
 } from './Button.style';
 import { color } from '@sinabro/design-token';
 import Row from '../Flex/Row';
-import { IconBlackArrow, IconNextBlackArrow } from '@sinabro/icon';
+import { IconNextBlackArrow } from '@sinabro/icon';
 
 type Props = {
   children: ReactNode;

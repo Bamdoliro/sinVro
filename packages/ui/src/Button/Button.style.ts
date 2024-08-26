@@ -28,7 +28,8 @@ export const getButtonIconPadding = {
   `,
   BLACKARROW_ICON: css`
     gap: ${calculatePadding(12)}px;
-    padding: ${calculatePadding(12)}px ${calculatePadding(44)}px ${calculatePadding(12)}px ${calculatePadding(44)}px;
+    padding: ${calculatePadding(12)}px ${calculatePadding(44)}px ${calculatePadding(12)}px
+      ${calculatePadding(44)}px;
   `,
 } as const;
 
@@ -46,7 +47,16 @@ export const getButtonStyle = {
     color: ${color.white100};
   `,
   GLASS: css`
-    background-color: ${color.glass_stroke};
+    background-color: ${color.glassStroke};
     color: ${color.white100};
+  `,
+} as const;
+
+export const getCompleteButtonStyle = {
+  DEFAULT: css`
+    padding: ${calculatePadding(16)}px ${calculatePadding(155)}px;
+  `,
+  DISABLED: css`
+    padding: ${calculatePadding(16)}px ${calculatePadding(155)}px;
   `,
 } as const;
