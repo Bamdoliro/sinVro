@@ -31,13 +31,14 @@ const Input = ({ onChange, placeholder, width, readOnly, name, value }: Props) =
   return (
     <StyledTextInput
       placeholder={placeholder}
+      placeholderTextColor={color.gray300}
       value={value}
       onChangeText={onChange}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       editable={!readOnly}
       isFocused={isFocused}
-      style={{ width: width ? calculateWidth(width) : '100%' }} // width를 스타일로 적용
+      style={{ width: width ? calculateWidth(width) : '100%' }}
     />
   );
 };
@@ -45,6 +46,9 @@ const Input = ({ onChange, placeholder, width, readOnly, name, value }: Props) =
 const StyledTextInput = styled(TextInput)<{ isFocused: boolean }>`
   height: ${calculateHeight(48)}px;
   width: ${calculateHeight(180)}px;
+  padding-left: ${calculateHeight(16)}px;
+  padding-right: ${calculateHeight(16)}px;
+
   border-width: 1px;
   border-style: solid;
   border-color: ${(props: { isFocused: any }) =>
