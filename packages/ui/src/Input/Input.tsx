@@ -1,50 +1,56 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { flex } from '@sinabro/util';
+import { TextInput, Dimensions } from 'react-native';
 import { color } from '@sinabro/design-token';
 
+const { width: screenWidth } = Dimensions.get('window');
+const { height: screenHeight } = Dimensions.get('window');
+const iPhone13MiniWidth = 375;
+const iPhone13MiniHeight = 780;
+
+const calculateWidth = (baseWidth: number) => {
+  return (screenWidth / iPhone13MiniWidth) * baseWidth;
+};
+
+const calculateHeight = (baseHeight: number) => {
+  return (screenHeight / iPhone13MiniHeight) * baseHeight;
+};
+
 type Props = {
-  onChange: () => void;
+  onChange: (text: string) => void;
   placeholder: string;
   width?: number;
   name?: string;
   value?: string;
-  textAlign?: CSSProperties['textAlign'];
   readOnly?: boolean;
 };
 
 const Input = ({ onChange, placeholder, width, readOnly, name, value }: Props) => {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   return (
-    <StyledInput
-      onChangeText={onChange}
+    <StyledTextInput
       placeholder={placeholder}
-      name={name}
       value={value}
-      readOnly={readOnly}
-      style={{ width }}
+      onChangeText={onChange}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
+      editable={!readOnly}
       isFocused={isFocused}
+      style={{ width: width ? calculateWidth(width) : '100%' }} // width를 스타일로 적용
     />
   );
 };
 
-export default Input;
-
-const StyledInput = styled.TextInput<{ width: number; isFocused: boolean }>`
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+const StyledTextInput = styled(TextInput)<{ isFocused: boolean }>`
+  height: ${calculateHeight(48)}px;
+  width: ${calculateHeight(180)}px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${(props: { isFocused: any }) =>
+    props.isFocused ? color.primary : 'transparent'};
   border-radius: 6px;
-  word-break: keep-all;
   color: ${color.gray800};
-  height: 48px;
-  width: ${(props: { width: undefined; }) => (props.width !== undefined ? `${props.width}px` : '300px')};
-  padding: 10px 16px;
-  border: ${(props: { isFocused: any; }) =>
-    props.isFocused ? `1px solid ${color.primary}` : '1px solid transparent'};
- 
-  &::placeholder {
-    color: ${color.gray500};
-  }
 `;
+
+export default Input;
