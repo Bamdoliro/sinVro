@@ -94,7 +94,7 @@ function App(): React.JSX.Element {
           <LearnMoreLinks />
           <Center>
             <Button onPress={() => {}}>선택완료</Button>
-            <Input width={120} placeholder="ddd" onChange={() => {}} />
+            <Input placeholder="OO을/를 입력해주세요" onChange={() => {}} />
           </Center>
         </View>
       </ScrollView>
