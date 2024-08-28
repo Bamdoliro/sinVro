@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
 const Center = styled(View)`
   align-items: center;
   justify-content: center;
+  background-color: black;
 `;
 
 export default App;
