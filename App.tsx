@@ -5,6 +5,7 @@
  * @format
  */
 
+import { Choices, Row } from '@sinabro/ui';
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
@@ -24,6 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import styled from 'styled-components/native';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -89,6 +91,10 @@ function App(): React.JSX.Element {
           </Section>
           <Section title="Learn More">Read the docs to discover what to do next:</Section>
           <LearnMoreLinks />
+          <Row>
+            <Choices children="네" onChange={() => {}} />
+            <Choices children="아니요" onChange={() => {}} />
+          </Row>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -113,5 +119,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+const Center = styled(View)`
+  align-items: center;
+  justify-content: center;
+`;
 
 export default App;
