@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { TextInput, Dimensions } from 'react-native';
-import { InputOutline } from 'react-native-input-outline';
 import { color, font } from '@sinabro/design-token';
-import { divide } from 'react-native-reanimated';
 
-const { width: screenWidth } = Dimensions.get('window');
-const { height: screenHeight } = Dimensions.get('window');
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const iPhone13MiniWidth = 375;
 const iPhone13MiniHeight = 780;
 
-const calculateWidth = (baseWidth: number) => {
-  return (screenWidth / iPhone13MiniWidth) * baseWidth;
-};
-
-const calculateHeight = (baseHeight: number) => {
-  return (screenHeight / iPhone13MiniHeight) * baseHeight;
-};
+const calculateWidth = (baseWidth: number) =>
+  (screenWidth / iPhone13MiniWidth) * baseWidth;
+const calculateHeight = (baseHeight: number) =>
+  (screenHeight / iPhone13MiniHeight) * baseHeight;
 
 type Props = {
   onChange: (text: string) => void;
@@ -26,7 +20,7 @@ type Props = {
   readOnly?: boolean;
 };
 
-const Input = ({ onChange, placeholder, readOnly, name, value }: Props) => {
+const Input = ({ onChange, placeholder, readOnly, value }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   return (
@@ -60,10 +54,8 @@ const InputBack = styled.View<{ isFocused: boolean }>`
 
 const StyledTextInput = styled(TextInput)<{ isFocused: boolean }>`
   ${font.B5}
-  height:${(props: { isFocused: any }) =>
-    props.isFocused ? `${calculateHeight(48)}px` : `${calculateHeight(52)}px`};
-  width: ${(props: { isFocused: any }) =>
-    props.isFocused ? `${calculateWidth(290)}px` : `${calculateWidth(294)}px`};
+  height: ${(props: { isFocused: any }) => calculateHeight(props.isFocused ? 48 : 52)}px;
+  width: ${(props: { isFocused: any }) => calculateWidth(props.isFocused ? 290 : 294)}px;
   padding-left: ${calculateWidth(16)}px;
   padding-right: ${calculateWidth(16)}px;
 
