@@ -50,8 +50,9 @@ const InputBack = styled.View<{ isFocused: boolean }>`
   width: ${calculateWidth(294)}px;
   padding: 2px;
   border-radius: 8px;
-  background-color: ${(props: { isFocused: any }) =>
-    props.isFocused ? color.sinabroBlue : 'transparent'};
+  background-color: #f7dac5;
+  /* background-color: ${(props: { isFocused: any }) =>
+    props.isFocused ? '#F7DAC5' : 'transparent'};; */
   justify-content: center;
 `;
 
