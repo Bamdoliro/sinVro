@@ -30,7 +30,7 @@ const Input = ({ onChange, placeholder, readOnly, name, value }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   return (
-    <InputBack>
+    <InputBack isFocused={isFocused}>
       <StyledTextInput
         placeholder={placeholder}
         placeholderTextColor={color.gray300}
@@ -46,20 +46,24 @@ const Input = ({ onChange, placeholder, readOnly, name, value }: Props) => {
 };
 
 const InputBack = styled.View<{ isFocused: boolean }>`
-  height: ${calculateHeight(52)}px;
-  width: ${calculateWidth(294)}px;
-  padding: 2px;
-  border-radius: 8px;
-  background-color: #f7dac5;
-  /* background-color: ${(props: { isFocused: any }) =>
-    props.isFocused ? '#F7DAC5' : 'transparent'};; */
-  justify-content: center;
+  ${(props: { isFocused: any }) =>
+    props.isFocused &&
+    `
+    height: ${calculateHeight(52)}px;
+    width: ${calculateWidth(294)}px;
+    padding: 2px;
+    border-radius: 8px;
+    background-color: #f7dac5;
+    justify-content: center;
+  `}
 `;
 
 const StyledTextInput = styled(TextInput)<{ isFocused: boolean }>`
   ${font.B5}
-  height: ${calculateHeight(48)}px;
-  width: ${calculateWidth(290)}px;
+  height:${(props: { isFocused: any }) =>
+    props.isFocused ? `${calculateHeight(48)}px` : `${calculateHeight(52)}px`};
+  width: ${(props: { isFocused: any }) =>
+    props.isFocused ? `${calculateWidth(290)}px` : `${calculateWidth(294)}px`};
   padding-left: ${calculateWidth(16)}px;
   padding-right: ${calculateWidth(16)}px;
 
