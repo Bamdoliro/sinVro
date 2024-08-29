@@ -37,9 +37,9 @@ const CustomText = ({
 
 export default CustomText;
 
-const StyledText = styled(Text)`
-  ${(fontType: Font) => font[fontType]}
-  ${(ellipsis: boolean) =>
+const StyledText = styled(Text)<{ fontType: Font; ellipsis: boolean }>`
+  ${({ fontType }) => font[fontType]}
+  ${({ ellipsis }) =>
     ellipsis &&
     css`
       overflow: hidden;
