@@ -5,8 +5,6 @@
  * @format
  */
 
-import { Button } from '@sinabro/ui';
-import { Input } from '@sinabro/ui';
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
@@ -26,7 +24,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import styled from 'styled-components/native';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -64,7 +61,7 @@ function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: Colors.darker,
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
@@ -92,10 +89,6 @@ function App(): React.JSX.Element {
           </Section>
           <Section title="Learn More">Read the docs to discover what to do next:</Section>
           <LearnMoreLinks />
-          <Center>
-            <Button onPress={() => {}}>선택완료</Button>
-            <Input placeholder="OO을/를 입력해주세요" onChange={() => {}} />
-          </Center>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -120,11 +113,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-const Center = styled(View)`
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-`;
 
 export default App;
