@@ -11,7 +11,7 @@ interface Props extends Omit<TextProps, 'style'> {
   fontType: Font;
   width?: number;
   ellipsis?: boolean;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
 }
 
 const CustomText = ({
@@ -20,11 +20,12 @@ const CustomText = ({
   fontType,
   width,
   ellipsis = false,
+  style,
   ...rest
 }: Props) => {
   return (
     <StyledText
-      style={{ color, width }}
+      style={[{ color, width }, style]}
       fontType={fontType}
       ellipsis={ellipsis}
       {...rest}
