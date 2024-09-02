@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Dimensions, Pressable } from 'react-native';
-import { color, font } from '@sinabro/design-token';
+import { color } from '@sinabro/design-token';
 import Row from '../Flex/Row';
 import CustomText from '../Text/Text';
 
@@ -19,7 +19,7 @@ type Props = {
   children: string;
 };
 
-const Input = ({ onPress, children }: Props) => {
+const Choices = ({ onPress, children }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handlePress = () => {
@@ -51,4 +51,4 @@ const StyledButton = styled(Pressable)<{ isFocused: boolean }>`
   justify-content: center;
 `;
 
-export default Input;
+export default Choices;
