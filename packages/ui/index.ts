@@ -6,3 +6,4 @@ export { default as Row } from './src/Flex/Row';
 export { default as CompleteButton } from './src/Button/CompleteButton';
 export { default as Calender } from './src/Calender/Calender';
 export { default as DetailedCard } from './src/EmotionCard/DetailedCard';
+export { default as EmotionCard } from './src/EmotionCard/EmotionCard';
