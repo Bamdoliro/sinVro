@@ -10,7 +10,7 @@ interface Props {
   onPress: () => void;
   children: ReactNode;
   emotion: string;
-  eglishEmotion: string;
+  englishEmotion: string;
   isFocused: boolean;
   detail1: string;
   detail2: string;
@@ -30,7 +30,7 @@ const EmotionCard = ({
   onPress,
   children,
   emotion,
-  eglishEmotion,
+  englishEmotion,
   detail1,
   detail2,
   detail3,
@@ -56,7 +56,7 @@ const EmotionCard = ({
             fontType="caption"
             color={isFocused ? color.gray600 : color.gray600}
           >
-            {eglishEmotion}
+            {englishEmotion}
           </CustomText>
         </TextContainer>
       </StyledEmotionCard>
