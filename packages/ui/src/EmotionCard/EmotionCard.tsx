@@ -82,6 +82,7 @@ const DetailsContainer = styled.View`
 
 const Container = styled.View`
   flex-direction: row;
+  gap: ${calculateWidth(10)}px;
 `;
 
 const StyledEmotionCard = styled.Pressable<Props>`
