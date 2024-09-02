@@ -9,9 +9,12 @@ import { flex } from '@sinabro/util';
 interface Props {
   onPress: () => void;
   children: ReactNode;
-  emotion: ReactNode;
-  eglishEmotion: ReactNode;
+  emotion: string;
+  eglishEmotion: string;
   isFocused: boolean;
+  detail1: string;
+  detail2: string;
+  detail3: string;
 }
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
@@ -28,6 +31,9 @@ const EmotionCard = ({
   children,
   emotion,
   eglishEmotion,
+  detail1,
+  detail2,
+  detail3,
 }: Omit<Props, 'isFocused'>) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
@@ -57,9 +63,9 @@ const EmotionCard = ({
 
       {showDetails && (
         <DetailsContainer>
-          <DetailedCard onPress={() => {}}>Detail 1</DetailedCard>
-          <DetailedCard onPress={() => {}}>Detail 2</DetailedCard>
-          <DetailedCard onPress={() => {}}>Detail 3</DetailedCard>
+          <DetailedCard onPress={() => {}}>{detail1}</DetailedCard>
+          <DetailedCard onPress={() => {}}>{detail2}</DetailedCard>
+          <DetailedCard onPress={() => {}}>{detail3}</DetailedCard>
         </DetailsContainer>
       )}
     </Container>
