@@ -5,6 +5,7 @@
  * @format
  */
 
+import { Choices, Row } from '@sinabro/ui';
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
@@ -24,6 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import styled from 'styled-components/native';
 
 type SectionProps = PropsWithChildren<{
   title: string;
