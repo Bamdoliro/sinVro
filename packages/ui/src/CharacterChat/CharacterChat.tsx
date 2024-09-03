@@ -1,8 +1,8 @@
 import { color } from '@sinabro/design-token';
-import { Dimensions, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import Column from '../Flex/Column';
 import { flex } from '@sinabro/util';
 
