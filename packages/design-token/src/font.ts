@@ -9,7 +9,7 @@ const fontGenerator = (
 ) => css`
   font-family: ${fontFamily};
   font-weight: ${weight};
-  font-size: ${size}rem;
+  font-size: ${size}px;
   line-height: ${lineHeight}%;
   letter-spacing: ${letterSpacing}px;
 `;
