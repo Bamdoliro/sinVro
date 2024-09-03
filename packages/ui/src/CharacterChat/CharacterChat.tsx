@@ -1,5 +1,4 @@
 import { color } from '@sinabro/design-token';
-import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
 import { useState } from 'react';
@@ -7,7 +6,7 @@ import Column from '../Flex/Column';
 import { flex } from '@sinabro/util';
 
 interface Props {
-  content: string[]; 
+  content: string[];
 }
 
 const CharacterChat = ({ content }: Props) => {
@@ -18,24 +17,22 @@ const CharacterChat = ({ content }: Props) => {
   };
 
   return (
-    <StyledCharacterChat>
-      <Pressable onPress={handlePress}>
-        <Column gap={5} alignItems="center">
-          <Chat>
-            <CustomText fontType="cursive1" color={color.white100}>
-              {content[currentIndex]}
-            </CustomText>
-          </Chat>
-          <DownTriangle />
-        </Column>
-      </Pressable>
+    <StyledCharacterChat onPress={handlePress}>
+      <Column gap={5} alignItems="center">
+        <Chat>
+          <CustomText fontType="cursive1" color={color.white100}>
+            {content[currentIndex]}
+          </CustomText>
+        </Chat>
+        <DownTriangle />
+      </Column>
     </StyledCharacterChat>
   );
 };
 
 export default CharacterChat;
 
-const StyledCharacterChat = styled.View`
+const StyledCharacterChat = styled.Pressable`
   width: 100%;
   height: 61px;
 `;
