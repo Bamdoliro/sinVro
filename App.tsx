@@ -25,8 +25,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Toast } from '@sinabro/ui';
-
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -93,7 +91,6 @@ function App(): React.JSX.Element {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-      <Toast>children</Toast>
     </SafeAreaView>
   );
 }

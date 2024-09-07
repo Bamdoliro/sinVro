@@ -1,25 +1,36 @@
-import { font } from '@sinabro/design-token';
-import { ReactNode } from 'react';
-import { TextProps, Text, TextStyle } from 'react-native';
-import styled, { css } from 'styled-components/native';
+import React, { ReactNode } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { color } from '@sinabro/design-token';
+import CustomText from '../Text/Text';
+import Toast, { ToastConfig } from 'react-native-toast-message';
 
-type Font = keyof typeof font;
-
-interface Props extends Omit<TextProps, 'style'> {
-  children: ReactNode;
-  color?: string;
-  width?: number;
-  ellipsis?: boolean;
-  style?: TextStyle | TextStyle[];
-}
-
-const Toast = ({
-  children,
-  ellipsis = false,
-  style,
-  ...rest
-}: Props) => {
-  return <>{children}</>;
+const toastConfig: ToastConfig = {
+  selectedToast: ({ text1 }: any) => (
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'row',
+        width: 335,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: 20,
+        borderRadius: 8,
+        backgroundColor: color.gray900,
+      }}
+    >
+      <CustomText fontType="B5" color={color.white100}>
+        {text1}
+      </CustomText>
+    </View>
+  ),
 };
 
-export default Toast;
+const ToastPopup = () => {
+  return (
+    <>
+      <Toast config={toastConfig} />
+    </>
+  );
+};
+
+export default ToastPopup;
