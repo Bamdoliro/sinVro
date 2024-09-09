@@ -1,27 +1,21 @@
 import { color } from '@sinabro/design-token';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Column from '../Flex/Column';
 import { flex } from '@sinabro/util';
 
 interface Props {
-  content: string[];
+  children: ReactNode;
 }
 
-const CharacterChat = ({ content }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePress = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % content.length);
-  };
-
+const CharacterChat = ({ children }: Props) => {
   return (
-    <StyledCharacterChat onPress={handlePress}>
+    <StyledCharacterChat>
       <Column gap={5} alignItems="center">
         <Chat>
           <CustomText fontType="cursive1" color={color.white100}>
-            {content[currentIndex]}
+            {children}
           </CustomText>
         </Chat>
         <DownTriangle />
