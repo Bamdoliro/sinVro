@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { TextInput, Dimensions } from 'react-native';
+import { TextInput } from 'react-native';
 import { color, font } from '@sinabro/design-token';
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-const iPhone13MiniHeight = 780;
-
-const calculateWidth = (baseWidth: number) =>
-  (screenWidth / iPhone13MiniWidth) * baseWidth;
-const calculateHeight = (baseHeight: number) =>
-  (screenHeight / iPhone13MiniHeight) * baseHeight;
+import { calculateHeight, calculateWidth } from '@sinabro/util';
 
 type Props = {
   onChange: (text: string) => void;

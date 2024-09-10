@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { Dimensions, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import { color } from '@sinabro/design-token';
 import Row from '../Flex/Row';
 import CustomText from '../Text/Text';
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-const iPhone13MiniHeight = 780;
-
-const calculateWidth = (baseWidth: number) =>
-  (screenWidth / iPhone13MiniWidth) * baseWidth;
-const calculateHeight = (baseHeight: number) =>
-  (screenHeight / iPhone13MiniHeight) * baseHeight;
+import { calculateHeight, calculateWidth } from '@sinabro/util';
 
 type Props = {
   onPress: () => void;

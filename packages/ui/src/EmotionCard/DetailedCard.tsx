@@ -1,23 +1,15 @@
 import { color } from '@sinabro/design-token';
 import { ReactNode, useState } from 'react';
-import { Dimensions, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
+import { calculateWidth } from '@sinabro/util';
 
 interface Props {
   onPress: () => void;
   children: ReactNode;
   isFocused: boolean;
 }
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-const iPhone13MiniHeight = 780;
-
-const calculateWidth = (baseWidth: number) =>
-  (screenWidth / iPhone13MiniWidth) * baseWidth;
-const calculateHeight = (baseHeight: number) =>
-  (screenHeight / iPhone13MiniHeight) * baseHeight;
 
 const DetailedCard = ({ onPress, children }: Omit<Props, 'isFocused'>) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);

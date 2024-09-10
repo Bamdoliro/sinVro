@@ -1,10 +1,9 @@
-import { Dimensions, View } from 'react-native';
 import CustomText from '../Text/Text';
 import { ReactNode, useState } from 'react';
 import { color } from '@sinabro/design-token';
 import styled from 'styled-components/native';
 import DetailedCard from './DetailedCard';
-import { flex } from '@sinabro/util';
+import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 
 interface Props {
   onPress: () => void;
@@ -16,15 +15,6 @@ interface Props {
   detail2: string;
   detail3: string;
 }
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-const iPhone13MiniHeight = 780;
-
-const calculateWidth = (baseWidth: number) =>
-  (screenWidth / iPhone13MiniWidth) * baseWidth;
-const calculateHeight = (baseHeight: number) =>
-  (screenHeight / iPhone13MiniHeight) * baseHeight;
 
 const EmotionCard = ({
   onPress,
