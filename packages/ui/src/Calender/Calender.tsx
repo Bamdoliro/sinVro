@@ -5,19 +5,12 @@ import Row from '../Flex/Row';
 import { IconNext, IconPrevious } from '@sinabro/icon';
 import CustomText from '../Text/Text';
 import { color } from '@sinabro/design-token';
-import { flex } from '@sinabro/util';
+import { calculateWidth, flex } from '@sinabro/util';
 import Column from '../Flex/Column';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
 dayjs.extend(isoWeek);
-
-const { width: screenWidth } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-
-const calculateWidth = (baseWidth: number) => {
-  return (screenWidth / iPhone13MiniWidth) * baseWidth;
-};
 
 const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일'];
 

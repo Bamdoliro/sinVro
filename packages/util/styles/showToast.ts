@@ -1,6 +1,6 @@
 import Toast from 'react-native-toast-message';
 
-export const showToast = (text: string) => {
+const showToast = (text: string) => {
   Toast.show({
     type: 'selectedToast',
     text1: text,
@@ -8,3 +8,5 @@ export const showToast = (text: string) => {
     visibilityTime: 3000,
   });
 };
+
+export default showToast;

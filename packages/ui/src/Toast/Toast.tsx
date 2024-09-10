@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { color } from '@sinabro/design-token';
 import CustomText from '../Text/Text';
 import Toast, { ToastConfig } from 'react-native-toast-message';

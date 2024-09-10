@@ -3,17 +3,11 @@ import { Dimensions, View } from 'react-native';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
 import { ReactNode } from 'react';
+import { calculateWidth } from '@sinabro/util';
 
 interface Props {
   children: ReactNode;
 }
-
-const { width: screenWidth } = Dimensions.get('window');
-const iPhone13MiniWidth = 375;
-
-const calculateWidth = (baseWidth: number) => {
-  return (screenWidth / iPhone13MiniWidth) * baseWidth;
-};
 
 const Category = ({ children }: Props) => {
   return (
