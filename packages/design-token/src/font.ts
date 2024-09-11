@@ -36,6 +36,7 @@ const font = {
   cursive2: fontGenerator('NanumEongGeongKwiCe', 400, 20, 140, 1.0),
   letterHeon: fontGenerator('Onglyph_alz_sanghee-Rg', 400, 18, 160, 0),
   letterSol: fontGenerator('Ownglyph_Summerinmyhouse-Rg', 400, 20, 140, 0),
+  kakao: fontGenerator('PretendardBold', 700, 14, 160, -0.2),
 };
 
 export default font;

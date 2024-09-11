@@ -21,6 +21,7 @@
 		E329C6F4FE1046AB8F3A970C /* AppleSDGothicNeoR00.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A31272FC04762A017E0AC /* AppleSDGothicNeoR00.otf */; };
 		E38510F7CE624A299F752A06 /* Diphylleia-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78A0797393C44759B55FF6DD /* Diphylleia-Regular.otf */; };
 		E5D669BEA5F54584AC138A8D /* RIDIBatang.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0DB5AEF152234FC98C2D3621 /* RIDIBatang.otf */; };
+		F77D21961AC74F00B1066E67 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 722C4E601A3743F6A2A7FCEF /* Pretendard-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		EA1B6EEF834094DC9D52D220 /* Pods-SINABRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ownglyph_Summerinmyhouse-Rg.ttf"; path = "../packages/fonts/Ownglyph_Summerinmyhouse-Rg.ttf"; sourceTree = "<group>"; };
+		722C4E601A3743F6A2A7FCEF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; name = "Pretendard-Bold.otf"; path = "../packages/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				0DB5AEF152234FC98C2D3621 /* RIDIBatang.otf */,
 				B4BD978B492D47899BA3AF1B /* Onglyph_alz_sanghee-Rg.ttf */,
 				F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */,
+				722C4E601A3743F6A2A7FCEF /* Pretendard-Bold.otf */,
 			);
 			name = Resources;
 			path = "";
@@ -282,6 +285,7 @@
 				E5D669BEA5F54584AC138A8D /* RIDIBatang.otf in Resources */,
 				432A915D26404560A5E1192B /* Onglyph_alz_sanghee-Rg.ttf in Resources */,
 				04D693E1E4F742D4909C4BAC /* Ownglyph_Summerinmyhouse-Rg.ttf in Resources */,
+				F77D21961AC74F00B1066E67 /* Pretendard-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
