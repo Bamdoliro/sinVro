@@ -22,6 +22,10 @@
       "sha1": "cc3a9455efd998f3740425d16a90cffe3efc1439"
     },
     {
+      "path": "packages/fonts/Pretendard-Bold.otf",
+      "sha1": "bd4ac82cc26cf93c89cfbfbbba8825c5198b5b99"
+    },
+    {
       "path": "packages/fonts/RIDIBatang.otf",
       "sha1": "24885b6ad9bc407081d95335f51fc792d9293f3e"
     }
