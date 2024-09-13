@@ -26,9 +26,9 @@ const CharacterDescribe = ({ type, children }: DescribeProps) => {
       </Column>
       <IconContainer>
         {type === 'heon' ? (
-          <IconQuestion1 width={78} height={148} />
+          <IconQuestion1 width={calculateWidth(78)} height={calculateHeight(148)} />
         ) : (
-          <IconQuestion2 width={78} height={148} />
+          <IconQuestion2 width={calculateWidth(78)} height={calculateHeight(148)} />
         )}
       </IconContainer>
       <Button onPress={() => {}} icon="SMALL" size="SMALL">
@@ -42,8 +42,8 @@ export default CharacterDescribe;
 
 const StyledCharacterDescribe = styled.View<{ type: string }>`
   ${flex({ alignItems: 'center' })}
-  width: 335px;
-  height: 450px;
+  width: ${calculateWidth(335)}px;
+  height: ${calculateHeight(450)}px;
   background-color: ${color.white100};
   border-radius: 12px;
   padding: ${calculateHeight(32)}px ${calculateWidth(40)}px ${calculateHeight(27)}px
