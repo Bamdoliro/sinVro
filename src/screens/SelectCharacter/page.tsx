@@ -39,9 +39,9 @@ const SelectCharacterPage = () => {
 
   return (
     <StyledSelectCharacterPage>
-      <Column gap={36}>
-        <Column gap={16}>
-          <Column gap={31}>
+      <Column gap={calculateHeight(36)}>
+        <Column gap={calculateHeight(16)}>
+          <Column gap={calculateHeight(31)}>
             <IconContainer>
               <IconWhiteArrow height={16} width={23} />
             </IconContainer>
