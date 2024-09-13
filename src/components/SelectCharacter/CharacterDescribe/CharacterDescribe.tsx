@@ -24,13 +24,15 @@ const CharacterDescribe = ({ type, children }: DescribeProps) => {
           {children}
         </CenteredText>
       </Column>
-      <IconContainer>
-        {type === 'heon' ? (
+      {type === 'heon' ? (
+        <IconHeonContainer>
           <IconQuestion1 width={calculateWidth(78)} height={calculateHeight(148)} />
-        ) : (
+        </IconHeonContainer>
+      ) : (
+        <IconSolContainer>
           <IconQuestion2 width={calculateWidth(78)} height={calculateHeight(148)} />
-        )}
-      </IconContainer>
+        </IconSolContainer>
+      )}
       <Button onPress={() => {}} icon="SMALL" size="SMALL">
         선택하기
       </Button>
@@ -40,7 +42,7 @@ const CharacterDescribe = ({ type, children }: DescribeProps) => {
 
 export default CharacterDescribe;
 
-const StyledCharacterDescribe = styled.View<{ type: string }>`
+const StyledCharacterDescribe = styled.View`
   ${flex({ alignItems: 'center' })}
   width: ${calculateWidth(335)}px;
   height: ${calculateHeight(450)}px;
@@ -54,7 +56,12 @@ const CenteredText = styled(CustomText)`
   text-align: center;
 `;
 
-const IconContainer = styled.View<{ type: string }>`
+const IconHeonContainer = styled.View`
   margin-top: ${calculateHeight(59)}px;
-  margin-bottom: ${calculateHeight(57)}px;
+  margin-bottom: ${calculateHeight(75)}px;
+`;
+
+const IconSolContainer = styled.View`
+  margin-top: ${calculateHeight(59)}px;
+  margin-bottom: ${calculateHeight(60)}px;
 `;
