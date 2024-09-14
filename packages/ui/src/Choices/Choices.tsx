@@ -9,18 +9,23 @@ import { calculateHeight, calculateWidth } from '@sinabro/util';
 type Props = {
   onPress: () => void;
   children: string;
+  isDisabled?: boolean;
 };
 
-const Choices = ({ onPress, children }: Props) => {
+const Choices = ({ onPress, children, isDisabled }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handlePress = () => {
-    setIsFocused(!isFocused);
-    onPress();
+    setIsFocused(true);
+
+    setTimeout(() => {
+      setIsFocused(false);
+      onPress();
+    }, 1000);
   };
 
   return (
-    <StyledButton onPress={handlePress} isFocused={isFocused}>
+    <StyledButton onPress={isDisabled ? undefined : handlePress} isFocused={isFocused}>
       <Row alignItems="center" justifyContent="center">
         <CustomText fontType="B3" color={isFocused ? color.gray900 : color.white100}>
           {children}
