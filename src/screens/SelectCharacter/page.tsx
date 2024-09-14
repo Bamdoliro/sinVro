@@ -105,7 +105,7 @@ const Indicator = styled.View<{ active: boolean }>`
   height: 8px;
   border-radius: 999px;
   background-color: ${(props: any) => (props.active ? color.white100 : color.gray500)};
-  margin: 0 8px;
+  margin: 0 ${calculateWidth(8)}px;
 `;
 
 const IconContainer = styled.View`
