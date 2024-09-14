@@ -32,5 +32,7 @@ export { default as IconWriter2 } from './src/IconWriter2';
 export { default as IconPad1 } from './src/IconPad1';
 export { default as IconPad2 } from './src/IconPad2';
 export { default as IconNextBlackArrow } from './src/IconNextBlackArrow';
+export { default as IconQuestion1 } from './src/IconQuestion1';
+export { default as IconQuestion2 } from './src/IconQuestion2';
 export { default as IconSinabroLogo } from './src/IconSinabroLogo';
 export { default as IconKakao } from './src/IconKakao';
