@@ -16,7 +16,7 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handlePress = () => {
-    if (isDisabled) return;
+    if (isDisabled || isFocused) return;
     setIsFocused(true);
 
     setTimeout(() => {

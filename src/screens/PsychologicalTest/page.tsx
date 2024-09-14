@@ -36,7 +36,9 @@ const PsychologicalTest = () => {
   const currentPage = PageList.find((page) => parseInt(page.id) === step);
 
   const handlePageStep = () => {
-    setStep((prev) => prev + 1);
+    if (step < PageList.length+1) {
+      setStep((prev) => prev + 1);
+    }
   };
 
   return (
