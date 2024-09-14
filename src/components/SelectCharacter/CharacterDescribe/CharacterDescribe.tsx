@@ -57,11 +57,11 @@ const CenteredText = styled(CustomText)`
 `;
 
 const IconHeonContainer = styled.View`
-  margin-top: ${calculateHeight(59)}px;
-  margin-bottom: ${calculateHeight(75)}px;
+  margin-top: ${calculateHeight(40)}px;
+  margin-bottom: ${calculateHeight(57)}px;
 `;
 
 const IconSolContainer = styled.View`
-  margin-top: ${calculateHeight(59)}px;
-  margin-bottom: ${calculateHeight(60)}px;
+  margin-top: ${calculateHeight(21)}px;
+  margin-bottom: ${calculateHeight(57)}px;
 `;
