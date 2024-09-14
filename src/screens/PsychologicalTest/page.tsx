@@ -17,7 +17,7 @@ const PageList: PageData[] = [
     text: '박강원 님의 비밀친구를 만나기 위해선\n짧은 심리테스트를 하셔야해요.',
   },
   {
-    id: '2',
+    id: '3',
     text: '설문에 답하시느라 고생 많으셨어요.\n박강원 님의 비밀친구를\n만나볼 시간이에요.',
   },
 ];
@@ -31,7 +31,7 @@ const DescriptionList: PageData[] = [
   },
 ];
 
-const IntroducePage = () => {
+const PsychologicalTest = () => {
   const [step, setStep] = useState(1);
   const currentPage = PageList.find((page) => parseInt(page.id) === step);
 
@@ -42,7 +42,7 @@ const IntroducePage = () => {
   return (
     <>
       {step === 2 ? (
-        <PsychologicalQuestions />
+        <PsychologicalQuestions onSubmit={handlePageStep} />
       ) : (
         <StyledPsychologicalTest>
           <TextContainer>
@@ -55,16 +55,18 @@ const IntroducePage = () => {
                 {currentPage.text}
               </CustomText>
             )}
-            <DescriptionContainer>
-              {DescriptionList.map((desc) => (
-                <CheckListContainer key={desc.id}>
-                  <IconCheck width={26} height={12} />
-                  <CustomText key={desc.id} fontType="B5" color={color.white100}>
-                    {desc.text}
-                  </CustomText>
-                </CheckListContainer>
-              ))}
-            </DescriptionContainer>
+            {step === 1 && (
+              <DescriptionContainer>
+                {DescriptionList.map((desc) => (
+                  <CheckListContainer key={desc.id}>
+                    <IconCheck width={26} height={12} />
+                    <CustomText key={desc.id} fontType="B5" color={color.white100}>
+                      {desc.text}
+                    </CustomText>
+                  </CheckListContainer>
+                ))}
+              </DescriptionContainer>
+            )}
           </TextContainer>
           <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
             다음으로
@@ -75,7 +77,7 @@ const IntroducePage = () => {
   );
 };
 
-export default IntroducePage;
+export default PsychologicalTest;
 
 const StyledPsychologicalTest = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}

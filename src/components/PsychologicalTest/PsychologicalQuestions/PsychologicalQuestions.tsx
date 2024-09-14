@@ -24,7 +24,7 @@ const QuestionList: PageData[] = [
   },
 ];
 
-const IntroducePage = () => {
+const PsychologicalQuestions = ({ onSubmit }: { onSubmit: () => void }) => {
   const [step, setStep] = useState(1);
   const [isChoiceDisabled, setIsChoiceDisabled] = useState(false);
 
@@ -34,20 +34,13 @@ const IntroducePage = () => {
     if (step < QuestionList.length) {
       setStep(step + 1);
       setIsChoiceDisabled(false);
+    } else {
+      onSubmit();
     }
   };
 
-  const handleYesStep = () => {
+  const handleChoice = () => {
     setIsChoiceDisabled(true);
-
-    setTimeout(() => {
-      handleNextStep();
-    }, 1000);
-  };
-
-  const handleNoStep = () => {
-    setIsChoiceDisabled(true);
-
     setTimeout(() => {
       handleNextStep();
     }, 1000);
@@ -61,10 +54,10 @@ const IntroducePage = () => {
         </CustomText>
       )}
       <ChoicesContainer>
-        <Choices onPress={handleYesStep} isDisabled={isChoiceDisabled}>
+        <Choices onPress={handleChoice} isDisabled={isChoiceDisabled}>
           네
         </Choices>
-        <Choices onPress={handleNoStep} isDisabled={isChoiceDisabled}>
+        <Choices onPress={handleChoice} isDisabled={isChoiceDisabled}>
           아니요
         </Choices>
       </ChoicesContainer>
@@ -72,7 +65,7 @@ const IntroducePage = () => {
   );
 };
 
-export default IntroducePage;
+export default PsychologicalQuestions;
 
 const StyledPsychologicalQuestion = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
