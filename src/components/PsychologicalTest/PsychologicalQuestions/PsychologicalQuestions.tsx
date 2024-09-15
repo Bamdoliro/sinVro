@@ -41,9 +41,10 @@ const PsychologicalQuestions = ({ onSubmit }: { onSubmit: () => void }) => {
 
   const handleChoice = () => {
     setIsChoiceDisabled(true);
-    handleNextStep();
 
-    setTimeout(() => {}, 1000);
+    setTimeout(() => {
+      handleNextStep();
+    }, 1000);
   };
 
   return (

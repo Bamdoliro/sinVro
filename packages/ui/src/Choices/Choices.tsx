@@ -16,17 +16,17 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handlePress = () => {
-    if (isDisabled || isFocused) return;
+    if (isDisabled) return;
     setIsFocused(true);
+    onPress();
 
     setTimeout(() => {
       setIsFocused(false);
-      onPress();
     }, 1000);
   };
 
   return (
-    <StyledButton onPress={isDisabled ? undefined : handlePress} isFocused={isFocused}>
+    <StyledButton onPress={handlePress} isFocused={isFocused}>
       <Row alignItems="center" justifyContent="center">
         <CustomText fontType="B3" color={isFocused ? color.gray900 : color.white100}>
           {children}
