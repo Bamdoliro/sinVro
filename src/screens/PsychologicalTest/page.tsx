@@ -61,7 +61,7 @@ const PsychologicalTest = () => {
               <DescriptionContainer>
                 {DescriptionList.map((desc) => (
                   <CheckListContainer key={desc.id}>
-                    <IconCheck width={26} height={12} />
+                    <IconCheck width={26} height={20} />
                     <CustomText key={desc.id} fontType="B5" color={color.white100}>
                       {desc.text}
                     </CustomText>
