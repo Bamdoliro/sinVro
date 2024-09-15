@@ -9,14 +9,20 @@ import { calculateHeight, calculateWidth } from '@sinabro/util';
 type Props = {
   onPress: () => void;
   children: string;
+  isDisabled?: boolean;
 };
 
-const Choices = ({ onPress, children }: Props) => {
+const Choices = ({ onPress, children, isDisabled }: Props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handlePress = () => {
-    setIsFocused(!isFocused);
+    if (isDisabled) return;
+    setIsFocused(true);
     onPress();
+
+    setTimeout(() => {
+      setIsFocused(false);
+    }, 1000);
   };
 
   return (
