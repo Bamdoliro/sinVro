@@ -87,9 +87,10 @@ const Story = () => {
     if (step < StoryList.length) {
       setStep((prev) => prev + 1);
     }
-    else {
-      // navigatoin 
-    }
+  };
+
+  const handleStart = () => {
+    // navigatoin
   };
 
   return (
@@ -99,7 +100,7 @@ const Story = () => {
           fontType="H5"
           color={color.white100}
           style={[
-            { textAlign: 'center' }, 
+            { textAlign: 'center' },
             currentStory.isSpecial ? { textDecorationLine: 'line-through' } : {},
           ]}
         >
@@ -112,9 +113,15 @@ const Story = () => {
             스킵하기
           </CustomText>
         )}
-        <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
-          다음으로
-        </Button>
+          {step < StoryList.length ? (
+            <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
+              다음으로
+            </Button>
+          ) : (
+            <Button size="SMALL" onPress={handleStart} icon="SMALL">
+              시작하기
+            </Button>
+          )}
       </BottomContainer>
     </StyledStory>
   );
