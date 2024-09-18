@@ -98,7 +98,10 @@ const Story = () => {
         <CustomText
           fontType="H5"
           color={color.white100}
-          style={currentStory.isSpecial ? { textDecorationLine: 'line-through' } : {}}
+          style={[
+            { textAlign: 'center' }, 
+            currentStory.isSpecial ? { textDecorationLine: 'line-through' } : {},
+          ]}
         >
           {currentStory.text}
         </CustomText>
