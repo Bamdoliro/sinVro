@@ -4,13 +4,16 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { color } from '@sinabro/design-token';
 import { Column, CustomText, Row } from '@sinabro/ui';
 import { IconKakao, IconSinabroLogo } from '@sinabro/icon';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
+  const navigation = useNavigation();
+
   return (
     <StyledLoginPage>
       <Column gap={calculateHeight(88)}>
         <IconSinabroLogo width={224} height={140} />
-        <Column alignItems="center" gap={10}>
+        <Column alignItems="center">
           <CustomText fontType="B6" color={color.white100}>
             당신을 위한 작은 쉼터
           </CustomText>
@@ -19,7 +22,7 @@ const LoginPage = () => {
           </CustomText>
         </Column>
       </Column>
-      <KakaoButton>
+      <KakaoButton onPress={() => navigation.navigate('Name' as never)}>
         <Row alignItems="center" gap={calculateWidth(5)}>
           <IconKakao width={20} height={18.75} />
           <CustomText fontType="kakao" color="#3C1D1E">
