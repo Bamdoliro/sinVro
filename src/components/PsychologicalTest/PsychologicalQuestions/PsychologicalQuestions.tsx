@@ -72,7 +72,7 @@ const StyledPsychologicalQuestion = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(88)}px ${calculateWidth(20)}px ${calculateHeight(107)}px
+  padding: ${calculateHeight(100)}px ${calculateWidth(20)}px ${calculateHeight(107)}px
     ${calculateWidth(20)}px;
 `;
 
