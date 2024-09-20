@@ -4,6 +4,7 @@ import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { Button, Column, CustomText } from '@sinabro/ui';
 import { IconQuestion1, IconQuestion2 } from '@sinabro/icon';
+import { useNavigation } from '@react-navigation/native';
 
 interface DescribeProps {
   type: string;
@@ -11,6 +12,8 @@ interface DescribeProps {
 }
 
 const CharacterDescribe = ({ type, children }: DescribeProps) => {
+  const navigation = useNavigation();
+
   return (
     <StyledCharacterDescribe>
       <CustomText fontType="B6" color={color.primary}>
@@ -33,7 +36,13 @@ const CharacterDescribe = ({ type, children }: DescribeProps) => {
           <IconQuestion2 width={calculateWidth(78)} height={calculateHeight(148)} />
         </IconSolContainer>
       )}
-      <Button onPress={() => {}} icon="SMALL" size="SMALL">
+      <Button
+        onPress={() => {
+          navigation.navigate('Story' as never);
+        }}
+        icon="SMALL"
+        size="SMALL"
+      >
         선택하기
       </Button>
     </StyledCharacterDescribe>

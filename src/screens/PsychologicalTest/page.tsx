@@ -5,6 +5,7 @@ import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import PsychologicalQuestions from 'components/PsychologicalTest/PsychologicalQuestions/PsychologicalQuestions';
 import { IconCheck } from '@sinabro/icon';
+import { useNavigation } from '@react-navigation/native';
 
 interface PageData {
   id: string;
@@ -33,10 +34,13 @@ const DescriptionList: PageData[] = [
 
 const PsychologicalTest = () => {
   const [step, setStep] = useState(1);
-  const currentPage = PageList.find((page) => parseInt(page.id) === step);
+  const currentPage = PageList.find((page) => parseInt(page.id, 10) === step);
+  const navigation = useNavigation();
 
   const handlePageStep = () => {
-    if (step < PageList.length+1) {
+    if (step === 3) {
+      navigation.navigate('Character' as never);
+    } else {
       setStep((prev) => prev + 1);
     }
   };
@@ -52,6 +56,7 @@ const PsychologicalTest = () => {
               <CustomText
                 fontType="H4"
                 color={color.white100}
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{ textAlign: 'center' }}
               >
                 {currentPage.text}

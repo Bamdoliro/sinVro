@@ -4,9 +4,12 @@ import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
 import { IconWhiteArrow } from '@sinabro/icon';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const NamePage = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const navigation = useNavigation();
 
   const handleEnterPress = () => {
     setIsButtonVisible(true);
@@ -30,7 +33,11 @@ const NamePage = () => {
         </InputContainer>
         {isButtonVisible && (
           <ButtonContainer>
-            <Button size="SMALL" icon="BLACKARROW_ICON" onPress={() => {}}>
+            <Button
+              size="SMALL"
+              icon="BLACKARROW_ICON"
+              onPress={() => navigation.navigate('Test' as never)}
+            >
               다음으로
             </Button>
           </ButtonContainer>
