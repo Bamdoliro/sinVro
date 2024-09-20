@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { CustomText, Input, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
 import { IconWhiteArrow } from '@sinabro/icon';
-import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const NamePage = () => {
@@ -49,7 +48,6 @@ const NamePage = () => {
 
 const NameContainer = styled.View`
   background-color: ${color.gray900};
-  gap: ${calculateHeight(10)}px;
   width: 100%;
   height: 100%;
 `;
@@ -65,7 +63,7 @@ const IconContainer = styled.View`
 
 const InputContainer = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'flex-start' })}
-  padding-top: ${calculateHeight(120)}px;
+  padding-top: ${calculateHeight(123)}px;
   text-align: center;
   gap: 16px;
 `;
