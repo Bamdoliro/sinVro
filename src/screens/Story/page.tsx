@@ -136,7 +136,7 @@ const StyledStory = styled.View`
   })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(244)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
+  padding: ${calculateHeight(153)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
     ${calculateWidth(20)}px;
 `;
 

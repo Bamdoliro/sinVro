@@ -16,9 +16,6 @@ const NamePage = () => {
 
   return (
     <NameContainer>
-      <IconContainer>
-        <IconWhiteArrow width={23} height={17} />
-      </IconContainer>
       <ContentContainer>
         <InputContainer>
           <CustomText fontType="H4" color={color.white100}>
@@ -54,11 +51,6 @@ const NameContainer = styled.View`
 
 const ContentContainer = styled.View`
   gap: ${calculateHeight(340)}px;
-`;
-
-const IconContainer = styled.View`
-  padding-top: ${calculateHeight(72)}px;
-  padding-left: ${calculateHeight(20)}px;
 `;
 
 const InputContainer = styled.View`

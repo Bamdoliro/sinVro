@@ -6,6 +6,7 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import PsychologicalQuestions from 'components/PsychologicalTest/PsychologicalQuestions/PsychologicalQuestions';
 import { IconCheck } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
+import Header from 'components/common/Header/Header';
 
 interface PageData {
   id: string;
@@ -56,7 +57,6 @@ const PsychologicalTest = () => {
               <CustomText
                 fontType="H4"
                 color={color.white100}
-                // eslint-disable-next-line react-native/no-inline-styles
                 style={{ textAlign: 'center' }}
               >
                 {currentPage.text}
@@ -90,7 +90,7 @@ const StyledPsychologicalTest = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(192)}px ${calculateWidth(20)}px ${calculateHeight(112)}px
+  padding: ${calculateHeight(123)}px ${calculateWidth(20)}px ${calculateHeight(112)}px
     ${calculateWidth(20)}px;
 `;
 
