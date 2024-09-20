@@ -50,6 +50,6 @@ const StyledHeader = styled.View<{ $active?: boolean; $backgroundColor: string }
 `;
 
 const IconContainer = styled.View`
-  padding-top: ${calculateHeight(30)}px;
-  padding-left: ${calculateHeight(20)}px;
+  padding-top: ${calculateHeight(40)}px;
+  padding-left: ${calculateHeight(25)}px;
 `;
