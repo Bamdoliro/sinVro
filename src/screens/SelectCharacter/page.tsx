@@ -89,7 +89,7 @@ const StyledSelectCharacterPage = styled.View`
   width: auto;
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(65)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
+  padding: ${calculateHeight(31)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
     ${calculateWidth(20)}px;
 `;
 

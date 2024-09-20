@@ -3,15 +3,22 @@ import { CustomText, Input, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
-import { IconWhiteArrow } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
+import { useNameStore } from '@sinabro/util';
 
 const NamePage = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const [nameInput, setNameInput] = useState('');
+  const { name, setName } = useNameStore();
   const navigation = useNavigation();
 
-  const handleEnterPress = () => {
-    setIsButtonVisible(true);
+  const handleInputChange = (text: string) => {
+    setNameInput(text);
+  };
+
+  const handlePressButton = () => {
+    navigation.navigate('Test' as never);
+    setName(nameInput);
   };
 
   return (
@@ -22,18 +29,17 @@ const NamePage = () => {
             불리고 싶은 이름을 알려주세요.
           </CustomText>
           <Input
-            onChange={() => {}}
-            onSubmit={handleEnterPress}
+            value={nameInput}
+            onChange={handleInputChange}
+            onSubmit={() => {
+              setIsButtonVisible(true);
+            }}
             placeholder="이름을 입력해주세요"
           />
         </InputContainer>
         {isButtonVisible && (
           <ButtonContainer>
-            <Button
-              size="SMALL"
-              icon="BLACKARROW_ICON"
-              onPress={() => navigation.navigate('Test' as never)}
-            >
+            <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePressButton}>
               다음으로
             </Button>
           </ButtonContainer>

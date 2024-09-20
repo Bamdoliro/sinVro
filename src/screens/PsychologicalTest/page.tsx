@@ -6,23 +6,12 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import PsychologicalQuestions from 'components/PsychologicalTest/PsychologicalQuestions/PsychologicalQuestions';
 import { IconCheck } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
-import Header from 'components/common/Header/Header';
+import { useNameStore } from '@sinabro/util';
 
 interface PageData {
   id: string;
   text: string;
 }
-
-const PageList: PageData[] = [
-  {
-    id: '1',
-    text: '박강원 님의 비밀친구를 만나기 위해선\n짧은 심리테스트를 하셔야해요.',
-  },
-  {
-    id: '3',
-    text: '설문에 답하시느라 고생 많으셨어요.\n박강원 님의 비밀친구를\n만나볼 시간이에요.',
-  },
-];
 
 const DescriptionList: PageData[] = [
   { id: '1', text: 'n 문항' },
@@ -35,8 +24,21 @@ const DescriptionList: PageData[] = [
 
 const PsychologicalTest = () => {
   const [step, setStep] = useState(1);
-  const currentPage = PageList.find((page) => parseInt(page.id, 10) === step);
+  const { name } = useNameStore();
   const navigation = useNavigation();
+
+  const PageList: PageData[] = [
+    {
+      id: '1',
+      text: `${name} 님의 비밀친구를 만나기 위해선\n짧은 심리테스트를 하셔야해요.`,
+    },
+    {
+      id: '3',
+      text: `설문에 답하시느라 고생 많으셨어요.\n${name} 님의 비밀친구를\n만나볼 시간이에요.`,
+    },
+  ];
+
+  const currentPage = PageList.find((page) => parseInt(page.id, 10) === step);
 
   const handlePageStep = () => {
     if (step === 3) {
