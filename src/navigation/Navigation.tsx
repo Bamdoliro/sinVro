@@ -10,6 +10,7 @@ import PsychologicalTest from 'screens/PsychologicalTest/page';
 import SelectCharacterPage from 'screens/SelectCharacter/page';
 import StoryPage from 'screens/Story/page';
 import { color } from '@sinabro/design-token';
+import MainPage from 'screens/Main/page';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,13 @@ const Navigation = () => {
             component={StoryPage}
             options={{
               header: () => <HeaderPage backgroundColor={color.gray900} />,
+            }}
+          />
+          <Stack.Screen
+            name="Main"
+            component={MainPage}
+            options={{
+              headerShown: false,
             }}
           />
         </Stack.Navigator>
