@@ -56,7 +56,7 @@ const NameContainer = styled.View`
 `;
 
 const ContentContainer = styled.View`
-  gap: ${calculateHeight(340)}px;
+  gap: ${calculateHeight(320)}px;
 `;
 
 const InputContainer = styled.View`

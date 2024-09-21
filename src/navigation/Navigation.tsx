@@ -51,7 +51,7 @@ const Navigation = () => {
             name="Test"
             component={PsychologicalTest}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
