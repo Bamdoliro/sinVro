@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { BackHandler, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { calculateHeight, flex } from '@sinabro/util';
@@ -6,6 +6,7 @@ import { IconWhiteArrow } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
 import { CustomText } from '@sinabro/ui';
 import { color } from '@sinabro/design-token';
+import React from 'react';
 
 interface Props {
   title?: string;
@@ -16,20 +17,20 @@ interface Props {
 const Header = ({ title, active, backgroundColor }: Props) => {
   const navigation = useNavigation();
 
-  const handlePressBack = () => {
+  const handlePressBack = useCallback(() => {
     if (navigation?.canGoBack()) {
       navigation.goBack();
       return true;
     }
     return false;
-  };
+  }, [navigation]);
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handlePressBack);
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handlePressBack);
     };
-  }, []);
+  }, [handlePressBack]);
 
   return (
     <StyledHeader $active={active} $backgroundColor={backgroundColor}>
