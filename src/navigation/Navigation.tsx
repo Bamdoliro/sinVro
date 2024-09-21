@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar, View, SafeAreaView } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -16,7 +15,7 @@ const Stack = createStackNavigator();
 
 const Navigation = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -42,9 +41,6 @@ const Navigation = () => {
             component={NamePage}
             options={{
               header: () => <HeaderPage backgroundColor={color.gray900} />,
-              headerStyle: {
-                backgroundColor: color.gray900,
-              },
             }}
           />
           <Stack.Screen
