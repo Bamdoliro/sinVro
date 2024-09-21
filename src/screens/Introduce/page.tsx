@@ -9,6 +9,7 @@ import { CustomText } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
@@ -33,10 +34,22 @@ const List: PageData[] = [
 const IntroducePage = () => {
   const flatListRef = useRef<FlatList<PageData>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasScrolledPastEnd, setHasScrolledPastEnd] = useState(false);
+  const navigation = useNavigation();
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(index);
+  };
+
+  const onScrollEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const maxOffsetX = (List.length - 1) * width;
+
+    if (currentIndex === List.length - 1 && offsetX > maxOffsetX && !hasScrolledPastEnd) {
+      setHasScrolledPastEnd(true);
+      navigation.navigate('Login' as never);
+    }
   };
 
   const renderItem = ({ item }: { item: PageData }) => (
@@ -57,6 +70,7 @@ const IntroducePage = () => {
         horizontal
         pagingEnabled
         onScroll={onScroll}
+        onScrollEndDrag={onScrollEndDrag}
         showsHorizontalScrollIndicator={false}
       />
       <IndicatorContainer>

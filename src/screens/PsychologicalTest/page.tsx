@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import PsychologicalQuestions from 'components/PsychologicalTest/PsychologicalQuestions/PsychologicalQuestions';
-import { IconCheck } from '@sinabro/icon';
+import { IconCheck, IconWhiteArrow } from '@sinabro/icon';
+import { useNavigation } from '@react-navigation/native';
+import { useNameStore } from '@sinabro/util';
 
 interface PageData {
   id: string;
   text: string;
 }
-
-const PageList: PageData[] = [
-  {
-    id: '1',
-    text: '박강원 님의 비밀친구를 만나기 위해선\n짧은 심리테스트를 하셔야해요.',
-  },
-  {
-    id: '3',
-    text: '설문에 답하시느라 고생 많으셨어요.\n박강원 님의 비밀친구를\n만나볼 시간이에요.',
-  },
-];
 
 const DescriptionList: PageData[] = [
   { id: '1', text: 'n 문항' },
@@ -33,20 +25,48 @@ const DescriptionList: PageData[] = [
 
 const PsychologicalTest = () => {
   const [step, setStep] = useState(1);
-  const currentPage = PageList.find((page) => parseInt(page.id) === step);
+  const { name } = useNameStore();
+  const navigation = useNavigation();
+
+  const PageList: PageData[] = [
+    {
+      id: '1',
+      text: `${name} 님의 비밀친구를 만나기 위해선\n짧은 심리테스트를 하셔야해요.`,
+    },
+    {
+      id: '3',
+      text: `설문에 답하시느라 고생 많으셨어요.\n${name} 님의 비밀친구를\n만나볼 시간이에요.`,
+    },
+  ];
+
+  const currentPage = PageList.find((page) => parseInt(page.id, 10) === step);
 
   const handlePageStep = () => {
-    if (step < PageList.length+1) {
+    if (step === 3) {
+      navigation.navigate('Character' as never);
+    } else {
       setStep((prev) => prev + 1);
     }
   };
 
+  const handlePressBack = () => {
+    if (step === 1) {
+      navigation.goBack();
+    }
+    setStep(1);
+  };
+
   return (
-    <>
+    <StyledPsychologicalTest>
+      <CustomHeader>
+        <TouchableOpacity onPress={handlePressBack}>
+          <IconWhiteArrow width={23} height={17} />
+        </TouchableOpacity>
+      </CustomHeader>
       {step === 2 ? (
         <PsychologicalQuestions onSubmit={handlePageStep} />
       ) : (
-        <StyledPsychologicalTest>
+        <StyledPsychologicalInfo>
           <TextContainer>
             {currentPage && (
               <CustomText
@@ -70,23 +90,35 @@ const PsychologicalTest = () => {
               </DescriptionContainer>
             )}
           </TextContainer>
-          <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
-            다음으로
-          </Button>
-        </StyledPsychologicalTest>
+          <ButtonContainer>
+            <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
+              다음으로
+            </Button>
+          </ButtonContainer>
+        </StyledPsychologicalInfo>
       )}
-    </>
+    </StyledPsychologicalTest>
   );
 };
 
 export default PsychologicalTest;
 
 const StyledPsychologicalTest = styled.View`
-  ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(192)}px ${calculateWidth(20)}px ${calculateHeight(112)}px
+`;
+
+const StyledPsychologicalInfo = styled.View`
+  ${flex({ alignItems: 'center', justifyContent: 'space-between' })}
+  padding: ${calculateHeight(4)}px ${calculateWidth(20)}px ${calculateHeight(110)}px
     ${calculateWidth(20)}px;
+  margin-top: ${calculateWidth(100)}px;
+  flex-grow: 1;
+`;
+
+const CustomHeader = styled.View`
+  padding-left: ${calculateWidth(23)}px;
+  padding-top: ${calculateHeight(70)}px;
 `;
 
 const TextContainer = styled.View`
@@ -102,4 +134,8 @@ const CheckListContainer = styled.View`
   ${flex({ flexDirection: 'row', alignItems: 'center' })}
   margin-bottom: ${calculateHeight(10)}px;
   gap: 16px;
+`;
+
+const ButtonContainer = styled.View`
+  ${flex({ flexDirection: 'column', alignItems: 'flex-end' })}
 `;

@@ -50,6 +50,7 @@
 		1A1473000E783E33FC3E6B29 /* Pods-SINABRO-SINABROTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO-SINABROTests.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO-SINABROTests/Pods-SINABRO-SINABROTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A1A31272FC04762A017E0AC /* AppleSDGothicNeoR00.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AppleSDGothicNeoR00.otf; path = ../packages/fonts/AppleSDGothicNeoR00.otf; sourceTree = "<group>"; };
 		71F082AF2D0706F0E1C857FF /* libPods-SINABRO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		722C4E601A3743F6A2A7FCEF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.otf"; path = "../packages/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		7530D28C76A442BC4C6C60BB /* libPods-SINABRO-SINABROTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SINABRO-SINABROTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A0797393C44759B55FF6DD /* Diphylleia-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Diphylleia-Regular.otf"; path = "../packages/fonts/Diphylleia-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SINABRO/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		EA1B6EEF834094DC9D52D220 /* Pods-SINABRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SINABRO.debug.xcconfig"; path = "Target Support Files/Pods-SINABRO/Pods-SINABRO.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F7E0EB9CB3AD445192B6E713 /* Ownglyph_Summerinmyhouse-Rg.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ownglyph_Summerinmyhouse-Rg.ttf"; path = "../packages/fonts/Ownglyph_Summerinmyhouse-Rg.ttf"; sourceTree = "<group>"; };
-		722C4E601A3743F6A2A7FCEF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; name = "Pretendard-Bold.otf"; path = "../packages/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

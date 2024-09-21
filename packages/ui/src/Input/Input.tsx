@@ -52,13 +52,13 @@ const InputBack = styled.View<{ isFocused: boolean }>`
   `}
 `;
 
-const StyledTextInput = styled(TextInput)<{ isFocused: boolean }>`
+const StyledTextInput = styled(TextInput) <{ isFocused: boolean }>`
   ${font.B5}
   height: ${(props: { isFocused: any }) => calculateHeight(props.isFocused ? 52 : 56)}px;
   width: ${(props: { isFocused: any }) => calculateWidth(props.isFocused ? 335 : 340)}px;
   padding-left: ${calculateWidth(16)}px;
   padding-right: ${calculateWidth(16)}px;
-
+  line-height: normal;
   background-color: ${color.gray50};
   border-width: 1px;
   border-style: solid;

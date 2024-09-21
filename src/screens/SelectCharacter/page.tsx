@@ -42,9 +42,6 @@ const SelectCharacterPage = () => {
       <Column gap={calculateHeight(36)}>
         <Column gap={calculateHeight(16)}>
           <Column gap={calculateHeight(31)}>
-            <IconContainer>
-              <IconWhiteArrow height={16} width={23} />
-            </IconContainer>
             <FlatList
               ref={flatListRef}
               horizontal
@@ -92,7 +89,7 @@ const StyledSelectCharacterPage = styled.View`
   width: auto;
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(65)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
+  padding: ${calculateHeight(31)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
     ${calculateWidth(20)}px;
 `;
 
@@ -106,10 +103,6 @@ const Indicator = styled.View<{ active: boolean }>`
   border-radius: 999px;
   background-color: ${(props: any) => (props.active ? color.white100 : color.gray500)};
   margin: 0 ${calculateWidth(8)}px;
-`;
-
-const IconContainer = styled.View`
-  padding-left: ${calculateWidth(9)}px;
 `;
 
 const Separator = styled.View`

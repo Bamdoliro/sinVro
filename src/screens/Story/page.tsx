@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState, useCallback } from 'react';
 import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
@@ -74,7 +75,7 @@ const StoryList: PageData[] = [
   },
 ];
 
-const Story = () => {
+const StoryPage = () => {
   const [step, setStep] = useState(1);
 
   const currentStory = StoryList.find((story) => story.id === step);
@@ -88,10 +89,6 @@ const Story = () => {
       setStep((prev) => prev + 1);
     }
   }, [step]);
-
-  const handleStart = () => {
-    // navigatoin
-  };
 
   return (
     <StyledStory>
@@ -119,7 +116,7 @@ const Story = () => {
               </Button>
             </>
           ) : (
-            <Button size="SMALL" onPress={handleStart} icon="SMALL">
+            <Button size="SMALL" onPress={() => {}} icon="SMALL">
               시작하기
             </Button>
           )}
@@ -129,7 +126,7 @@ const Story = () => {
   );
 };
 
-export default Story;
+export default StoryPage;
 
 const StyledStory = styled.View`
   ${flex({
@@ -139,7 +136,7 @@ const StyledStory = styled.View`
   })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(244)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
+  padding: ${calculateHeight(153)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
     ${calculateWidth(20)}px;
 `;
 
