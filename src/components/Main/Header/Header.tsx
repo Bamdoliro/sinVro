@@ -25,6 +25,7 @@ export default Header;
 const StyledHeader = styled.View`
   width: 100%;
   height: ${calculateHeight(40)}px;
+  top: ${calculateHeight(60)}px;
   padding: 0 ${calculateWidth(20)}px;
   justify-content: center;
   align-items: center;
