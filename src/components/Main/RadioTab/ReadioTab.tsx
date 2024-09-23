@@ -14,7 +14,7 @@ const RadioTab = () => {
 
 export default RadioTab;
 
-const StyledRadioTab = styled.TouchableOpacity`
+const StyledRadioTab = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   width: 64px;
   height: 64px;

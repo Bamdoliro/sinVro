@@ -14,7 +14,7 @@ const MailBoxTab = () => {
 
 export default MailBoxTab;
 
-const StyledMailBoxTab = styled.TouchableOpacity`
+const StyledMailBoxTab = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   width: 64px;
   height: 64px;

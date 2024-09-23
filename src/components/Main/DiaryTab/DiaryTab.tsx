@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 
 const DiaryTab = () => {
   return (
-    <StyledDiaryTab onPress={() => {}}>
+    <StyledDiaryTab>
       <IconNote width={33.6} height={32} />
     </StyledDiaryTab>
   );
@@ -14,7 +14,7 @@ const DiaryTab = () => {
 
 export default DiaryTab;
 
-const StyledDiaryTab = styled.TouchableOpacity`
+const StyledDiaryTab = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   padding-left: 19px;
   padding-right: 11.4px;

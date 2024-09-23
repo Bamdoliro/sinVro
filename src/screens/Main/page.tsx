@@ -2,27 +2,41 @@ import React from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { color } from '@sinabro/design-token';
-import { CategoryList, Character, Header, TabBar, Title } from 'components/Main';
+import {
+  CategoryList,
+  Character,
+  DiaryTab,
+  Header,
+  MailBoxTab,
+  RadioTab,
+  Title,
+} from 'components/Main';
 import { flex } from '@sinabro/util';
-import { Column } from '@sinabro/ui';
+import { Column, Row } from '@sinabro/ui';
 
-const MainPage = () => (
-  <StyledMainPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
-    <ContentContainer>
-      <Column alignItems="center">
-        <Header />
+const MainPage = () => {
+  return (
+    <StyledMainPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+      <ContentContainer>
         <Column alignItems="center">
-          <Title />
-          <CategoryListContainer>
-            <CategoryList />
-          </CategoryListContainer>
-          <Character />
-          <TabBar />
+          <Header />
+          <Column alignItems="center">
+            <Title />
+            <CategoryListContainer>
+              <CategoryList />
+            </CategoryListContainer>
+            <Character />
+            <Row alignItems="center" gap={40}>
+              <DiaryTab />
+              <MailBoxTab />
+              <RadioTab />
+            </Row>
+          </Column>
         </Column>
-      </Column>
-    </ContentContainer>
-  </StyledMainPage>
-);
+      </ContentContainer>
+    </StyledMainPage>
+  );
+};
 
 export default MainPage;
 
