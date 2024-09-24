@@ -11,6 +11,7 @@ import SelectCharacterPage from 'screens/SelectCharacter/page';
 import StoryPage from 'screens/Story/page';
 import { color } from '@sinabro/design-token';
 import MainPage from 'screens/Main/page';
+import DiaryPage from 'screens/Diary/page';
 
 const Stack = createStackNavigator();
 
@@ -71,6 +72,11 @@ const Navigation = () => {
             options={{
               headerShown: false,
             }}
+          />
+          <Stack.Screen
+            name="Diary"
+            component={DiaryPage}
+            options={{ header: () => <HeaderPage backgroundColor={color.sinabroBlue} /> }}
           />
         </Stack.Navigator>
       </NavigationContainer>
