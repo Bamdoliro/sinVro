@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Image, View } from 'react-native';
 import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color, font } from '@sinabro/design-token';
@@ -7,6 +8,8 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 const SubmitInquiryPage = () => {
   const [textValue, setTextValue] = useState('');
   const Limit = 1000;
+
+  const [image, setImage] = useState<string | null>(null);
 
   return (
     <StyledSubmitInquiry>
@@ -28,14 +31,20 @@ const SubmitInquiryPage = () => {
           </CustomTextContainer>
         </InputContainer>
         <AttachingPhotoContainer>
-          <AttachingPhoto>
+          <AttachingPhoto onPress={() => {}}>
             <CustomText fontType="B4" color={color.white100}>
               사진 첨부
             </CustomText>
           </AttachingPhoto>
           <CustomText fontType="B6" color={color.white100}>
-            20MB이하 파일 3개까지 첨부 가능합니다
+            최대 20MB 파일 1개 첨부 가능합니다
           </CustomText>
+          {image && (
+            <View>
+              <Image source={{ uri: image }} style={{ width: 100, height: 100 }} />
+              <Button onPress={() => setImage(null)}>삭제</Button>
+            </View>
+          )}
         </AttachingPhotoContainer>
       </ContentContainer>
       <Button

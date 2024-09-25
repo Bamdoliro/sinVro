@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { BackHandler, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { calculateHeight, flex } from '@sinabro/util';
@@ -29,7 +29,7 @@ const Header = ({ title, active, backgroundColor }: Props) => {
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handlePressBack);
     };
-  }, [handlePressBack]);
+  }, []);
 
   return (
     <StyledHeader $active={active} $backgroundColor={backgroundColor}>
@@ -47,12 +47,13 @@ const Header = ({ title, active, backgroundColor }: Props) => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const StyledHeader = styled.View<{ $active?: boolean; $backgroundColor: string }>`
   ${flex({ flexDirection: 'row' })}
   background-color: ${(props: any) => props.$backgroundColor};
   padding-top: ${calculateHeight(28)}px;
+  align-items: center;
 `;
 
 const IconContainer = styled.View`
@@ -60,15 +61,12 @@ const IconContainer = styled.View`
   padding-left: ${calculateHeight(25)}px;
 `;
 
-const TitleContainer = styled.Text`
+const TitleContainer = styled.View`
   flex: 1;
   ${flex({
     justifyContent: 'center',
     alignItems: 'center',
   })}
-  font-size: ${calculateHeight(24)}px;
-  color: ${(props: any) => (props.$active ? props.$backgroundColor : 'white')};
   padding-top: ${calculateHeight(32)}px;
-  margin-left: ${calculateHeight(-50)}px;
-  text-align: center;
+  margin-right: ${calculateHeight(44)}px;
 `;
