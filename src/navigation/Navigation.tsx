@@ -16,10 +16,10 @@ import SubmitInquiryPage from 'screens/Inquiry/SubmitInquiry';
 import SettingPage from 'screens/Setting/page';
 import FAQPage from 'screens/FAQ/page';
 import AlarmPage from 'screens/Alarm/page';
-
+import { StackParamList } from './Navigation.type';
 import { color } from '@sinabro/design-token';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<StackParamList>();
 
 const Navigation = () => {
   return (
@@ -48,10 +48,7 @@ const Navigation = () => {
             name="Name"
             component={NamePage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
-              headerStyle: {
-                backgroundColor: color.gray900,
-              },
+              headerShown: false,
             }}
           />
           <Stack.Screen
@@ -65,67 +62,64 @@ const Navigation = () => {
             name="Character"
             component={SelectCharacterPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Story"
             component={StoryPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="MyPage"
             component={MyPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Inquiry"
             component={InquiryPage}
             options={{
-              header: () => (
-                <HeaderPage backgroundColor={color.gray900} title="문의 내역" />
-              ),
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="InquiryDetail"
             component={InquiryDetailPage}
+            initialParams={{ id: 1 }}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} title="문의" />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="SubmitInquiry"
             component={SubmitInquiryPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} title="문의" />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Setting"
             component={SettingPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} title="설정" />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="FAQ"
             component={FAQPage}
             options={{
-              header: () => (
-                <HeaderPage backgroundColor={color.gray900} title="자주 묻는 질문" />
-              ),
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Alarm"
             component={AlarmPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} title="알림" />,
+              headerShown: false,
             }}
           />
         </Stack.Navigator>
