@@ -1,10 +1,14 @@
 import React, { useRef } from 'react';
-import { ScrollView, Animated } from 'react-native';
+import { ScrollView, Animated, LayoutAnimation, UIManager, Platform } from 'react-native';
 import { CustomText } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { IconInequality } from '@sinabro/icon';
+
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 interface Questions {
   id: number;
@@ -64,6 +68,7 @@ const faqQuestions: Questions[] = [
     content: '캐릭터들의 편지는 보통 1일~3일 내에 1통 발송됩니다',
   },
 ];
+
 const FAQPage = () => {
   const [selectedQuestionId, setSelectedQuestionId] = React.useState<number | null>(null);
   const animatedValues = useRef(faqQuestions.map(() => new Animated.Value(0))).current;
@@ -72,12 +77,14 @@ const FAQPage = () => {
     const index = faqQuestions.findIndex((question) => question.id === id);
     const isSelected = selectedQuestionId === id;
 
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
     setSelectedQuestionId(isSelected ? null : id);
 
     Animated.timing(animatedValues[index], {
       toValue: isSelected ? 0 : 1,
       duration: 300,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -86,11 +93,14 @@ const FAQPage = () => {
       <ScrollViewContainer>
         <ScrollView contentContainerStyle={{ paddingBottom: calculateHeight(0) }}>
           {faqQuestions.map((question, index) => {
-            const translateY = animatedValues[index].interpolate({
+            const height = animatedValues[index].interpolate({
               inputRange: [0, 1],
-              outputRange: [-10, 0], // 위에서 아래로 이동하는 애니메이션
+              outputRange: [0, calculateHeight(77)],
             });
-
+            const opacity = animatedValues[index].interpolate({
+              inputRange: [0, 1],
+              outputRange: [0, 1],
+            });
             return (
               <FAQContainer
                 key={question.id}
@@ -106,7 +116,7 @@ const FAQPage = () => {
                   </IconContainer>
                 </QuestionContainer>
                 {selectedQuestionId === question.id && (
-                  <Animated.View style={{ transform: [{ translateY }] }}>
+                  <Animated.View style={{ height, opacity, overflow: 'hidden' }}>
                     <ContentContainer>
                       <CustomText fontType="B5" color={color.gray700}>
                         {question.content}
