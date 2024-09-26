@@ -9,7 +9,7 @@ import { useNameStore } from '@sinabro/util';
 const NamePage = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [nameInput, setNameInput] = useState('');
-  const { name, setName } = useNameStore();
+  const { setName } = useNameStore();
   const navigation = useNavigation();
 
   const handleInputChange = (text: string) => {

@@ -4,6 +4,7 @@ import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
+import { useNavigation } from '@react-navigation/native';
 
 interface PageData {
   id: number;
@@ -77,6 +78,7 @@ const StoryList: PageData[] = [
 
 const StoryPage = () => {
   const [step, setStep] = useState(1);
+  const navigation = useNavigation();
 
   const currentStory = StoryList.find((story) => story.id === step);
 
@@ -116,7 +118,13 @@ const StoryPage = () => {
               </Button>
             </>
           ) : (
-            <Button size="SMALL" onPress={() => {}} icon="SMALL">
+            <Button
+              size="SMALL"
+              onPress={() => {
+                navigation.navigate('Main' as never);
+              }}
+              icon="SMALL"
+            >
               시작하기
             </Button>
           )}

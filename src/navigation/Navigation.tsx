@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar, View, SafeAreaView } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -11,12 +10,14 @@ import PsychologicalTest from 'screens/PsychologicalTest/page';
 import SelectCharacterPage from 'screens/SelectCharacter/page';
 import StoryPage from 'screens/Story/page';
 import { color } from '@sinabro/design-token';
+import MainPage from 'screens/Main/page';
+import DiaryPage from 'screens/Diary/page';
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -42,9 +43,6 @@ const Navigation = () => {
             component={NamePage}
             options={{
               header: () => <HeaderPage backgroundColor={color.gray900} />,
-              headerStyle: {
-                backgroundColor: color.gray900,
-              },
             }}
           />
           <Stack.Screen
@@ -67,6 +65,18 @@ const Navigation = () => {
             options={{
               header: () => <HeaderPage backgroundColor={color.gray900} />,
             }}
+          />
+          <Stack.Screen
+            name="Main"
+            component={MainPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Diary"
+            component={DiaryPage}
+            options={{ header: () => <HeaderPage backgroundColor={color.sinabroBlue} /> }}
           />
         </Stack.Navigator>
       </NavigationContainer>

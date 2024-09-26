@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { Dimensions, FlatList } from 'react-native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
-import { IconWhiteArrow } from '@sinabro/icon';
 import { Column, Row } from '@sinabro/ui';
 import { CharacterCategory, CharacterDescribe } from 'components/SelectCharacter';
 import { characterData, Heon, Sol } from 'types/Character/remote';
