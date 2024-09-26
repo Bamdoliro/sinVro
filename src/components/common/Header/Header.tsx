@@ -30,7 +30,7 @@ const Header = ({ title, active, backgroundColor }: Props) => {
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handlePressBack);
     };
-  }, [handlePressBack]);
+  }, []);
 
   return (
     <StyledHeader $active={active} $backgroundColor={backgroundColor}>
@@ -48,7 +48,7 @@ const Header = ({ title, active, backgroundColor }: Props) => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const StyledHeader = styled.View<{ $active?: boolean; $backgroundColor: string }>`
   ${flex({ flexDirection: 'row' })}

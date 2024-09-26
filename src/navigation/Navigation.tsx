@@ -9,11 +9,19 @@ import NamePage from 'screens/NameInput/page';
 import PsychologicalTest from 'screens/PsychologicalTest/page';
 import SelectCharacterPage from 'screens/SelectCharacter/page';
 import StoryPage from 'screens/Story/page';
+import MyPage from 'screens/MyPage/page';
+import InquiryPage from 'screens/Inquiry/page';
+import InquiryDetailPage from 'screens/Inquiry/Detail';
+import SubmitInquiryPage from 'screens/Inquiry/SubmitInquiry';
+import SettingPage from 'screens/Setting/page';
+import FAQPage from 'screens/FAQ/page';
+import AlarmPage from 'screens/Alarm/page';
+import { StackParamList } from './Navigation.type';
 import { color } from '@sinabro/design-token';
 import MainPage from 'screens/Main/page';
 import DiaryPage from 'screens/Diary/page';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<StackParamList>();
 
 const Navigation = () => {
   return (
@@ -42,7 +50,7 @@ const Navigation = () => {
             name="Name"
             component={NamePage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
@@ -56,14 +64,64 @@ const Navigation = () => {
             name="Character"
             component={SelectCharacterPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Story"
             component={StoryPage}
             options={{
-              header: () => <HeaderPage backgroundColor={color.gray900} />,
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="MyPage"
+            component={MyPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Inquiry"
+            component={InquiryPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="InquiryDetail"
+            component={InquiryDetailPage}
+            initialParams={{ id: 1 }}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SubmitInquiry"
+            component={SubmitInquiryPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Setting"
+            component={SettingPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="FAQ"
+            component={FAQPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Alarm"
+            component={AlarmPage}
+            options={{
+              headerShown: false,
             }}
           />
           <Stack.Screen

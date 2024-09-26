@@ -11,3 +11,4 @@ export { default as CharacterChat } from './src/CharacterChat/CharacterChat';
 export { default as DetailedCard } from './src/EmotionCard/DetailedCard';
 export { default as EmotionCard } from './src/EmotionCard/EmotionCard';
 export { default as Category } from './src/Category/Category';
+export { default as Toggle } from './src/Toggle/Toggle';
