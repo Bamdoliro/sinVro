@@ -31,7 +31,7 @@ const SubmitInquiryPage = () => {
           </CustomTextContainer>
         </InputContainer>
         <AttachingPhotoContainer>
-          <AttachingPhoto onPress={() => {}}>
+          <AttachingPhoto>
             <CustomText fontType="B4" color={color.white100}>
               사진 첨부
             </CustomText>
