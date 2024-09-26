@@ -110,7 +110,7 @@ const QuestionContainer = styled.TouchableOpacity`
 const FAQContainer = styled.TouchableOpacity`
   ${flex({ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' })}
   width: ${calculateWidth(336)}px;
-  height: ${calculateHeight(88)}px;
+  height: ${calculateHeight(84)}px;
   border: 1px solid ${color.glassStroke};
   background-color: ${color.glassWhite};
   border-radius: 6px;
