@@ -26,11 +26,13 @@ const MainPage = () => {
               <CategoryList />
             </CategoryListContainer>
             <Character />
-            <Row alignItems="center" gap={40}>
-              <DiaryTab />
-              <MailBoxTab />
-              <RadioTab />
-            </Row>
+            <StyledTab>
+              <Row alignItems="center" gap={40}>
+                <DiaryTab />
+                <MailBoxTab />
+                <RadioTab />
+              </Row>
+            </StyledTab>
           </Column>
         </Column>
       </ContentContainer>
@@ -52,4 +54,8 @@ const ContentContainer = styled.View`
 
 const CategoryListContainer = styled.View`
   width: 100%;
+`;
+
+const StyledTab = styled.View`
+  margin-top: 53.73px;
 `;

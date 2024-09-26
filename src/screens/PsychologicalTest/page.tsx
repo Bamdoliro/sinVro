@@ -4,10 +4,10 @@ import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
-import PsychologicalQuestions from 'components/OnBoarding/PsychologicalTest/PsychologicalQuestions/PsychologicalQuestions';
 import { IconCheck, IconWhiteArrow } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
 import { useNameStore } from '@sinabro/util';
+import { PsychologicalQuestions } from 'components/OnBoarding';
 
 interface PageData {
   id: string;
