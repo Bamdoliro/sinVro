@@ -18,12 +18,14 @@ import FAQPage from 'screens/FAQ/page';
 import AlarmPage from 'screens/Alarm/page';
 import { StackParamList } from './Navigation.type';
 import { color } from '@sinabro/design-token';
+import MainPage from 'screens/Main/page';
+import DiaryPage from 'screens/Diary/page';
 
 const Stack = createStackNavigator<StackParamList>();
 
 const Navigation = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -121,6 +123,18 @@ const Navigation = () => {
             options={{
               headerShown: false,
             }}
+          />
+          <Stack.Screen
+            name="Main"
+            component={MainPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Diary"
+            component={DiaryPage}
+            options={{ header: () => <HeaderPage backgroundColor={color.sinabroBlue} /> }}
           />
         </Stack.Navigator>
       </NavigationContainer>

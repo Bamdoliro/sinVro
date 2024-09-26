@@ -40,3 +40,5 @@ export { default as IconQuestion2 } from './src/IconQuestion2';
 export { default as IconQuestionRed } from './src/IconQuestionRed';
 export { default as IconSinabroLogo } from './src/IconSinabroLogo';
 export { default as IconKakao } from './src/IconKakao';
+export { default as IconHeon } from './src/IconHeon';
+export { default as IconRadio } from './src/IconRadio';
