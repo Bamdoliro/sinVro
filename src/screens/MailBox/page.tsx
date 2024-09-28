@@ -5,10 +5,12 @@ import { Calender, Column } from '@sinabro/ui';
 import { flex } from '@sinabro/util';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
+import { Header } from 'components/common';
 
 const MailBoxPage = () => {
   return (
     <StyledMailBoxPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+      <Header title="우편함" />
       <ContentContainer>
         <Column alignItems="center" gap={15}>
           <IconContainer>
