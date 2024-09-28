@@ -117,7 +117,7 @@ const StyledPsychologicalInfo = styled.View`
 `;
 
 const CustomHeader = styled.View`
-  padding-left: ${calculateWidth(23)}px;
+  padding-left: ${calculateWidth(29)}px;
   padding-top: ${calculateHeight(70)}px;
 `;
 
