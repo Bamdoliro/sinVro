@@ -1,5 +1,5 @@
 import React from 'react';
-import { color } from '@sinabro/design-token';
+import { color, font } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { calculateHeight, calculateWidth } from '@sinabro/util';
@@ -47,6 +47,7 @@ const TextInput = styled.TextInput`
   width: 100%;
   height: ${calculateHeight(124)}px;
   color: ${color.gray800};
+  ${font.B5};
 `;
 
 const CustomTextContainer = styled.View`
