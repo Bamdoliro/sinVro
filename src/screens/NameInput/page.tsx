@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CustomText, Input, Button } from '@sinabro/ui';
+import { CustomText, Input, Button, Column } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
@@ -23,7 +23,7 @@ const NamePage = () => {
 
   return (
     <NameContainer>
-      <ContentContainer>
+      <Column alignItems="center" gap={332}>
         <InputContainer>
           <CustomText fontType="H4" color={color.white100}>
             불리고 싶은 이름을 알려주세요.
@@ -44,10 +44,12 @@ const NamePage = () => {
             </Button>
           </ButtonContainer>
         )}
-      </ContentContainer>
+      </Column>
     </NameContainer>
   );
 };
+
+export default NamePage;
 
 const NameContainer = styled.View`
   background-color: ${color.gray900};
@@ -55,13 +57,9 @@ const NameContainer = styled.View`
   height: 100%;
 `;
 
-const ContentContainer = styled.View`
-  gap: ${calculateHeight(320)}px;
-`;
-
 const InputContainer = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'flex-start' })}
-  padding-top: ${calculateHeight(123)}px;
+  padding-top: ${calculateHeight(226)}px;
   text-align: center;
   gap: 16px;
 `;
@@ -69,5 +67,3 @@ const InputContainer = styled.View`
 const ButtonContainer = styled.View`
   ${flex({ alignItems: 'center' })}
 `;
-
-export default NamePage;

@@ -3,10 +3,15 @@ import { color } from '@sinabro/design-token';
 import { flex } from '@sinabro/util';
 import styled from 'styled-components/native';
 import { IconRadio } from '@sinabro/icon';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const RadioTab = () => {
+interface Props {
+  onPress: () => void;
+}
+
+const RadioTab = ({ onPress }: Props) => {
   return (
-    <StyledRadioTab onPress={() => {}}>
+    <StyledRadioTab onPress={onPress}>
       <IconRadio width={36} height={40} />
     </StyledRadioTab>
   );
@@ -14,7 +19,7 @@ const RadioTab = () => {
 
 export default RadioTab;
 
-const StyledRadioTab = styled.View`
+const StyledRadioTab = styled(TouchableOpacity)`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   width: 64px;
   height: 64px;

@@ -1,20 +1,17 @@
-import { useCallback, useEffect } from 'react';
-import { BackHandler, TouchableOpacity } from 'react-native';
-import styled from 'styled-components/native';
-import { calculateHeight, flex } from '@sinabro/util';
+import React, { useCallback, useEffect } from 'react';
 import { IconWhiteArrow } from '@sinabro/icon';
-import { useNavigation } from '@react-navigation/native';
+import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
+import styled from 'styled-components/native';
 import { CustomText } from '@sinabro/ui';
 import { color } from '@sinabro/design-token';
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { BackHandler } from 'react-native';
 
 interface Props {
   title?: string;
-  active?: boolean;
-  backgroundColor: string;
 }
 
-const Header = ({ title, active, backgroundColor }: Props) => {
+const Header = ({ title }: Props) => {
   const navigation = useNavigation();
 
   const handlePressBack = useCallback(() => {
@@ -30,17 +27,15 @@ const Header = ({ title, active, backgroundColor }: Props) => {
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handlePressBack);
     };
-  }, []);
+  }, [handlePressBack]);
 
   return (
-    <StyledHeader $active={active} $backgroundColor={backgroundColor}>
-      <TouchableOpacity onPress={handlePressBack}>
-        <IconContainer>
-          <IconWhiteArrow width={23} height={17} />
-        </IconContainer>
-      </TouchableOpacity>
+    <StyledHeader>
+      <IconContainer onPress={handlePressBack}>
+        <IconWhiteArrow width={23} height={17} />
+      </IconContainer>
       <TitleContainer>
-        <CustomText color={color.white100} fontType="H3">
+        <CustomText fontType="H3" color={color.white100}>
           {title}
         </CustomText>
       </TitleContainer>
@@ -48,26 +43,25 @@ const Header = ({ title, active, backgroundColor }: Props) => {
   );
 };
 
-export default memo(Header);
+export default Header;
 
-const StyledHeader = styled.View<{ $active?: boolean; $backgroundColor: string }>`
-  ${flex({ flexDirection: 'row' })}
-  background-color: ${(props: any) => props.$backgroundColor};
-  padding-top: ${calculateHeight(28)}px;
-  align-items: center;
+const StyledHeader = styled.View`
+  position: absolute;
+  top: ${calculateHeight(67)}px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
 `;
 
-const IconContainer = styled.View`
-  padding-top: ${calculateHeight(40)}px;
-  padding-left: ${calculateHeight(25)}px;
+const IconContainer = styled.TouchableOpacity`
+  padding: 9px;
+  position: absolute;
+  left: ${calculateWidth(20)}px;
+  z-index: 1;
 `;
 
 const TitleContainer = styled.View`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
   flex: 1;
-  ${flex({
-    justifyContent: 'center',
-    alignItems: 'center',
-  })}
-  padding-top: ${calculateHeight(32)}px;
-  margin-right: ${calculateHeight(44)}px;
 `;

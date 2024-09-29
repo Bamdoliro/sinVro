@@ -5,10 +5,12 @@ import styled from 'styled-components/native';
 import { flex } from '@sinabro/util';
 import { IconNote } from '@sinabro/icon';
 import { Calender, Column } from '@sinabro/ui';
+import { Header } from 'components/common';
 
 const DiaryPage = () => {
   return (
     <StyledDiaryPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+      <Header title="하루일기" />
       <ContentContainer>
         <Column alignItems="center" gap={22}>
           <IconContainer>

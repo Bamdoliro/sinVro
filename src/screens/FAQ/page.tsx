@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { IconInequality } from '@sinabro/icon';
+import { Header } from 'components/common';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -90,6 +91,7 @@ const FAQPage = () => {
 
   return (
     <StyledFAQPage>
+      <Header title="자주 묻는 질문" />
       <ScrollViewContainer>
         <ScrollView contentContainerStyle={{ paddingBottom: calculateHeight(0) }}>
           {faqQuestions.map((question, index) => {
@@ -138,20 +140,19 @@ export default FAQPage;
 const StyledFAQPage = styled.View`
   height: 100%;
   width: 100%;
-  padding: ${calculateHeight(20)}px;
-  padding-top: ${calculateHeight(44)}px;
+  padding-top: ${calculateHeight(143)}px;
   background-color: ${color.gray900};
-  gap: ${calculateHeight(36)}px;
 `;
 
 const ScrollViewContainer = styled.View`
   height: ${calculateHeight(580)}px;
+  padding: 0 ${calculateHeight(20)}px;
 `;
 
 const FAQContainer = styled.TouchableOpacity`
   width: 100%;
   margin-bottom: ${calculateHeight(8)}px;
-  gap: ${calculateHeight(8)}px;
+  gap: 8px;
 `;
 
 const QuestionContainer = styled.View`

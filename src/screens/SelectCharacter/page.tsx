@@ -6,6 +6,7 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { Column, Row } from '@sinabro/ui';
 import { CharacterCategory, CharacterDescribe } from 'components/SelectCharacter';
 import { characterData, Heon, Sol } from 'types/Character/remote';
+import { Header } from 'components/common';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -38,6 +39,7 @@ const SelectCharacterPage = () => {
 
   return (
     <StyledSelectCharacterPage>
+      <Header />
       <Column gap={calculateHeight(36)}>
         <Column gap={calculateHeight(16)}>
           <Column gap={calculateHeight(31)}>
@@ -88,7 +90,7 @@ const StyledSelectCharacterPage = styled.View`
   width: auto;
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(31)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
+  padding: ${calculateHeight(122)}px ${calculateWidth(20)}px ${calculateHeight(90)}px
     ${calculateWidth(20)}px;
 `;
 

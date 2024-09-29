@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { useNavigation } from '@react-navigation/native';
+import { Header } from 'components/common';
 
 interface PageData {
   id: number;
@@ -94,6 +95,7 @@ const StoryPage = () => {
 
   return (
     <StyledStory>
+      <Header />
       {currentStory && (
         <CustomText
           fontType="H5"
@@ -107,28 +109,26 @@ const StoryPage = () => {
         </CustomText>
       )}
       <BottomContainer>
-        <BottomContainer>
-          {step < StoryList.length ? (
-            <>
-              <CustomText fontType="B5" color={color.white80} onPress={handleSkip}>
-                스킵하기
-              </CustomText>
-              <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
-                다음으로
-              </Button>
-            </>
-          ) : (
-            <Button
-              size="SMALL"
-              onPress={() => {
-                navigation.navigate('Main' as never);
-              }}
-              icon="SMALL"
-            >
-              시작하기
+        {step < StoryList.length ? (
+          <>
+            <CustomText fontType="B5" color={color.white80} onPress={handleSkip}>
+              스킵하기
+            </CustomText>
+            <Button size="SMALL" icon="BLACKARROW_ICON" onPress={handlePageStep}>
+              다음으로
             </Button>
-          )}
-        </BottomContainer>
+          </>
+        ) : (
+          <Button
+            size="SMALL"
+            onPress={() => {
+              navigation.navigate('Main' as never);
+            }}
+            icon="SMALL"
+          >
+            시작하기
+          </Button>
+        )}
       </BottomContainer>
     </StyledStory>
   );
@@ -138,13 +138,12 @@ export default StoryPage;
 
 const StyledStory = styled.View`
   ${flex({
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
   })}
   height: 100%;
   background-color: ${color.gray900};
-  padding: ${calculateHeight(153)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
+  padding: ${calculateHeight(244)}px ${calculateWidth(20)}px ${calculateHeight(102)}px
     ${calculateWidth(20)}px;
 `;
 

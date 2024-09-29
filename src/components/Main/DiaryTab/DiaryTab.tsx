@@ -3,10 +3,15 @@ import { color } from '@sinabro/design-token';
 import { IconNote } from '@sinabro/icon';
 import { flex } from '@sinabro/util';
 import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const DiaryTab = () => {
+interface Props {
+  onPress: () => void;
+}
+
+const DiaryTab = ({ onPress }: Props) => {
   return (
-    <StyledDiaryTab>
+    <StyledDiaryTab onPress={onPress}>
       <IconNote width={33.6} height={32} />
     </StyledDiaryTab>
   );
@@ -14,7 +19,7 @@ const DiaryTab = () => {
 
 export default DiaryTab;
 
-const StyledDiaryTab = styled.View`
+const StyledDiaryTab = styled(TouchableOpacity)`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   padding-left: 19px;
   padding-right: 11.4px;

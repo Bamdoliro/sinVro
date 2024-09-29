@@ -6,20 +6,27 @@ import {
   CategoryList,
   Character,
   DiaryTab,
-  Header,
   MailBoxTab,
   RadioTab,
   Title,
+  Header,
 } from 'components/Main';
 import { flex } from '@sinabro/util';
 import { Column, Row } from '@sinabro/ui';
+import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 const MainPage = () => {
+  const navigation = useNavigation();
+
   return (
     <StyledMainPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
       <ContentContainer>
         <Column alignItems="center">
-          <Header />
+          <Header
+            onPress1={() => navigation.navigate('MyPage' as never)}
+            onPress2={() => navigation.navigate('Alarm' as never)}
+          />
           <Column alignItems="center">
             <Title />
             <CategoryListContainer>
@@ -28,9 +35,13 @@ const MainPage = () => {
             <Character />
             <StyledTab>
               <Row alignItems="center" gap={40}>
-                <DiaryTab />
-                <MailBoxTab />
-                <RadioTab />
+                <DiaryTab onPress={() => navigation.navigate('Diary' as never)} />
+                <MailBoxTab onPress={() => navigation.navigate('MailBox' as never)} />
+                <RadioTab
+                  onPress={() =>
+                    Alert.alert('안내', '아직 준비 중입니다.', [{ text: '확인' }])
+                  }
+                />
               </Row>
             </StyledTab>
           </Column>
@@ -58,4 +69,5 @@ const CategoryListContainer = styled.View`
 
 const StyledTab = styled.View`
   margin-top: 53.73px;
+  z-index: 1;
 `;
