@@ -28,7 +28,7 @@ const StyledCategory = styled(View)`
   height: 38px;
   border-radius: 6px;
   background-color: ${color.glassWhite};
-  border: 2px solid ${color.glassStroke};
+  border: 1px solid ${color.glassStroke};
   align-items: center;
   justify-content: center;
 `;
