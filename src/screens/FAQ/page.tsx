@@ -152,6 +152,7 @@ const ScrollViewContainer = styled.View`
 const FAQContainer = styled.TouchableOpacity`
   width: 100%;
   margin-bottom: ${calculateHeight(8)}px;
+  gap: 8px;
 `;
 
 const QuestionContainer = styled.View`
