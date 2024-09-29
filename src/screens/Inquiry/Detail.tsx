@@ -92,6 +92,7 @@ const AnswerContainer = styled.View`
   margin-top: ${calculateHeight(28)}px;
   padding-left: 20px;
   padding-right: 20px;
+  gap: 12px;
 `;
 
 const Separator = styled.View`

@@ -119,8 +119,8 @@ const StyledCalender = styled(View)`
 
 const CalenderBox = styled(View)`
   ${flex({ alignItems: 'center' })}
-  padding-top: ${calculateWidth(31)}px;
-  padding-bottom: ${calculateWidth(31)}px;
+  padding-top: ${calculateWidth(19.87)}px;
+  padding-bottom: ${calculateWidth(32.13)}px;
   width: ${calculateWidth(335)}px;
   height: auto;
   border-radius: 16px;
