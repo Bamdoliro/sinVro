@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
-import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
-import { DetailScreenProps } from 'navigation/Navigation.type';
+import { calculateHeight } from '@sinabro/util';
+import { Header } from 'components/common';
 
 interface Questions {
   id: number;
@@ -34,22 +34,25 @@ const questions: Questions[] = [
   },
 ];
 
-const InquiryDetailPage = ({ route }: DetailScreenProps) => {
-  const { id } = route.params as unknown as { id: number };
+const InquiryDetailPage = () => {
+  const route = useRoute();
+  const { id } = route.params as { id: number };
+
   const question = questions.find((q) => q.id === id);
 
   if (!question) {
     return (
-      <View>
+      <StyledQuestionDetail>
         <CustomText fontType="B5" color={color.white100}>
-          해당 질문을 찾을 수 없습니다.
+          질문을 찾을 수 없습니다.
         </CustomText>
-      </View>
+      </StyledQuestionDetail>
     );
   }
 
   return (
     <StyledQuestionDetail>
+      <Header title="문의" />
       <QuestionContainer>
         <CustomText fontType="B5" color={color.white80}>
           {question.date}
@@ -74,22 +77,29 @@ const InquiryDetailPage = ({ route }: DetailScreenProps) => {
 export default InquiryDetailPage;
 
 const StyledQuestionDetail = styled.View`
+  flex: 1;
   background-color: ${color.gray900};
-  width: 100%;
-  height: 100%;
-  padding: ${calculateHeight(56)}px ${calculateWidth(20)}px;
-  gap: ${calculateHeight(28)}px;
 `;
 
 const QuestionContainer = styled.View`
-  gap: ${calculateHeight(20)}px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: ${calculateHeight(28)}px;
+  padding-top: ${calculateHeight(147)}px;
+  gap: 12px;
 `;
 
 const AnswerContainer = styled.View`
-  gap: ${calculateHeight(20)}px;
+  margin-top: ${calculateHeight(28)}px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const Separator = styled.View`
   height: ${calculateHeight(1)}px;
   background-color: ${color.glassStroke};
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 32px;
+  margin-bottom: 24px;
 `;
