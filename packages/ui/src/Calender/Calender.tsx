@@ -125,4 +125,5 @@ const CalenderBox = styled(View)`
   height: auto;
   border-radius: 16px;
   background-color: ${color.glassWhite};
+  border: 1px solid ${color.glassStroke};
 `;
