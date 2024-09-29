@@ -84,7 +84,6 @@ const StyledQuestionDetail = styled.View`
 const QuestionContainer = styled.View`
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: ${calculateHeight(28)}px;
   padding-top: ${calculateHeight(147)}px;
   gap: 12px;
 `;
@@ -101,5 +100,4 @@ const Separator = styled.View`
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 32px;
-  margin-bottom: 24px;
 `;
