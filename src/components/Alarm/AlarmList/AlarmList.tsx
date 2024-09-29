@@ -50,7 +50,12 @@ const AlarmList = () => {
   return (
     <ScrollView>
       {List.map((question) => (
-        <AlarmItem id={question.id} title={question.title} content={question.content} />
+        <AlarmItem
+          key={question.id}
+          id={question.id}
+          title={question.title}
+          content={question.content}
+        />
       ))}
     </ScrollView>
   );
