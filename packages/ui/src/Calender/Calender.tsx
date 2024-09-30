@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import Row from '../Flex/Row';
-import { IconNext, IconPrevious } from '@sinabro/icon';
+import { IconNext, IconPrevious, IconLetter, IconBook } from '@sinabro/icon';
 import CustomText from '../Text/Text';
 import { color } from '@sinabro/design-token';
 import { calculateWidth, flex } from '@sinabro/util';
@@ -14,7 +14,14 @@ dayjs.extend(isoWeek);
 
 const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일'];
 
-const Calender = () => {
+interface CalenderProps {
+  datesWithLetter?: string[];
+  datesWithDiary?: string[];
+  onPressLetter?: () => void;
+  onPressDiary?: () => void;
+}
+
+const Calender: React.FC<CalenderProps> = ({ datesWithLetter, datesWithDiary, onPressDiary, onPressLetter }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
 
   const handlePreviousMonth = () => {
@@ -44,10 +51,18 @@ const Calender = () => {
     day = day.add(1, 'day');
   }
 
+  const hasLetter = (day: dayjs.Dayjs | null) => {
+    return day && datesWithLetter?.includes(day.format('YYYY-MM-DD'));
+  };
+
+  const hasDiary = (day: dayjs.Dayjs | null) => {
+    return day && datesWithDiary?.includes(day.format('YYYY-MM-DD'));
+  };
+
   return (
     <StyledCalender>
       <Column alignItems="center" gap={calculateWidth(15)}>
-        <Row alignItems="center" gap={20}>
+        <Row alignItems="center" gap={27}>
           <TouchableOpacity onPress={handlePreviousMonth}>
             <IconPrevious width={10} height={20} />
           </TouchableOpacity>
@@ -84,9 +99,21 @@ const Calender = () => {
                 {daysInMonth.slice(rowIndex * 7, rowIndex * 7 + 7).map((day, index) => (
                   <DayColumn key={index}>
                     {day ? (
-                      <CustomText fontType="B5" color={color.white100}>
-                        {day.date()}
-                      </CustomText>
+                      <DayWrapper>
+                        {hasLetter(day) && (
+                          <IconLetterWrapper onPress={onPressLetter}>
+                            <IconLetter width={39} height={23} />
+                          </IconLetterWrapper>
+                        )}
+                        {hasDiary(day) && (
+                          <IconLetterWrapper onPress={onPressDiary}>
+                            <IconBook width={34} height={26} />
+                          </IconLetterWrapper>
+                        )}
+                        <CustomText fontType="B5" color={color.white100}>
+                          {day.date()}
+                        </CustomText>
+                      </DayWrapper>
                     ) : (
                       <View />
                     )}
@@ -126,4 +153,17 @@ const CalenderBox = styled(View)`
   border-radius: 16px;
   background-color: ${color.glassWhite};
   border: 1px solid ${color.glassStroke};
+`;
+
+const DayWrapper = styled(View)`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
+const IconLetterWrapper = styled.TouchableOpacity`
+  position: absolute;
+  top: -20px;
+  left: 5px;
 `;
