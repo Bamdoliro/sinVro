@@ -7,6 +7,7 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 
 interface Props {
   onPress: () => void;
+  onDetailSelect: (detail: string) => void;
   children: ReactNode;
   emotion: string;
   englishEmotion: string;
@@ -18,6 +19,7 @@ interface Props {
 
 const EmotionCard = ({
   onPress,
+  onDetailSelect,
   children,
   emotion,
   englishEmotion,
@@ -32,6 +34,10 @@ const EmotionCard = ({
     setIsFocused(!isFocused);
     setShowDetails(!showDetails);
     onPress();
+  };
+
+  const handleDetailSelect = (detail: string) => {
+    onDetailSelect(detail); 
   };
 
   return (
@@ -53,9 +59,15 @@ const EmotionCard = ({
 
       {showDetails && (
         <DetailsContainer>
-          <DetailedCard onPress={() => {}}>{detail1}</DetailedCard>
-          <DetailedCard onPress={() => {}}>{detail2}</DetailedCard>
-          <DetailedCard onPress={() => {}}>{detail3}</DetailedCard>
+          <DetailedCard onPress={() => handleDetailSelect(detail1)}>
+            {detail1}
+          </DetailedCard>
+          <DetailedCard onPress={() => handleDetailSelect(detail2)}>
+            {detail2}
+          </DetailedCard>
+          <DetailedCard onPress={() => handleDetailSelect(detail3)}>
+            {detail3}
+          </DetailedCard>
         </DetailsContainer>
       )}
     </Container>

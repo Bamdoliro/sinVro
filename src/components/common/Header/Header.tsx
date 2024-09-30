@@ -9,18 +9,22 @@ import { BackHandler } from 'react-native';
 
 interface Props {
   title?: string;
+  option?: 'MAIL' | 'DEFAULT';
 }
 
-const Header = ({ title }: Props) => {
+const Header = ({ title, option = 'DEFAULT' }: Props) => {
   const navigation = useNavigation();
 
   const handlePressBack = useCallback(() => {
-    if (navigation?.canGoBack()) {
+    if (option === 'MAIL') {
+      navigation.navigate('Main' as never);
+      return true;
+    } else if (navigation?.canGoBack()) {
       navigation.goBack();
       return true;
     }
     return false;
-  }, [navigation]);
+  }, [navigation, option]);
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handlePressBack);
