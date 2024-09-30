@@ -4,7 +4,7 @@ import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color, font } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
-import { launchCamera } from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const SubmitInquiryPage = () => {
   const [textValue, setTextValue] = useState('');
@@ -13,16 +13,20 @@ const SubmitInquiryPage = () => {
   const [image, setImage] = useState<string | null>(null);
 
   const onRequestCamera = () => {
-    launchCamera(
+    launchImageLibrary(
       {
         mediaType: 'photo',
         quality: 0.1,
-        cameraType: 'back',
-        saveToPhotos: true,
+        selectionLimit: 1,
         includeBase64: true,
       },
       (res) => {
-        console.log(res); 
+        if (res.assets && res.assets.length > 0) {
+          const fileName = res.assets[0].fileName || 'Unknown';
+          console.log('Selected file name:', fileName);
+        } else {
+          console.log('No file selected');
+        }
       }
     );
   };
