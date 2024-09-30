@@ -14,7 +14,7 @@ const MailBoxPage = () => {
 
   return (
     <StyledMailBoxPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
-      <Header title="우편함" />
+      <Header title="우편함" option="MAIL" />
       <ContentContainer>
         <Column alignItems="center" gap={15}>
           <IconMailBox width={144} height={135} />
