@@ -13,9 +13,7 @@ const MailBoxPage = () => {
       <Header title="우편함" />
       <ContentContainer>
         <Column alignItems="center" gap={15}>
-          <IconContainer>
-            <IconMailBox width={144} height={135} />
-          </IconContainer>
+          <IconMailBox width={144} height={135} />
           <Calender />
         </Column>
       </ContentContainer>
@@ -35,8 +33,4 @@ const ContentContainer = styled.View`
   height: 100%;
   top: 147px;
   bottom: 66px;
-`;
-
-const IconContainer = styled.TouchableOpacity`
-  padding: 0px;
 `;

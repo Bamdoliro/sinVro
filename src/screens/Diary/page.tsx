@@ -6,14 +6,17 @@ import { flex } from '@sinabro/util';
 import { IconNote } from '@sinabro/icon';
 import { Calender, Column } from '@sinabro/ui';
 import { Header } from 'components/common';
+import { useNavigation } from '@react-navigation/native';
 
 const DiaryPage = () => {
+  const navigation = useNavigation();
+
   return (
     <StyledDiaryPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
       <Header title="하루일기" />
       <ContentContainer>
         <Column alignItems="center" gap={22}>
-          <IconContainer>
+          <IconContainer onPress={() => navigation.navigate('WriteDiary' as never)}>
             <IconNote width={140} height={135} />
           </IconContainer>
           <Calender />
