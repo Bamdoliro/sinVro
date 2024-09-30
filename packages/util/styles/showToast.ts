@@ -5,7 +5,7 @@ const showToast = (text: string, onHide?: () => void) => {
     type: 'selectedToast',
     text1: text,
     position: 'bottom',
-    visibilityTime: 3000,
+    visibilityTime: 2000,
     onHide,
   });
 };

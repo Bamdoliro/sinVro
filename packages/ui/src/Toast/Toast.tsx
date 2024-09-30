@@ -13,7 +13,10 @@ const toastConfig: ToastConfig = {
         width: 335,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 20,
+        paddingBottom: 20,
+        paddingTop: 20,
+        paddingLeft: 16,
+        paddingRight: 16,
         borderRadius: 8,
         backgroundColor: color.gray900,
       }}
