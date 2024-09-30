@@ -4,7 +4,7 @@ import { CustomText, Button } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { color, font } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { launchImageLibrary } from 'react-native-image-picker';
 
 const SubmitInquiryPage = () => {
   const [textValue, setTextValue] = useState('');
