@@ -62,7 +62,7 @@ const Calender: React.FC<CalenderProps> = ({ datesWithLetter, datesWithDiary, on
   return (
     <StyledCalender>
       <Column alignItems="center" gap={calculateWidth(15)}>
-        <Row alignItems="center" gap={20}>
+        <Row alignItems="center" gap={27}>
           <TouchableOpacity onPress={handlePreviousMonth}>
             <IconPrevious width={10} height={20} />
           </TouchableOpacity>
