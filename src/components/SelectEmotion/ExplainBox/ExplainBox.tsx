@@ -26,4 +26,5 @@ const StyledExplainBox = styled.View`
   background-color: ${color.glassWhite};
   border-radius: 12px;
   border: 1px solid ${color.glassStroke};
+  margin-bottom: 12px;
 `;
