@@ -18,7 +18,6 @@ import MyPage from 'screens/MyPage/page';
 import InquiryPage from 'screens/Inquiry/page';
 import InquiryDetailPage from 'screens/Inquiry/Detail';
 import MailBoxPage from 'screens/MailBox/page';
-import CheckLetterPage from 'screens/CheckLetter/page';
 import WriteDiaryPage from 'screens/WriteDiary/page';
 import SelectEmotionPage from 'screens/SelectEmotion/page';
 
@@ -108,11 +107,6 @@ const Navigation = () => {
           <Stack.Screen
             name="MailBox"
             component={MailBoxPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="CheckLetter"
-            component={CheckLetterPage}
             options={{ headerShown: false }}
           />
           <Stack.Screen

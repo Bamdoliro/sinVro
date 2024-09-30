@@ -8,11 +8,12 @@ import {
   IconPleasure,
   IconSad,
 } from '@sinabro/icon';
-import { EmotionCard } from '@sinabro/ui';
-import React, { useEffect, useState } from 'react';
+import {DetailedCard, EmotionCard} from '@sinabro/ui';
+import React, {useEffect, useState, useMemo, useCallback, useRef} from 'react';
 import { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import {ExplainBox} from "../index";
 
 interface Emotion {
   id: number;
@@ -104,35 +105,67 @@ interface EmotionListProps {
   onDetailSelect: (emotion: string) => void;
 }
 
-const EmotionList: React.FC<EmotionListProps> = ({ onDetailsChange, onDetailSelect }) => {
-  const [selectedDetails, setSelectedDetails] = useState<string[]>([]);
+interface EmotionState {
+  selectedEmotion: string | null;
+  emotionOrder: number[];
+}
 
-  const handleDetailToggle = (emotion: string) => {
-    setSelectedDetails((prev) =>
-      prev.includes(emotion)
-        ? prev.filter((item) => item !== emotion)
-        : [...prev, emotion]
-    );
-  };
+const EmotionList = ({ onDetailsChange, onDetailSelect }: EmotionListProps) => {
+  const [emotionState, setEmotionState] = useState<EmotionState>({
+    selectedEmotion: null,
+    emotionOrder: [0, 1, 2, 3, 4, 5, 6, 7],
+  });
 
-  useEffect(() => {
-    onDetailsChange(selectedDetails);
-  }, [selectedDetails, onDetailsChange]);
+  const emotionsList = useRef();
+
+  const handleEmotionToggle = useCallback((emotion: string, index: number) => {
+    setEmotionState(prevState => {
+      const newState = { ...prevState };
+
+      if (prevState.selectedEmotion === emotion) {
+        newState.selectedEmotion = null;
+        newState.emotionOrder = [0, 1, 2, 3, 4, 5, 6, 7];
+      } else {
+        newState.selectedEmotion = emotion;
+        newState.emotionOrder = [0, 1, 2, 3, 4, 5, 6, 7];
+
+        const adjustedIndex = index + 1;
+        if (adjustedIndex % 2 === 0) {
+          const temp = newState.emotionOrder[index];
+          newState.emotionOrder[index] = newState.emotionOrder[index - 1];
+          newState.emotionOrder[index - 1] = temp;
+        }
+      }
+
+      return newState;
+    });
+  }, []);
+
+  useMemo(() => {
+    onDetailsChange(emotionState.selectedEmotion ? [emotionState.selectedEmotion] : []);
+  }, [emotionState.selectedEmotion, onDetailsChange]);
+
+  const orderedEmotions = useMemo(() =>
+      emotionState.emotionOrder.map(index => emotions[index]),
+    [emotionState.emotionOrder]
+  );
 
   return (
     <StyledEmotionList>
       <ScrollView contentContainerStyle={scrollViewContentStyle}>
-        {emotions.map((item) => (
+        {orderedEmotions.map((item, index) => (
           <StyledEmotionCard key={item.id}>
             <EmotionCard
+              indexNumber={item.id}
               children={item.icon}
               emotion={item.emotion}
               englishEmotion={item.englishEmotion}
               detail1={item.detail1}
               detail2={item.detail2}
               detail3={item.detail3}
-              onPress={() => handleDetailToggle(item.emotion)}
+              onPress={() => handleEmotionToggle(item.emotion, emotionState.emotionOrder[index])}
               onDetailSelect={onDetailSelect}
+              isSelected={emotionState.selectedEmotion === item.emotion}
             />
           </StyledEmotionCard>
         ))}
