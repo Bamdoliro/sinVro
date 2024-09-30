@@ -39,12 +39,12 @@ const EmotionCard = ({
       <StyledEmotionCard onPress={handlePress} isFocused={isFocused}>
         <ImageContainer>{children}</ImageContainer>
         <TextContainer>
-          <CustomText fontType="B2" color={isFocused ? color.gray900 : color.gray800}>
+          <CustomText fontType="B2" color={isFocused ? color.gray900 : color.white100}>
             {emotion}
           </CustomText>
           <CustomText
             fontType="caption"
-            color={isFocused ? color.gray600 : color.gray600}
+            color={isFocused ? color.gray900 : color.white100}
           >
             {englishEmotion}
           </CustomText>
@@ -72,7 +72,7 @@ const DetailsContainer = styled.View`
 
 const Container = styled.View`
   flex-direction: row;
-  gap: ${calculateWidth(10)}px;
+  gap: ${calculateWidth(5)}px;
 `;
 
 const StyledEmotionCard = styled.Pressable<Props>`
