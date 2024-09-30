@@ -9,6 +9,7 @@ import { Header } from 'components/common';
 import { useNavigation } from '@react-navigation/native';
 
 const DiaryPage = () => {
+  const datesWithDiarys = ['2024-06-02'];
   const navigation = useNavigation();
 
   return (
@@ -19,7 +20,10 @@ const DiaryPage = () => {
           <IconContainer onPress={() => navigation.navigate('WriteDiary' as never)}>
             <IconNote width={140} height={135} />
           </IconContainer>
-          <Calender />
+          <Calender
+            datesWithDiary={datesWithDiarys}
+            onPressDiary={() => navigation.navigate('CheckDiary' as never)}
+          />
         </Column>
       </ContentContainer>
     </StyledDiaryPage>
