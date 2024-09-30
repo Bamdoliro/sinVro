@@ -11,7 +11,7 @@ const SubmitInquiryPage = () => {
   const [textValue, setTextValue] = useState<string>('');
   const [image, setImage] = useState<string | null>(null);
 
-  const isButtonDisabled = !textValue && !image;
+  const isButtonDisabled = !textValue;
   const navigation = useNavigation();
 
   return (
