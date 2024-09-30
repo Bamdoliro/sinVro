@@ -9,7 +9,7 @@ interface ImageInputProps {
   setImage: (image: string | null) => void;
 }
 
-const ImageInput: React.FC<ImageInputProps> = ({ image, setImage }) => {
+const ImageInput = ({ image, setImage }: ImageInputProps) => {
   return (
     <StyledImageInput>
       <AttachingPhotoButton onPress={() => {}}>

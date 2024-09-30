@@ -9,7 +9,7 @@ interface InputProps {
   setTextValue: (text: string) => void;
 }
 
-const Input: React.FC<InputProps> = ({ textValue, setTextValue }) => {
+const Input = ({ textValue, setTextValue }: InputProps) => {
   const Limit = 1000;
 
   return (
