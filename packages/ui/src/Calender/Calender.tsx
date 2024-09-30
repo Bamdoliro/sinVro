@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import Row from '../Flex/Row';
 import { IconNext, IconPrevious } from '@sinabro/icon';
