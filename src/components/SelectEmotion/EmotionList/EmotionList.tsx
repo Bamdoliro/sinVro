@@ -8,12 +8,11 @@ import {
   IconPleasure,
   IconSad,
 } from '@sinabro/icon';
-import {DetailedCard, EmotionCard} from '@sinabro/ui';
-import React, {useEffect, useState, useMemo, useCallback, useRef} from 'react';
+import { EmotionCard } from '@sinabro/ui';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
-import {ExplainBox} from "../index";
 
 interface Emotion {
   id: number;
@@ -116,10 +115,8 @@ const EmotionList = ({ onDetailsChange, onDetailSelect }: EmotionListProps) => {
     emotionOrder: [0, 1, 2, 3, 4, 5, 6, 7],
   });
 
-  const emotionsList = useRef();
-
   const handleEmotionToggle = useCallback((emotion: string, index: number) => {
-    setEmotionState(prevState => {
+    setEmotionState((prevState) => {
       const newState = { ...prevState };
 
       if (prevState.selectedEmotion === emotion) {
@@ -141,12 +138,12 @@ const EmotionList = ({ onDetailsChange, onDetailSelect }: EmotionListProps) => {
     });
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     onDetailsChange(emotionState.selectedEmotion ? [emotionState.selectedEmotion] : []);
   }, [emotionState.selectedEmotion, onDetailsChange]);
 
-  const orderedEmotions = useMemo(() =>
-      emotionState.emotionOrder.map(index => emotions[index]),
+  const orderedEmotions = useMemo(
+    () => emotionState.emotionOrder.map((index) => emotions[index]),
     [emotionState.emotionOrder]
   );
 
@@ -163,7 +160,9 @@ const EmotionList = ({ onDetailsChange, onDetailSelect }: EmotionListProps) => {
               detail1={item.detail1}
               detail2={item.detail2}
               detail3={item.detail3}
-              onPress={() => handleEmotionToggle(item.emotion, emotionState.emotionOrder[index])}
+              onPress={() =>
+                handleEmotionToggle(item.emotion, emotionState.emotionOrder[index])
+              }
               onDetailSelect={onDetailSelect}
               isSelected={emotionState.selectedEmotion === item.emotion}
             />
