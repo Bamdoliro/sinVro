@@ -127,7 +127,7 @@ const Navigation = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="ChekcLetter"
+            name="CheckLetter"
             component={CheckLetterPage}
             options={{ headerShown: false }}
           />
