@@ -24,7 +24,7 @@ const SelectEmotionPage = () => {
   const handlePress = () => {
     if (!isDisabled) {
       showToast('하루 일기 작성이 완료되었습니다!', () => {
-        navigation.navigate('DiaryPage' as never);
+        navigation.navigate('Diary' as never);
       });
     }
   };
