@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect } from 'react';
 import { color } from '@sinabro/design-token';
 import { flex, showToast } from '@sinabro/util';
 import { Header } from 'components/common';
@@ -23,7 +23,7 @@ const SelectEmotionPage = () => {
 
   const handlePress = () => {
     if (!isDisabled) {
-      showToast('편지 작성이 완료되었습니다!', () => {
+      showToast('하루 일기 작성이 완료되었습니다!', () => {
         navigation.navigate('MailBox' as never);
       });
     }

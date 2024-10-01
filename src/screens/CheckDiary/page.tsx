@@ -31,7 +31,7 @@ const CheckDiaryPage = () => {
             <IconPad1 width={348} height={497.14} />
             <TextOverlay>
               <ScrollView>
-                <CustomText fontType="B5" color={color.gray900}>
+                <CustomText fontType="cursive2" color={color.gray900}>
                   가야 할 때가 언제인가를 분명히 알고 가는 이의 뒷모습은 얼마나
                   아름다운가. 봄 한철 격정을 인내한 나의 사랑은 지고 있다. 분분한 낙화.[1]
                   결별이 이룩하는 축복에 싸여 지금은 가야 할 때. 무성한 녹음과 그리고

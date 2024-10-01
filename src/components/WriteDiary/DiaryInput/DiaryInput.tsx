@@ -30,7 +30,7 @@ const StyledInput = styled.View`
   width: ${calculateWidth(335)}px;
   height: ${calculateHeight(546)}px;
   padding-bottom: 18px;
-  background-color: ${color.white100};
+  background-color: ${color.paleYellow};
 `;
 
 const StyledTextInput = styled.TextInput<{ textValue: string }>`
