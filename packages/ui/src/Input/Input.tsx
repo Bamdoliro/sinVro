@@ -40,30 +40,23 @@ const StyledInput = styled.View`
 `;
 
 const InputBack = styled.View<{ isFocused: boolean }>`
-  ${(props: { isFocused: any }) =>
-    props.isFocused &&
-    `
-    height: ${calculateHeight(56)}px;
-    width: ${calculateWidth(340)}px;
-    padding: 2px;
-    border-radius: 8px;
-    background-color: #f7dac5;
-    justify-content: center;
-  `}
+  height: ${calculateHeight(56)}px;
+  width: ${calculateWidth(340)}px;
+  padding: 2px;
+  border-radius: 8px;
+  background-color: ${(props: any) => (props.isFocused ? '#f7dac5' : 'transparent')};
+  justify-content: center;
 `;
 
-const StyledTextInput = styled(TextInput) <{ isFocused: boolean }>`
+const StyledTextInput = styled.TextInput<{ isFocused: boolean }>`
   ${font.B5}
-  height: ${(props: { isFocused: any }) => calculateHeight(props.isFocused ? 52 : 56)}px;
-  width: ${(props: { isFocused: any }) => calculateWidth(props.isFocused ? 335 : 340)}px;
+  height: 52px;
+  width: 100%;
   padding-left: ${calculateWidth(16)}px;
   padding-right: ${calculateWidth(16)}px;
-  line-height: normal;
   background-color: ${color.gray50};
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${(props: { isFocused: any }) =>
-    props.isFocused ? color.primary : 'transparent'};
+  border: 1px solid
+    ${(props: { isFocused: any }) => (props.isFocused ? color.primary : 'transparent')};
   border-radius: 6px;
   color: ${color.gray800};
 `;
