@@ -11,7 +11,7 @@ const fontGenerator = (
   font-weight: ${weight};
   font-size: ${size}px;
   line-height: ${size * lineHeightMultiplier}px;
-  letter-spacing: ${letterSpacing}%;
+  letter-spacing: ${letterSpacing}px;
 `;
 
 const font = {
