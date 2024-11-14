@@ -3,7 +3,7 @@ import React from 'react';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { color } from '@sinabro/design-token';
 import { Column, CustomText, Row } from '@sinabro/ui';
-import { IconKakao, IconSinabroLogo } from '@sinabro/icon';
+import { IconGoogle, IconSinabroLogo } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
@@ -24,9 +24,9 @@ const LoginPage = () => {
       </Column>
       <KakaoButton onPress={() => navigation.navigate('Name' as never)}>
         <Row alignItems="center" gap={calculateWidth(5)}>
-          <IconKakao width={20} height={18.75} />
+          <IconGoogle width={28} height={28} />
           <CustomText fontType="kakao" color="#3C1D1E">
-            카카오로 시작하기
+            구글로 시작하기
           </CustomText>
         </Row>
       </KakaoButton>
@@ -46,7 +46,7 @@ const StyledLoginPage = styled.View`
 
 const KakaoButton = styled.TouchableOpacity`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  background-color: #fae100;
+  background-color: #EFEFEF;
   width: ${calculateWidth(335)}px;
   height: 56px;
   border-radius: 6px;
