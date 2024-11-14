@@ -23,9 +23,9 @@ const LoginPage = () => {
         </Column>
       </Column>
       <KakaoButton onPress={() => navigation.navigate('Name' as never)}>
-        <Row alignItems="center" gap={calculateWidth(5)}>
+        <Row alignItems="center" gap={calculateWidth(12)}>
           <IconGoogle width={28} height={28} />
-          <CustomText fontType="kakao" color="#3C1D1E">
+          <CustomText fontType="kakao" color={color.gray900}>
             구글로 시작하기
           </CustomText>
         </Row>
