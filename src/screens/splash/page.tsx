@@ -1,17 +1,17 @@
-import { Image } from 'react-native';
 import { Animated } from 'react-native';
 import React from 'react';
 import { Column, CustomText } from '@sinabro/ui';
 import styled from 'styled-components/native';
 import { calculateHeight, flex } from '@sinabro/util';
 import { color } from '@sinabro/design-token';
+import FastImage from 'react-native-fast-image';
 
 const Splash = () => {
   return (
     <StyledSplashPage>
       <Animated.View>
         <Column alignItems="center" gap={calculateHeight(254)}>
-          <Image
+          <FastImage
             source={require('../../../public/splash.gif')}
             style={{ width: 203, height: 106 }}
           />
