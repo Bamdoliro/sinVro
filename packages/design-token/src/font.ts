@@ -37,6 +37,7 @@ const font = {
   letterHeon: fontGenerator('Onglyph_alz_sanghee-Rg', 400, 18, 1.6, 0),
   letterSol: fontGenerator('Ownglyph_Summerinmyhouse-Rg', 400, 20, 1.4, 0),
   kakao: fontGenerator('Pretendard-Bold', 700, 14, 1.6, -0.2),
+  splash: fontGenerator('Nelna_Yesam-Rg', 400, 48, 1.6, 1.0),
 };
 
 export default font;
