@@ -22,7 +22,7 @@ const LoginPage = () => {
           </CustomText>
         </Column>
       </Column>
-      <KakaoButton onPress={() => navigation.navigate('Name' as never)}>
+      <KakaoButton onPress={() => navigation.navigate('Character' as never)}>
         <Row alignItems="center" gap={calculateWidth(12)}>
           <IconGoogle width={28} height={28} />
           <CustomText fontType="kakao" color={color.gray900}>

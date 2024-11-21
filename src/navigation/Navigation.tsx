@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import IntroducePage from 'screens/Introduce/page';
 import LoginPage from 'screens/Login/page';
-import NamePage from 'screens/NameInput/page';
-import PsychologicalTest from 'screens/PsychologicalTest/page';
 import SelectCharacterPage from 'screens/SelectCharacter/page';
 import StoryPage from 'screens/Story/page';
 import SubmitInquiryPage from 'screens/Inquiry/SubmitInquiry';
@@ -42,16 +40,6 @@ const Navigation = () => {
           <Stack.Screen
             name="Login"
             component={LoginPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Name"
-            component={NamePage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Test"
-            component={PsychologicalTest}
             options={{ headerShown: false }}
           />
           <Stack.Screen
