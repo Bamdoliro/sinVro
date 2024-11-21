@@ -3,7 +3,7 @@ import { useCTAButton } from './finish.hooks';
 import React from 'react';
 import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
-import { flex } from '@sinabro/util';
+import { calculateHeight, flex } from '@sinabro/util';
 import { Button, Column, CustomText } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
 
@@ -14,7 +14,7 @@ const FinishPage = () => {
     <>
       <Header onPress={handleMovePreviousStep} />
       <StyledFinishPage>
-        <Column alignItems="center" gap={381}>
+        <Column alignItems="center" gap={calculateHeight(381)}>
           <CustomText
             fontType="H4"
             color={color.white100}
@@ -43,7 +43,7 @@ export default FinishPage;
 const StyledFinishPage = styled.View`
   ${flex({ alignItems: 'center' })}
   background-color: ${color.gray900};
-  padding-top: 100px;
+  padding-top: ${calculateHeight(100)}px;
   width: 100%;
   height: 100%;
 `;

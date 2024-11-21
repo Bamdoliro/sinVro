@@ -1,6 +1,6 @@
 import { color } from '@sinabro/design-token';
 import { Choices, CustomText, Row } from '@sinabro/ui';
-import { flex } from '@sinabro/util';
+import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import styled from 'styled-components/native';
 import React, { useEffect, useState } from 'react';
 import { Alert, TouchableOpacity } from 'react-native';
@@ -64,7 +64,7 @@ const Question5Page = () => {
             매우 동의
           </CustomText>
         </LabelContainer>
-        <Row gap={15} alignItems="center">
+        <Row gap={calculateWidth(15)} alignItems="center">
           <ChoicesContainer>
             <Choices onPress={handleMovePreviousStep}>이전</Choices>
           </ChoicesContainer>
@@ -81,9 +81,9 @@ export default Question5Page;
 
 const StyledQuestion5Page = styled.View`
   ${flex({ alignItems: 'flex-start' })}
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: ${calculateHeight(100)}px;
+  padding-left: ${calculateWidth(20)}px;
+  padding-right: ${calculateWidth(20)}px;
   background-color: ${color.gray900};
   width: 100%;
   height: 100%;
@@ -91,26 +91,26 @@ const StyledQuestion5Page = styled.View`
 
 const ButtonContainer = styled.View`
   ${flex({ justifyContent: 'space-between', flexDirection: 'row' })}
-  margin-top: 295px;
-  width: 335px;
+  margin-top: ${calculateHeight(295)}px;
+  width: ${calculateWidth(335)}px;
 `;
 
 const StyledButton = styled(TouchableOpacity)<StyledButtonProps>`
   background-color: ${(props: any) => (props.isSelected ? color.primary : 'transparent')};
   border: 1px solid ${(props: any) => (props.isSelected ? color.primary : color.gray300)};
   border-radius: 50px;
-  width: 50px;
-  height: 50px;
+  width: ${calculateWidth(50)}px;
+  height: ${calculateHeight(50)}px;
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
 `;
 
 const LabelContainer = styled.View`
   ${flex({ justifyContent: 'space-between', flexDirection: 'row' })}
   width: 100%;
-  margin-top: 16px;
+  margin-top: ${calculateHeight(16)}px;
 `;
 
 const ChoicesContainer = styled.Pressable`
-  width: 160px;
-  margin-top: 50px;
+  width: ${calculateWidth(160)}px;
+  margin-top: ${calculateHeight(50)}px;
 `;

@@ -27,7 +27,7 @@ const CharacterDescribe = ({ type, children }: DescribeProps) => {
           나에게 어울리는 친구
         </CustomText>
       ) : (
-        <Column height={18}>
+        <Column height={calculateHeight(18)}>
           <CustomText fontType="B6" color={color.glassDark}>
             {' '}
           </CustomText>
