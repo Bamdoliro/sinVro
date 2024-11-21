@@ -111,6 +111,6 @@ const LabelContainer = styled.View`
 `;
 
 const ChoicesContainer = styled.Pressable`
-  width: 100%;
+  width: ${calculateWidth(160)}px;
   margin-top: ${calculateHeight(50)}px;
 `;
