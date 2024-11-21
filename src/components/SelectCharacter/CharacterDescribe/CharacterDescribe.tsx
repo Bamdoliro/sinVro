@@ -1,10 +1,11 @@
-import styled from 'styled-components/native';
 import React from 'react';
+import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { Button, Column, CustomText } from '@sinabro/ui';
 import { IconQuestion1, IconQuestion2 } from '@sinabro/icon';
 import { useNavigation } from '@react-navigation/native';
+import { useQuestionStore } from 'stores/test/test';
 
 interface DescribeProps {
   type: string;
@@ -13,12 +14,25 @@ interface DescribeProps {
 
 const CharacterDescribe = ({ type, children }: DescribeProps) => {
   const navigation = useNavigation();
+  const getTotal = useQuestionStore((state) => state.getTotal);
+  const totalScore = getTotal();
+
+  const recommendedType = totalScore >= 50 ? 'heon' : 'sol';
+  const isRecommended = type === recommendedType;
 
   return (
     <StyledCharacterDescribe>
-      <CustomText fontType="B6" color={color.primary}>
-        나에게 어울리는 친구
-      </CustomText>
+      {isRecommended ? (
+        <CustomText fontType="B6" color={color.primary}>
+          나에게 어울리는 친구
+        </CustomText>
+      ) : (
+        <Column height={calculateHeight(18)}>
+          <CustomText fontType="B6" color={color.glassDark}>
+            {' '}
+          </CustomText>
+        </Column>
+      )}
       <Column gap={calculateHeight(10)} alignItems="center">
         <CustomText fontType="H2" color={color.gray900}>
           친구가 되어주시겠어요?

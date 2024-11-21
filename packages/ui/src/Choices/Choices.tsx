@@ -4,7 +4,7 @@ import { Pressable, Animated } from 'react-native';
 import { color } from '@sinabro/design-token';
 import Row from '../Flex/Row';
 import CustomText from '../Text/Text';
-import { calculateHeight, calculateWidth } from '@sinabro/util';
+import { calculateHeight } from '@sinabro/util';
 
 type Props = {
   onPress: () => void;
@@ -19,6 +19,8 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
   const handlePress = () => {
     if (isDisabled) return;
 
+    setIsFocused(true);
+
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 300,
@@ -28,15 +30,11 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
         toValue: 0,
         duration: 300,
         useNativeDriver: false,
-      }).start(()=> {setIsFocused(false);});
+      }).start(() => {
+        setIsFocused(false);
+        onPress();
+      });
     });
-
-    setIsFocused(true);
-    onPress();
-
-    setTimeout(() => {
-      setIsFocused(false);
-    }, 1000);
   };
 
   const backgroundColor = animatedValue.interpolate({
@@ -49,7 +47,7 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
       <Animated.View style={{ backgroundColor }}>
         <StyledButton>
           <Row alignItems="center" justifyContent="center">
-            <CustomText fontType="B3" color={isFocused ? color.gray900 : color.white100}>
+            <CustomText fontType="B5" color={isFocused ? color.gray900 : color.white100}>
               {children}
             </CustomText>
           </Row>
@@ -60,8 +58,8 @@ const Choices = ({ onPress, children, isDisabled }: Props) => {
 };
 
 const StyledButton = styled.View`
-  height: ${calculateHeight(200)}px;
-  width: ${calculateWidth(160)}px;
+  height: ${calculateHeight(43)}px;
+  width: 100%;
   border-color: ${color.primary};
   border-width: 1px;
   border-style: solid;
