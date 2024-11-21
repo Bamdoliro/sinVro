@@ -20,6 +20,7 @@ import WriteDiaryPage from 'screens/WriteDiary/page';
 import SelectEmotionPage from 'screens/SelectEmotion/page';
 import CheckDiaryPage from 'screens/CheckDiary/page';
 import CheckLetterPage from 'screens/CheckLetter/page';
+import TestPage from 'screens/test/page';
 
 const Stack = createStackNavigator();
 
@@ -117,6 +118,11 @@ const Navigation = () => {
           <Stack.Screen
             name="CheckLetter"
             component={CheckLetterPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Test"
+            component={TestPage}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
