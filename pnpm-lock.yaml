@@ -11,6 +11,9 @@ dependencies:
   '@react-native-community/masked-view':
     specifier: ^0.1.11
     version: 0.1.11(react-native@0.74.4)(react@18.2.0)
+  '@react-native-google-signin/google-signin':
+    specifier: ^13.1.0
+    version: 13.1.0(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0)
   '@react-navigation/bottom-tabs':
     specifier: ^6.6.1
     version: 6.6.1(@react-navigation/native@6.1.18)(react-native-safe-area-context@4.11.0)(react-native-screens@3.34.0)(react-native@0.74.4)(react@18.2.0)
@@ -2138,6 +2141,24 @@ packages:
       react-native: '>=0.57'
     dependencies:
       react: 18.2.0
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+    dev: false
+
+  /@react-native-google-signin/google-signin@13.1.0(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0):
+    resolution: {integrity: sha512-C2/sqb0/s0c+Dwc/mykASZsRuHxGqn7SFrCxCY9D8p8IOQO05haInhCc7lzraJshRixGva5c/4usQZ71HMYSEQ==}
+    peerDependencies:
+      expo: '>=50.0.0'
+      react: '*'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      expo:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
       react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
     dev: false
 
