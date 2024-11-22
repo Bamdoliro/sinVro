@@ -4,11 +4,9 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { color } from '@sinabro/design-token';
 import { Column, CustomText, Row } from '@sinabro/ui';
 import { IconGoogle, IconSinabroLogo } from '@sinabro/icon';
-import { useNavigation } from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const LoginPage = () => {
-  const navigation = useNavigation();
-
   return (
     <StyledLoginPage>
       <Column gap={calculateHeight(88)}>
@@ -22,7 +20,28 @@ const LoginPage = () => {
           </CustomText>
         </Column>
       </Column>
-      <KakaoButton onPress={() => navigation.navigate('Test' as never)}>
+      <KakaoButton
+        onPress={async () => {
+          try {
+            GoogleSignin.configure({
+              webClientId:
+                '784498296988-jvkntl96srooopu1i2viald3291prgso.apps.googleusercontent.com',
+              iosClientId:
+                '784498296988-h4ef35eq8et4ej56shumm3pae3cddcu2.apps.googleusercontent.com',
+            });
+
+            const hasPlayService = await GoogleSignin.hasPlayServices();
+            if (hasPlayService) {
+              const userInfo = await GoogleSignin.signIn();
+              console.log('User Info:', JSON.stringify(userInfo));
+            } else {
+              console.log('Google Play Service is not available.');
+            }
+          } catch (e) {
+            console.log('Error during Google Sign-In:', JSON.stringify(e));
+          }
+        }}
+      >
         <Row alignItems="center" gap={calculateWidth(12)}>
           <IconGoogle width={28} height={28} />
           <CustomText fontType="kakao" color={color.gray900}>
