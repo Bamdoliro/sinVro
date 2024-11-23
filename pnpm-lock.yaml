@@ -44,6 +44,9 @@ dependencies:
   react-native:
     specifier: 0.74.4
     version: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+  react-native-dotenv:
+    specifier: ^3.4.11
+    version: 3.4.11(@babel/runtime@7.25.0)
   react-native-fast-image:
     specifier: ^8.6.3
     version: 8.6.3(react-native@0.74.4)(react@18.2.0)
@@ -106,6 +109,9 @@ devDependencies:
   '@types/react':
     specifier: ^18.2.6
     version: 18.3.3
+  '@types/react-native-dotenv':
+    specifier: ^0.2.2
+    version: 0.2.2
   '@types/react-test-renderer':
     specifier: ^18.0.0
     version: 18.3.0
@@ -2804,6 +2810,10 @@ packages:
   /@types/prop-types@15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
+  /@types/react-native-dotenv@0.2.2:
+    resolution: {integrity: sha512-YDgO2hdTK5PaxZrIFtVXrjeFOhJ+7A9a8VDUK4QmHCPGIB5i6DroLG9IpItX5qCshz7aPsQfgy9X3w82Otd4HA==}
+    dev: true
+
   /@types/react-native@0.70.19:
     resolution: {integrity: sha512-c6WbyCgWTBgKKMESj/8b4w+zWcZSsCforson7UdXtXMecG3MxCinYi6ihhrHVPyUrVzORsvEzK8zg32z4pK6Sg==}
     dependencies:
@@ -4011,6 +4021,11 @@ packages:
       no-case: 3.0.4
       tslib: 2.6.3
     dev: true
+
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+    dev: false
 
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -6687,6 +6702,15 @@ packages:
 
   /react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  /react-native-dotenv@3.4.11(@babel/runtime@7.25.0):
+    resolution: {integrity: sha512-6vnIE+WHABSeHCaYP6l3O1BOEhWxKH6nHAdV7n/wKn/sciZ64zPPp2NUdEUf1m7g4uuzlLbjgr+6uDt89q2DOg==}
+    peerDependencies:
+      '@babel/runtime': ^7.20.6
+    dependencies:
+      '@babel/runtime': 7.25.0
+      dotenv: 16.4.5
+    dev: false
 
   /react-native-fast-image@8.6.3(react-native@0.74.4)(react@18.2.0):
     resolution: {integrity: sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==}
