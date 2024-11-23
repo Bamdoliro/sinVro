@@ -3,6 +3,7 @@ import Navigation from 'navigation/Navigation';
 import SplashScreen from 'react-native-splash-screen';
 import { Animated } from 'react-native';
 import Splash from 'screens/splash/page';
+import QueryClientProvider from 'services/QueryClienProvider';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -30,7 +31,9 @@ function App() {
           <Splash />
         </Animated.View>
       ) : (
-        <Navigation />
+        <QueryClientProvider>
+          <Navigation />
+        </QueryClientProvider>
       )}
     </>
   );

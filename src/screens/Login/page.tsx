@@ -4,10 +4,10 @@ import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { color } from '@sinabro/design-token';
 import { Column, CustomText, Row } from '@sinabro/ui';
 import { IconGoogle, IconSinabroLogo } from '@sinabro/icon';
-import { useNavigation } from '@react-navigation/native';
+import { useCTAButton } from './login.hooks';
 
 const LoginPage = () => {
-  const navigation = useNavigation();
+  const { handleClickLoginButton } = useCTAButton();
 
   return (
     <StyledLoginPage>
@@ -22,7 +22,7 @@ const LoginPage = () => {
           </CustomText>
         </Column>
       </Column>
-      <KakaoButton onPress={() => navigation.navigate('Test' as never)}>
+      <KakaoButton onPress={handleClickLoginButton}>
         <Row alignItems="center" gap={calculateWidth(12)}>
           <IconGoogle width={28} height={28} />
           <CustomText fontType="kakao" color={color.gray900}>
