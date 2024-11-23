@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { useNavigation } from '@react-navigation/native';
-import { Header } from 'components/common';
+import { IconWhiteArrow } from '@sinabro/icon';
 
 interface PageData {
   id: number;
@@ -91,9 +91,19 @@ const StoryPage = () => {
     }
   }, [step]);
 
+  const handlePressBack = useCallback(() => {
+    setStep((prev) => Math.max(1, prev - 1));
+  }, []);
+
   return (
     <StyledStory>
-      <Header />
+      {step !== 1 && (
+        <StyledHeader>
+          <IconContainer onPress={handlePressBack}>
+            <IconWhiteArrow width={23} height={17} />
+          </IconContainer>
+        </StyledHeader>
+      )}
       {currentStory && (
         <CustomText fontType="H5" color={color.white100} style={{ textAlign: 'center' }}>
           {currentStory.text}
@@ -141,4 +151,20 @@ const StyledStory = styled.View`
 const BottomContainer = styled.View`
   ${flex({ alignItems: 'center' })}
   gap: 16px;
+`;
+
+const StyledHeader = styled.View`
+  position: absolute;
+  top: ${calculateHeight(67)}px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+`;
+
+const IconContainer = styled.TouchableOpacity`
+  padding: 9px;
+  position: absolute;
+  left: ${calculateWidth(20)}px;
+  z-index: 1;
 `;
