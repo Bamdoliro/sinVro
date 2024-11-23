@@ -5,9 +5,11 @@ import React from 'react';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { IconCheck } from '@sinabro/icon';
 import { useCTAButton } from './explain.hooks';
+import { useUserQuery } from 'services/user/quries';
 
 const ExplainPage = () => {
   const { handleMoveNextStep } = useCTAButton();
+  const { data } = useUserQuery();
 
   return (
     <StyledExplainPage>
@@ -18,7 +20,7 @@ const ExplainPage = () => {
             color={color.white100}
             style={{ textAlign: 'center' }}
           >
-            박강원 님의 비밀친구를 만나기 위해선{'\n'}짧은 심리테스트를 하셔야해요.
+            {data?.name} 님의 비밀친구를 만나기 위해선{'\n'}짧은 심리테스트를 하셔야해요.
           </CustomText>
           <Column gap={16} alignItems="flex-start">
             <Row alignItems="center" gap={calculateWidth(16)}>

@@ -1,16 +1,17 @@
 import React from 'react';
 import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
-import { flex, useNameStore } from '@sinabro/util';
+import { flex } from '@sinabro/util';
 import styled from 'styled-components/native';
+import { useUserQuery } from 'services/user/quries';
 
 const Name = () => {
-  const { name } = useNameStore();
+  const { data } = useUserQuery();
 
   return (
     <StyledName>
       <CustomText fontType="H1" color={color.white100}>
-        {name}
+        {data?.name}
       </CustomText>
     </StyledName>
   );

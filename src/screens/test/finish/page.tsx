@@ -6,10 +6,13 @@ import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
 import { Button, Column, CustomText } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
+import { useUserQuery } from 'services/user/quries';
 
 const FinishPage = () => {
   const navigation = useNavigation();
   const { handleMovePreviousStep } = useCTAButton();
+  const { data } = useUserQuery();
+
   return (
     <>
       <Header onPress={handleMovePreviousStep} />
@@ -20,8 +23,8 @@ const FinishPage = () => {
             color={color.white100}
             style={{ textAlign: 'center' }}
           >
-            설문에 답하시느라 고생 많으셨어요.{'\n'}박강원 님의 비밀친구를{'\n'}만나볼
-            시간이에요.
+            설문에 답하시느라 고생 많으셨어요.{'\n'}
+            {data?.name} 님의 비밀친구를{'\n'}만나볼 시간이에요.
           </CustomText>
           <Button
             onPress={() => {
