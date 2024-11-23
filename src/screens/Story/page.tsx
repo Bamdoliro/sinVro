@@ -10,7 +10,6 @@ import { Header } from 'components/common';
 interface PageData {
   id: number;
   text: string;
-  isSpecial?: boolean;
 }
 
 const StoryList: PageData[] = [
@@ -69,7 +68,6 @@ const StoryList: PageData[] = [
   {
     id: 14,
     text: '(이 편지들은 특수 물질로 만들어져 블랙홀의 극한 환경을 견딜 수 있었고, 지구에 도착하면 자동으로 번역되는 기능을 갖추고 있었다. )',
-    isSpecial: true,
   },
   {
     id: 15,
@@ -97,14 +95,7 @@ const StoryPage = () => {
     <StyledStory>
       <Header />
       {currentStory && (
-        <CustomText
-          fontType="H5"
-          color={color.white100}
-          style={[
-            { textAlign: 'center' },
-            currentStory.isSpecial ? { textDecorationLine: 'line-through' } : {},
-          ]}
-        >
+        <CustomText fontType="H5" color={color.white100} style={{ textAlign: 'center' }}>
           {currentStory.text}
         </CustomText>
       )}
