@@ -31,3 +31,7 @@ export const Sol: CharacterCategoryData[] = [
   { id: '6', text: '약속 잡기 대장' },
   { id: '7', text: '내가 할게!' },
 ];
+
+export interface SelectCharacter {
+  type: string;
+}

@@ -48,7 +48,10 @@ const IntroducePage = () => {
 
     if (currentIndex === List.length - 1 && offsetX > maxOffsetX && !hasScrolledPastEnd) {
       setHasScrolledPastEnd(true);
-      navigation.navigate('Login' as never);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' as never }],
+      });
     }
   };
 

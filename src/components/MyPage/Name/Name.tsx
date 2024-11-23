@@ -3,15 +3,15 @@ import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
 import { flex } from '@sinabro/util';
 import styled from 'styled-components/native';
-import { useUserQuery } from 'services/user/quries';
+import useUser from 'hooks/useUser';
 
 const Name = () => {
-  const { data } = useUserQuery();
+  const user = useUser();
 
   return (
     <StyledName>
       <CustomText fontType="H1" color={color.white100}>
-        {data?.name}
+        {user.userData.name}
       </CustomText>
     </StyledName>
   );
