@@ -7,23 +7,25 @@ import { Column, Row } from '@sinabro/ui';
 import { CharacterCategory, CharacterDescribe } from 'components/SelectCharacter';
 import { characterData, Heon, Sol } from 'types/Character/remote';
 import { Header } from 'components/common';
+import { useCTAButton } from './selectCharacter.hooks';
 
 const screenWidth = Dimensions.get('window').width;
 
 const SelectCharacterPage = () => {
-  const [currentType, setCurrentType] = useState('heon');
+  const [currentType, setCurrentType] = useState('HEON');
   const [currentCategory, setCurrentCategory] = useState(Heon);
   const flatListRef = useRef<FlatList>(null);
+  const { handleSelectCharacter } = useCTAButton(currentType);
 
   const handleScroll = (event: any) => {
     const scrollPosition = event.nativeEvent.contentOffset.x;
     const activeIndex = Math.round(scrollPosition / screenWidth);
 
-    if (activeIndex === 0 && currentType !== 'heon') {
-      setCurrentType('heon');
+    if (activeIndex === 0 && currentType !== 'HEON') {
+      setCurrentType('HEON');
       setCurrentCategory(Heon);
-    } else if (activeIndex === 1 && currentType !== 'sol') {
-      setCurrentType('sol');
+    } else if (activeIndex === 1 && currentType !== 'SOL') {
+      setCurrentType('SOL');
       setCurrentCategory(Sol);
     }
   };
@@ -51,7 +53,9 @@ const SelectCharacterPage = () => {
               data={characterData}
               keyExtractor={(item) => item.type}
               renderItem={({ item }) => (
-                <CharacterDescribe type={item.type}>{item.description}</CharacterDescribe>
+                <CharacterDescribe type={item.type} onPress={handleSelectCharacter}>
+                  {item.description}
+                </CharacterDescribe>
               )}
               onScroll={handleScroll}
               onScrollEndDrag={handleScrollEndDrag}
@@ -63,18 +67,18 @@ const SelectCharacterPage = () => {
             />
           </Column>
           <IndicatorContainer>
-            <Indicator active={currentType === 'heon'} />
-            <Indicator active={currentType === 'sol'} />
+            <Indicator active={currentType === 'HEON'} />
+            <Indicator active={currentType === 'SOL'} />
           </IndicatorContainer>
         </Column>
         <Column gap={calculateHeight(6)}>
           <Row gap={calculateWidth(6)}>
-            {currentCategory.slice(0, currentType === 'heon' ? 3 : 4).map((category) => (
+            {currentCategory.slice(0, currentType === 'HEON' ? 3 : 4).map((category) => (
               <CharacterCategory key={category.id}>{category.text}</CharacterCategory>
             ))}
           </Row>
           <Row gap={calculateWidth(6)}>
-            {currentCategory.slice(currentType === 'heon' ? 3 : 4).map((category) => (
+            {currentCategory.slice(currentType === 'HEON' ? 3 : 4).map((category) => (
               <CharacterCategory key={category.id}>{category.text}</CharacterCategory>
             ))}
           </Row>
