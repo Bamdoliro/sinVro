@@ -8,4 +8,5 @@ export const KEY = {
   DIARYLIST: 'useDiaryList',
   DIARYDETAIL: 'useDiaryDetail',
   CHARACTER: 'useCharacter',
+  FAQ_LIST: 'useFAQList',
 };
