@@ -35,3 +35,9 @@ export const Sol: CharacterCategoryData[] = [
 export interface SelectCharacter {
   type: string;
 }
+
+export interface GetCharacterRes {
+  type: string;
+  friendShip: number;
+  createdAt: number | null;
+}
