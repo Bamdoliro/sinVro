@@ -7,10 +7,19 @@ import { flex } from '@sinabro/util';
 import { Column, CustomText } from '@sinabro/ui';
 import { IconPad2 } from '@sinabro/icon';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useCharacterQuery } from 'services/character/quries';
 
 const CheckLetterPage = () => {
+  const { data } = useCharacterQuery();
+
   return (
-    <StyledCheckLetterPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledCheckLetterPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <Header />
       <ContentContainer>
         <CustomText fontType="B5" color={color.white100}>

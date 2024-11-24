@@ -7,8 +7,10 @@ import styled from 'styled-components/native';
 import { EmotionList, ExplainBox } from 'components/SelectEmotion';
 import { Button, ToastPopup } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
+import { useCharacterQuery } from 'services/character/quries';
 
 const SelectEmotionPage = () => {
+  const { data } = useCharacterQuery();
   const [selectedDetails, setSelectedDetails] = useState<string[]>([]);
   const [isDisabled, setIsDisabled] = useState(true);
   const navigation = useNavigation();
@@ -36,7 +38,13 @@ const SelectEmotionPage = () => {
   };
 
   return (
-    <StyledSelectEmotionPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledSelectEmotionPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <Header />
       <ContentContainer>
         <ExplainBox />

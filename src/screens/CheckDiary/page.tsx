@@ -7,10 +7,19 @@ import { flex } from '@sinabro/util';
 import { Category, Column, CustomText, Row } from '@sinabro/ui';
 import { IconPad1 } from '@sinabro/icon';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useCharacterQuery } from 'services/character/quries';
 
 const CheckDiaryPage = () => {
+  const { data } = useCharacterQuery();
+
   return (
-    <StyledCheckDiaryPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledCheckDiaryPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <Header />
       <ContentContainer>
         <CustomText fontType="B5" color={color.white100}>
