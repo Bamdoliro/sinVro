@@ -37,6 +37,10 @@ export interface SelectCharacter {
 }
 
 export interface GetCharacterRes {
+  data: Character;
+}
+
+export interface Character {
   type: string;
   friendShip: number;
   createdAt: number | null;
