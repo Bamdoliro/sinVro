@@ -49,7 +49,7 @@ const CategoryList = ({ freiendship, type }: CharacterProps) => {
   }
 
   const { data } = useLetterListQuery();
-  const letterCount = data?.length ?? 0;
+  const letterCount = data.length;
 
   return (
     <StyledScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
