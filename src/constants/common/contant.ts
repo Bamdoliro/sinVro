@@ -5,4 +5,7 @@ export const TOKEN = {
 
 export const KEY = {
   USER: 'useUser',
+  DIARYLIST: 'useDiaryList',
+  DIARYDETAIL: 'useDiaryDetail',
+  CHARACTER: 'useCharacter',
 };
