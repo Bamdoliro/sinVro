@@ -42,3 +42,4 @@ export { default as IconSinabroLogo } from './src/IconSinabroLogo';
 export { default as IconHeon } from './src/IconHeon';
 export { default as IconRadio } from './src/IconRadio';
 export { default as IconGoogle } from './src/IconGoogle';
+export { default as IconSol } from './src/IconSol';
