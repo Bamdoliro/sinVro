@@ -1,6 +1,6 @@
 import { font } from '@sinabro/design-token';
 import { ReactNode } from 'react';
-import { TextProps, Text, TextStyle } from 'react-native';
+import { TextProps, TextStyle } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 type Font = keyof typeof font;
@@ -37,7 +37,7 @@ const CustomText = ({
 
 export default CustomText;
 
-const StyledText = styled(Text)<{ fontType: Font; ellipsis: boolean }>`
+const StyledText = styled.Text<{ fontType: Font; ellipsis: boolean }>`
   ${({ fontType }) => font[fontType]}
   ${({ ellipsis }) =>
     ellipsis &&
