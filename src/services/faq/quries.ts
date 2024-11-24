@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { KEY } from 'constants/common/contant';
-import { getFaqList } from 'services/letter/api';
+import { getFaqList } from './api';
 
 export const useFaqListQuery = () => {
   const { data, ...restQuery } = useSuspenseQuery({
