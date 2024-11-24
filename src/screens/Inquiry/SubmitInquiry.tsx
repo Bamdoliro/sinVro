@@ -4,12 +4,11 @@ import styled from 'styled-components/native';
 import { color } from '@sinabro/design-token';
 import { calculateHeight, flex } from '@sinabro/util';
 import { Header } from 'components/common';
-import { ImageInput, Input } from 'components/Inquiry';
+import { Input } from 'components/Inquiry';
 import { useNavigation } from '@react-navigation/native';
 
 const SubmitInquiryPage = () => {
   const [textValue, setTextValue] = useState<string>('');
-  const [image, setImage] = useState<string | null>(null);
 
   const isButtonDisabled = !textValue;
   const navigation = useNavigation();
@@ -17,11 +16,8 @@ const SubmitInquiryPage = () => {
   return (
     <StyledSubmitInquiry>
       <Header title="문의" />
-      <Column gap={160} alignItems="center">
-        <Column gap={20} alignItems="center">
-          <Input textValue={textValue} setTextValue={setTextValue} />
-          <ImageInput image={image} setImage={setImage} />
-        </Column>
+      <Column gap={calculateHeight(355)} alignItems="center">
+        <Input textValue={textValue} setTextValue={setTextValue} />
         <Button
           width={335}
           onPress={() => navigation.navigate('Inquiry' as never)}
