@@ -28,13 +28,13 @@ export default CharacterChat;
 
 const StyledCharacterChat = styled.Pressable`
   width: 100%;
-  height: 61px;
+  height: auto;
 `;
 
 const Chat = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })};
   width: auto;
-  height: 45px;
+  height: auto;
   border-radius: 8px;
   padding: 8px 12px;
   border: 1px solid ${color.glassWhite};

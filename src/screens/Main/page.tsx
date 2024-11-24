@@ -15,12 +15,20 @@ import { flex } from '@sinabro/util';
 import { Column, Row } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
+import { useCharacterQuery } from 'services/character/quries';
 
 const MainPage = () => {
+  const { data } = useCharacterQuery();
   const navigation = useNavigation();
 
   return (
-    <StyledMainPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledMainPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <ContentContainer>
         <Column alignItems="center">
           <Header
@@ -28,22 +36,36 @@ const MainPage = () => {
             onPress2={() => navigation.navigate('Alarm' as never)}
           />
           <Column alignItems="center">
-            <Title />
+            <Title type={data?.data.type} createdDate={data?.data.createdAt} />
             <CategoryListContainer>
-              <CategoryList />
+              <CategoryList freiendship={data?.data.friendShip} type={data?.data.type} />
             </CategoryListContainer>
-            <Character />
-            <StyledTab>
-              <Row alignItems="center" gap={40}>
-                <DiaryTab onPress={() => navigation.navigate('Diary' as never)} />
-                <MailBoxTab onPress={() => navigation.navigate('MailBox' as never)} />
-                <RadioTab
-                  onPress={() =>
-                    Alert.alert('안내', '아직 준비 중입니다.', [{ text: '확인' }])
-                  }
-                />
-              </Row>
-            </StyledTab>
+            <Character type={data?.data.type} />
+            {data?.data.type === 'HEON' ? (
+              <StyledHeonTab>
+                <Row alignItems="center" gap={40}>
+                  <DiaryTab onPress={() => navigation.navigate('Diary' as never)} />
+                  <MailBoxTab onPress={() => navigation.navigate('MailBox' as never)} />
+                  <RadioTab
+                    onPress={() =>
+                      Alert.alert('안내', '아직 준비 중입니다.', [{ text: '확인' }])
+                    }
+                  />
+                </Row>
+              </StyledHeonTab>
+            ) : (
+              <StyledSolTab>
+                <Row alignItems="center" gap={40}>
+                  <DiaryTab onPress={() => navigation.navigate('Diary' as never)} />
+                  <MailBoxTab onPress={() => navigation.navigate('MailBox' as never)} />
+                  <RadioTab
+                    onPress={() =>
+                      Alert.alert('안내', '아직 준비 중입니다.', [{ text: '확인' }])
+                    }
+                  />
+                </Row>
+              </StyledSolTab>
+            )}
           </Column>
         </Column>
       </ContentContainer>
@@ -67,7 +89,12 @@ const CategoryListContainer = styled.View`
   width: 100%;
 `;
 
-const StyledTab = styled.View`
+const StyledHeonTab = styled.View`
   margin-top: 53.73px;
+  z-index: 1;
+`;
+
+const StyledSolTab = styled.View`
+  margin-top: 27.8px;
   z-index: 1;
 `;

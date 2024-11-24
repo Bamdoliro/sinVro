@@ -7,13 +7,21 @@ import { IconNote } from '@sinabro/icon';
 import { Calender, Column } from '@sinabro/ui';
 import { Header } from 'components/common';
 import { useNavigation } from '@react-navigation/native';
+import { useCharacterQuery } from 'services/character/quries';
 
 const DiaryPage = () => {
-  const datesWithDiarys = ['2024-06-02'];
+  const { data } = useCharacterQuery();
+  const datesWithDiarys = ['2024-11-02'];
   const navigation = useNavigation();
 
   return (
-    <StyledDiaryPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledDiaryPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <Header title="하루일기" />
       <ContentContainer>
         <Column alignItems="center" gap={22}>

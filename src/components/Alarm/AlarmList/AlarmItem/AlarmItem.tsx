@@ -6,9 +6,9 @@ import { calculateHeight, calculateWidth } from '@sinabro/util';
 import styled from 'styled-components/native';
 
 interface Props {
-  id: number;
+  id: number | null;
   title: string;
-  content: string;
+  content: string | null;
 }
 
 const AlarmItem = ({ id, title, content }: Props) => {

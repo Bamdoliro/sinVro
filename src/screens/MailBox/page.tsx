@@ -7,13 +7,21 @@ import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { Header } from 'components/common';
 import { useNavigation } from '@react-navigation/native';
+import { useCharacterQuery } from 'services/character/quries';
 
 const MailBoxPage = () => {
-  const datesWithLetters = ['2024-06-02'];
+  const { data } = useCharacterQuery();
+  const datesWithLetters = ['2024-11-02'];
   const navigation = useNavigation();
 
   return (
-    <StyledMailBoxPage colors={[color.sinabroBlue, color.sinabroSkyBlue]}>
+    <StyledMailBoxPage
+      colors={
+        data?.data.type === 'HEON'
+          ? [color.sinabroBlue, color.sinabroSkyBlue]
+          : [color.sinabroPink, color.sinabroCream]
+      }
+    >
       <Header title="우편함" option="MAIL" />
       <ContentContainer>
         <Column alignItems="center" gap={15}>
