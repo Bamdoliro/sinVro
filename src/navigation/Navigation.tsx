@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import IntroducePage from 'screens/Introduce/page';
 import LoginPage from 'screens/Login/page';
@@ -24,109 +23,100 @@ import TestPage from 'screens/test/page';
 
 const Stack = createStackNavigator();
 
-const Navigation = () => {
+const Navigation = ({
+  initialRoute,
+}: {
+  initialRoute: 'Navigation' | 'Test' | 'Main';
+}) => {
   return (
     <GestureHandlerRootView>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            ...TransitionPresets.SlideFromRightIOS,
-          }}
-        >
-          <Stack.Screen
-            name="Introduce"
-            component={IntroducePage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Character"
-            component={SelectCharacterPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Story"
-            component={StoryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="MyPage"
-            component={MyPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Inquiry"
-            component={InquiryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="InquiryDetail"
-            component={InquiryDetailPage}
-            initialParams={{ id: 1 }}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="SubmitInquiry"
-            component={SubmitInquiryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Setting"
-            component={SettingPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="FAQ" component={FAQPage} options={{ headerShown: false }} />
-          <Stack.Screen
-            name="Alarm"
-            component={AlarmPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Main"
-            component={MainPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Diary"
-            component={DiaryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="MailBox"
-            component={MailBoxPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="WriteDiary"
-            component={WriteDiaryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="SelectEmotion"
-            component={SelectEmotionPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="CheckDiary"
-            component={CheckDiaryPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="CheckLetter"
-            component={CheckLetterPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Test"
-            component={TestPage}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          ...TransitionPresets.SlideFromRightIOS,
+        }}
+        initialRouteName={initialRoute}
+      >
+        <Stack.Screen
+          name="Introduce"
+          component={IntroducePage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Character"
+          component={SelectCharacterPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Story"
+          component={StoryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="MyPage" component={MyPage} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Inquiry"
+          component={InquiryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="InquiryDetail"
+          component={InquiryDetailPage}
+          initialParams={{ id: 1 }}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SubmitInquiry"
+          component={SubmitInquiryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Setting"
+          component={SettingPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="FAQ" component={FAQPage} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Alarm"
+          component={AlarmPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Main" component={MainPage} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Diary"
+          component={DiaryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MailBox"
+          component={MailBoxPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="WriteDiary"
+          component={WriteDiaryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SelectEmotion"
+          component={SelectEmotionPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CheckDiary"
+          component={CheckDiaryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CheckLetter"
+          component={CheckLetterPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Test" component={TestPage} options={{ headerShown: false }} />
+      </Stack.Navigator>
     </GestureHandlerRootView>
   );
 };
