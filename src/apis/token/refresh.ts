@@ -1,8 +1,8 @@
 import { Storage } from 'apis/storage/storage';
 import { TOKEN } from 'constants/common/contant';
 
-const authorization = async () => {
-  const token = await Storage.getItem(TOKEN.ACCESS);
+const refreshAuthorization = async () => {
+  const token = await Storage.getItem(TOKEN.REFRESH);
 
   return {
     headers: {
@@ -11,4 +11,4 @@ const authorization = async () => {
   };
 };
 
-export default authorization;
+export default refreshAuthorization;

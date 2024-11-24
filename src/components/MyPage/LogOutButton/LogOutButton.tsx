@@ -3,10 +3,13 @@ import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import styled from 'styled-components/native';
+import { useLogoutAction } from './logout.hooks';
 
 const LogOutButton = () => {
+  const { handleLogout } = useLogoutAction();
+
   return (
-    <StyledLogOutButton>
+    <StyledLogOutButton onPress={handleLogout}>
       <CustomText fontType="B4" color={color.white100}>
         로그아웃
       </CustomText>
