@@ -9,4 +9,6 @@ export const KEY = {
   DIARYDETAIL: 'useDiaryDetail',
   CHARACTER: 'useCharacter',
   FAQ_LIST: 'useFAQList',
+  LETTER_LIST: 'useLetterList',
+  LETTER_DETAIL: 'useLetterDetail',
 };
