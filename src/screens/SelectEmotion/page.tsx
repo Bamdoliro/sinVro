@@ -10,6 +10,7 @@ import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryStore } from 'stores/diary/diary';
 import { usePostDiaryMutate } from 'services/diary/mutations';
 import Progress from 'components/WriteDiary/progress/progress';
+import { Alert } from 'react-native';
 
 const SelectEmotionPage = () => {
   const { postDiaryMutate } = usePostDiaryMutate();
@@ -34,6 +35,7 @@ const SelectEmotionPage = () => {
           },
           onError: () => {
             setIsLoading(false);
+            Alert.alert('잠시후 다시 시도해주세요.');
           },
         }
       );
