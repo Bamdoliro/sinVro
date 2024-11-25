@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryListQuery } from 'services/diary/quries';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from 'navigation/navigation';
+import { RootStackParamList } from 'navigation/navigationType';
 
 type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Diary'>;
 

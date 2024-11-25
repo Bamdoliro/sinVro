@@ -12,9 +12,9 @@ import Progress from 'components/WriteDiary/progress/progress';
 import { IconWhiteArrow } from '@sinabro/icon';
 import { useSetDiaryStep } from 'stores/diary/diaryStep';
 import { useDiaryDetailQuery } from 'services/diary/quries';
-import { RootStackParamList } from 'navigation/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { Alert } from 'react-native';
+import { RootStackParamList } from 'navigation/navigationType';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'EditDiary'>;
 

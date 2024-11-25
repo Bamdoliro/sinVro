@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
 import { useLetterListQuery } from 'services/letter/quries';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from 'navigation/Navigation';
+import { RootStackParamList } from 'navigation/navigationType';
 
 type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MailBox'>;
 

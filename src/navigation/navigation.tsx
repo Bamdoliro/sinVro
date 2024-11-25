@@ -21,7 +21,7 @@ import CheckDiaryPage from '../screens/CheckDiary/page';
 import CheckLetterPage from '../screens/CheckLetter/page';
 import TestPage from '../screens/test/page';
 import EditDiaryPage from '../screens/editDiary/page';
-import { RootStackParamList } from './navigation';
+import { RootStackParamList } from './navigationType';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

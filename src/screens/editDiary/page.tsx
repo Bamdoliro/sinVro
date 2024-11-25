@@ -3,8 +3,8 @@ import React from 'react';
 import { useDiaryStepValue } from 'stores/diary/diaryStep';
 import EditWritePage from './write/page';
 import { RouteProp } from '@react-navigation/native';
-import { RootStackParamList } from 'navigation/navigation';
 import EditSelectEmotionPage from './select/page';
+import { RootStackParamList } from 'navigation/navigationType';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'EditDiary'>;
 

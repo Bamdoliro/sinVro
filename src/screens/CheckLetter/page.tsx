@@ -1,4 +1,4 @@
-import React from 'react';
+import { RouteProp } from '@react-navigation/native';
 import { color } from '@sinabro/design-token';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
@@ -8,16 +8,16 @@ import { Column, CustomText } from '@sinabro/ui';
 import { IconPad2 } from '@sinabro/icon';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useCharacterQuery } from 'services/character/quries';
-import { RootStackParamList } from 'navigation/Navigation';
-import { RouteProp } from '@react-navigation/native';
 import { useLetterDetailQuery } from 'services/letter/quries';
 import dayjs from 'dayjs';
+import { RootStackParamList } from 'navigation/navigationType';
+import React from 'react';
 
-type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
+type CheckLetterPageRouteProp = RouteProp<RootStackParamList, 'CheckLetter'>;
 
-const CheckLetterPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
+const CheckLetterPage = ({ route }: { route: CheckLetterPageRouteProp }) => {
   const { data } = useCharacterQuery();
-  const letterId = route.params.diaryId;
+  const letterId = route.params.letterId;
   const { data: letterData } = useLetterDetailQuery(letterId);
 
   const formattedDate = letterData?.createdAt
@@ -46,7 +46,7 @@ const CheckLetterPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
             <TextOverlay>
               <ScrollView>
                 <CustomText fontType="cursive2" color={color.gray900}>
-                  {letterData.content}
+                  {letterData?.content}
                 </CustomText>
               </ScrollView>
             </TextOverlay>
@@ -84,6 +84,6 @@ const TextOverlay = styled.View`
   width: 100%;
   height: 100%;
   padding: 21px 16px;
-  ${flex({ alignItems: 'left', justifyContent: 'center' })};
+  ${flex({ alignItems: 'flex-start', justifyContent: 'center' })};
   text-align: center;
 `;

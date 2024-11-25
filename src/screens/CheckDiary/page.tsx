@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 import { Alert } from 'react-native';
 import { useDeleteDiaryMutation } from 'services/diary/mutations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from 'navigation/Navigation';
+import { RootStackParamList } from 'navigation/navigationType';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
 

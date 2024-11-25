@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Navigation from 'navigation/Navigation';
+import Navigation from 'navigation/navigation';
 import SplashScreen from 'react-native-splash-screen';
 import { Animated } from 'react-native';
 import Splash from 'screens/splash/page';
@@ -9,14 +9,13 @@ import { TOKEN } from 'constants/common/contant';
 import { useCharacterQuery } from 'services/character/quries';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRefreshTokenMutation } from 'services/auth/mutations';
+import { RootStackParamList } from 'navigation/navigationType';
 
 const queryClient = new QueryClient();
 
 function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
-  const [initialRoute, setInitialRoute] = useState<'Navigation' | 'Test' | 'Main'>(
-    'Navigation'
-  );
+  const [initialRoute, setInitialRoute] = useState<keyof RootStackParamList>('Introduce');
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const { data } = useCharacterQuery();
   const { refreshToeknMutate } = useRefreshTokenMutation();
@@ -35,11 +34,11 @@ function AppContent() {
             }
           },
           onError: () => {
-            setInitialRoute('Navigation');
+            setInitialRoute('Introduce');
           },
         });
       } else {
-        setInitialRoute('Navigation');
+        setInitialRoute('Introduce');
       }
 
       const timer = setTimeout(() => {
