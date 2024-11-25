@@ -4,8 +4,8 @@ import { KEY } from 'constants/common/contant';
 
 export const useLetterListQuery = () => {
   const { data, ...restQuery } = useSuspenseQuery({
-    queryKey: [KEY.LETTER_LIST] as const,
-    queryFn: getAllLetters,
+    queryKey: [KEY.LETTER_LIST],
+    queryFn: () => getAllLetters(),
   });
 
   return { data: data.dataList, ...restQuery };

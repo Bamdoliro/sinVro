@@ -9,11 +9,11 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryDetailQuery } from 'services/diary/quries';
 import { RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from 'navigation/navigation';
 import dayjs from 'dayjs';
 import { Alert } from 'react-native';
 import { useDeleteDiaryMutation } from 'services/diary/mutations';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from 'navigation/Navigation';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
 
@@ -58,8 +58,8 @@ const CheckDiaryPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
   const { data: detailData } = useDiaryDetailQuery(diaryId);
   const { deleteDiaryMutate } = useDeleteDiaryMutation(diaryId);
 
-  const formattedDate = detailData?.createdAt
-    ? dayjs(detailData.createdAt).format('YYYY년 MM월 DD일')
+  const formattedDate = detailData?.writtenAt
+    ? dayjs(detailData.writtenAt).format('YYYY년 MM월 DD일')
     : '';
 
   const handleDiaryClick = () => {
