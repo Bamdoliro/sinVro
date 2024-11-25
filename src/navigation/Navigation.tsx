@@ -1,25 +1,26 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import IntroducePage from 'screens/Introduce/page';
-import LoginPage from 'screens/Login/page';
-import SelectCharacterPage from 'screens/SelectCharacter/page';
-import StoryPage from 'screens/Story/page';
-import SubmitInquiryPage from 'screens/Inquiry/SubmitInquiry';
-import SettingPage from 'screens/Setting/page';
-import FAQPage from 'screens/FAQ/page';
-import AlarmPage from 'screens/Alarm/page';
-import MainPage from 'screens/Main/page';
-import DiaryPage from 'screens/Diary/page';
-import MyPage from 'screens/MyPage/page';
-import InquiryPage from 'screens/Inquiry/page';
-import InquiryDetailPage from 'screens/Inquiry/Detail';
-import MailBoxPage from 'screens/MailBox/page';
-import WriteDiaryPage from 'screens/WriteDiary/page';
-import SelectEmotionPage from 'screens/SelectEmotion/page';
-import CheckDiaryPage from 'screens/CheckDiary/page';
-import CheckLetterPage from 'screens/CheckLetter/page';
-import TestPage from 'screens/test/page';
+import IntroducePage from '../screens/Introduce/page';
+import LoginPage from '../screens/Login/page';
+import SelectCharacterPage from '../screens/SelectCharacter/page';
+import StoryPage from '../screens/Story/page';
+import SubmitInquiryPage from '../screens/Inquiry/SubmitInquiry';
+import SettingPage from '../screens/Setting/page';
+import FAQPage from '../screens/FAQ/page';
+import AlarmPage from '../screens/Alarm/page';
+import MainPage from '../screens/Main/page';
+import DiaryPage from '../screens/Diary/page';
+import MyPage from '../screens/MyPage/page';
+import InquiryPage from '../screens/Inquiry/page';
+import InquiryDetailPage from '../screens/Inquiry/Detail';
+import MailBoxPage from '../screens/MailBox/page';
+import WriteDiaryPage from '../screens/WriteDiary/page';
+import SelectEmotionPage from '../screens/SelectEmotion/page';
+import CheckDiaryPage from '../screens/CheckDiary/page';
+import CheckLetterPage from '../screens/CheckLetter/page';
+import TestPage from '../screens/test/page';
+import EditDiaryPage from '../screens/editDiary/page';
 import { RootStackParamList } from './navigation';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -110,6 +111,11 @@ const Navigation = ({ initialRoute }: { initialRoute: keyof RootStackParamList }
         <Stack.Screen
           name="CheckLetter"
           component={CheckLetterPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditDiary"
+          component={EditDiaryPage}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Test" component={TestPage} options={{ headerShown: false }} />

@@ -10,7 +10,7 @@ import styled from 'styled-components/native';
 import React from 'react';
 import dayjs from 'dayjs';
 import { useDiaryDetailQuery } from 'services/diary/quries';
-import { RootStackParamList } from 'navigation/Navigation';
+import { RootStackParamList } from 'navigation/navigation';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'EditDiary'>;
 

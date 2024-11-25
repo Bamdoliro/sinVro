@@ -9,10 +9,11 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryDetailQuery } from 'services/diary/quries';
 import { RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from 'navigation/Navigation';
+import { RootStackParamList } from 'navigation/navigation';
 import dayjs from 'dayjs';
 import { Alert } from 'react-native';
 import { useDeleteDiaryMutation } from 'services/diary/mutations';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
 
