@@ -20,14 +20,11 @@ import SelectEmotionPage from 'screens/SelectEmotion/page';
 import CheckDiaryPage from 'screens/CheckDiary/page';
 import CheckLetterPage from 'screens/CheckLetter/page';
 import TestPage from 'screens/test/page';
+import { RootStackParamList } from './navigation';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
-const Navigation = ({
-  initialRoute,
-}: {
-  initialRoute: 'Navigation' | 'Test' | 'Main';
-}) => {
+const Navigation = ({ initialRoute }: { initialRoute: keyof RootStackParamList }) => {
   return (
     <GestureHandlerRootView>
       <Stack.Navigator
