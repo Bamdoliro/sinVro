@@ -4,10 +4,12 @@ import { useMutation } from '@tanstack/react-query';
 import { PostDiaryReq, PutDiaryReq } from 'types/diary/remote';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDiaryStore } from 'stores/diary/diary';
 
 export const usePostDiaryMutate = () => {
   const { handleError } = useApiError();
   const navigation = useNavigation();
+  const { setContent, setEmotionList, setWrittenAt } = useDiaryStore();
 
   const { mutate: postDiaryMutate, ...restMutation } = useMutation({
     mutationFn: (diaryData: PostDiaryReq) => postDiary(diaryData),
@@ -17,6 +19,9 @@ export const usePostDiaryMutate = () => {
         index: 0,
         routes: [{ name: 'Diary' as never }],
       });
+      setContent('');
+      setEmotionList([]);
+      setWrittenAt('');
     },
     onError: handleError,
   });
@@ -24,18 +29,22 @@ export const usePostDiaryMutate = () => {
   return { postDiaryMutate, ...restMutation };
 };
 
-export const useDiaryEditMutation = (diaryId: number, faqData: PutDiaryReq) => {
+export const useDiaryEditMutation = (diaryId: number) => {
   const { handleError } = useApiError();
   const navigation = useNavigation();
+  const { setContent, setEmotionList, setWrittenAt } = useDiaryStore();
 
   const { mutate: editDiaryMutate, ...restMutation } = useMutation({
-    mutationFn: () => putDiary(diaryId, faqData),
+    mutationFn: (diaryData: PutDiaryReq) => putDiary(diaryId, diaryData),
     onSuccess: () => {
       Alert.alert('게시물이 수정되었습니다.');
       navigation.reset({
         index: 0,
         routes: [{ name: 'Diary' as never }],
       });
+      setContent('');
+      setEmotionList([]);
+      setWrittenAt('');
     },
     onError: handleError,
   });
