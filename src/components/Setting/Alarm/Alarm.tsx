@@ -14,14 +14,9 @@ const Alarm = () => {
         푸시 알림
       </CustomText>
       <AlarmBox>
-        <View>
-          <CustomText fontType="B4" color={color.white100}>
-            야간 알림
-          </CustomText>
-          <CustomText fontType="B6" color={color.white100}>
-            (오후 12시 ~ 오전 7시)
-          </CustomText>
-        </View>
+        <CustomText fontType="B4" color={color.white100}>
+          알림 수신
+        </CustomText>
         <Toggle onToggle={() => setIsOn(!isOn)} isOn={isOn} />
       </AlarmBox>
     </StyledAlarm>
@@ -35,7 +30,7 @@ const StyledAlarm = styled(View)`
 
 const AlarmBox = styled(View)`
   ${flex({ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' })}
-  padding: 16px 12px;
+  padding: 25.5px 16px;
   background-color: ${color.glassWhite};
   border: 1px solid ${color.glassStroke};
   border-radius: 8px;
