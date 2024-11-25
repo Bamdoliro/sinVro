@@ -1,5 +1,5 @@
 import { color } from '@sinabro/design-token';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import CustomText from '../Text/Text';
@@ -11,16 +11,9 @@ interface Props {
   isFocused: boolean;
 }
 
-const DetailedCard = ({ onPress, children }: Omit<Props, 'isFocused'>) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-
-  const handlePress = () => {
-    setIsFocused(!isFocused);
-    onPress();
-  };
-
+const DetailedCard = ({ onPress, children, isFocused }: Props) => {
   return (
-    <StyledDetailedCard onPress={handlePress} isFocused={isFocused}>
+    <StyledDetailedCard onPress={onPress} isFocused={isFocused}>
       <CustomText fontType="B4" color={isFocused ? color.gray900 : color.white100}>
         {children}
       </CustomText>
@@ -33,8 +26,7 @@ export default DetailedCard;
 const StyledDetailedCard = styled(Pressable)<{ isFocused: boolean }>`
   width: ${calculateWidth(159)}px;
   height: 64px;
-  background-color: ${({ isFocused }: Props) =>
-    isFocused ? color.white80 : color.glassWhite};
+  background-color: ${({ isFocused }: any) => (isFocused ? color.white80 : color.glassWhite)};
   border: 1px solid ${color.glassStroke};
   border-radius: 12px;
   padding-left: ${calculateWidth(16)}px;

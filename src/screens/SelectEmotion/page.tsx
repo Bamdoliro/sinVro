@@ -1,33 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { color } from '@sinabro/design-token';
-import { flex, showToast } from '@sinabro/util';
+import { flex } from '@sinabro/util';
 import { Header } from 'components/common';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { EmotionList, ExplainBox } from 'components/SelectEmotion';
 import { Button, ToastPopup } from '@sinabro/ui';
-import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
+import { useDiaryStore } from 'stores/diary/diary';
+import { usePostDiaryMutate } from 'services/diary/mutations';
+import Progress from 'components/WriteDiary/progress/progress';
 
 const SelectEmotionPage = () => {
+  const { postDiaryMutate } = usePostDiaryMutate();
   const { data } = useCharacterQuery();
   const [selectedDetails, setSelectedDetails] = useState<string[]>([]);
   const [isDisabled, setIsDisabled] = useState(true);
-  const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(false);
+  const { emotionList, content, writtenAt } = useDiaryStore();
 
   useEffect(() => {
-    if (selectedDetails.length === 0 || selectedDetails.length > 3) {
-      setIsDisabled(true);
-    } else {
-      setIsDisabled(false);
-    }
-  }, [selectedDetails]);
+    setIsDisabled(emotionList.length === 0 || emotionList.length > 3);
+  }, [emotionList.length, selectedDetails]);
 
   const handlePress = () => {
     if (!isDisabled) {
-      showToast('하루 일기 작성이 완료되었습니다!', () => {
-        navigation.navigate('Diary' as never);
-      });
+      setIsLoading(true);
+      postDiaryMutate(
+        { emotionList, content, writtenAt },
+        {
+          onSettled: () => {
+            setIsLoading(false);
+          },
+          onError: () => {
+            setIsLoading(false);
+          },
+        }
+      );
     }
   };
 
@@ -38,33 +47,36 @@ const SelectEmotionPage = () => {
   };
 
   return (
-    <StyledSelectEmotionPage
-      colors={
-        data?.data.type === 'HEON'
-          ? [color.sinabroBlue, color.sinabroSkyBlue]
-          : [color.sinabroPink, color.sinabroCream]
-      }
-    >
-      <Header />
-      <ContentContainer>
-        <ExplainBox />
-        <EmotionList
-          onDetailsChange={setSelectedDetails}
-          onDetailSelect={handleDetailSelect}
-        />
-      </ContentContainer>
-      <ButtonContainer>
-        <Button
-          onPress={handlePress}
-          styleType={isDisabled ? 'DISABLED' : 'WHITE'}
-          size="LARGE"
-          width={335}
-        >
-          선택 완료
-        </Button>
-      </ButtonContainer>
-      <ToastPopup />
-    </StyledSelectEmotionPage>
+    <>
+      {isLoading && <Progress />}
+      <StyledSelectEmotionPage
+        colors={
+          data?.data.type === 'HEON'
+            ? [color.sinabroBlue, color.sinabroSkyBlue]
+            : [color.sinabroPink, color.sinabroCream]
+        }
+      >
+        <Header />
+        <ContentContainer>
+          <ExplainBox />
+          <EmotionList
+            onDetailsChange={setSelectedDetails}
+            onDetailSelect={handleDetailSelect}
+          />
+        </ContentContainer>
+        <ButtonContainer>
+          <Button
+            onPress={handlePress}
+            styleType={isDisabled ? 'DISABLED' : 'WHITE'}
+            size="LARGE"
+            width={335}
+          >
+            선택 완료
+          </Button>
+        </ButtonContainer>
+        <ToastPopup />
+      </StyledSelectEmotionPage>
+    </>
   );
 };
 

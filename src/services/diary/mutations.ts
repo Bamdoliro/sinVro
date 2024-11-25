@@ -5,12 +5,12 @@ import { PostDiaryReq, PutDiaryReq } from 'types/diary/remote';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export const usePostDiaryMutate = (diaryData: PostDiaryReq) => {
+export const usePostDiaryMutate = () => {
   const { handleError } = useApiError();
   const navigation = useNavigation();
 
   const { mutate: postDiaryMutate, ...restMutation } = useMutation({
-    mutationFn: () => postDiary(diaryData),
+    mutationFn: (diaryData: PostDiaryReq) => postDiary(diaryData),
     onSuccess: () => {
       Alert.alert('편지 작성이 완료되었습니다!');
       navigation.reset({
