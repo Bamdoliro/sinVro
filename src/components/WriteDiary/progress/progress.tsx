@@ -29,19 +29,21 @@ const Progress = () => {
           ) : (
             <IconCompleteSol width={143.33} height={150} />
           )}
-          <Column gap={4} alignItems="center">
-            <CustomText fontType="B3" color={color.gray900}>
-              일기 작성을 완료하는 중입니다
-            </CustomText>
-            <CustomText fontType="B6" color={color.gray600}>
-              잠시만 기다려주세요...
-            </CustomText>
+          <Column gap={40} alignItems="center">
+            <StyledProgressBarContainer>
+              <StyledProgressBar>
+                <StyledProgressFill progress={progress} />
+              </StyledProgressBar>
+            </StyledProgressBarContainer>
+            <Column gap={8} alignItems="center">
+              <CustomText fontType="B3" color={color.gray900}>
+                일기 작성을 완료하는 중입니다
+              </CustomText>
+              <CustomText fontType="B6" color={color.gray600}>
+                잠시만 기다려주세요...
+              </CustomText>
+            </Column>
           </Column>
-          <StyledProgressBarContainer>
-            <StyledProgressBar>
-              <StyledProgressFill progress={progress} />
-            </StyledProgressBar>
-          </StyledProgressBarContainer>
         </Column>
       </StyledProgress>
     </StyledProgressPage>
