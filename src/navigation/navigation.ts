@@ -1,0 +1,22 @@
+export type RootStackParamList = {
+  Introduce: undefined;
+  Login: undefined;
+  Character: undefined;
+  Story: undefined;
+  MyPage: undefined;
+  Inquiry: undefined;
+  InquiryDetail: { id: number };
+  SubmitInquiry: undefined;
+  Setting: undefined;
+  FAQ: undefined;
+  Alarm: undefined;
+  Main: undefined;
+  Diary: undefined;
+  MailBox: undefined;
+  WriteDiary: undefined;
+  SelectEmotion: undefined;
+  CheckDiary: { diaryId: number };
+  CheckLetter: undefined;
+  Test: undefined;
+  EditDiary: { diaryId: number };
+};

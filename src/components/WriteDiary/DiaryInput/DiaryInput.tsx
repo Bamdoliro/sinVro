@@ -4,7 +4,7 @@ import { calculateHeight, calculateWidth } from '@sinabro/util';
 import styled from 'styled-components/native';
 
 interface InputProps {
-  textValue: string;
+  textValue?: string;
   setTextValue: (text: string) => void;
 }
 

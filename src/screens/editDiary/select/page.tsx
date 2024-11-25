@@ -1,33 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { color } from '@sinabro/design-token';
-import { flex } from '@sinabro/util';
-import { Header } from 'components/common';
+import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { EmotionList, ExplainBox } from 'components/SelectEmotion';
 import { Button, ToastPopup } from '@sinabro/ui';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryStore } from 'stores/diary/diary';
-import { usePostDiaryMutate } from 'services/diary/mutations';
+import { useDiaryEditMutation } from 'services/diary/mutations';
 import Progress from 'components/WriteDiary/progress/progress';
+import { IconWhiteArrow } from '@sinabro/icon';
+import { useSetDiaryStep } from 'stores/diary/diaryStep';
+import { useDiaryDetailQuery } from 'services/diary/quries';
+import { RootStackParamList } from 'navigation/navigation';
+import { RouteProp } from '@react-navigation/native';
 import { Alert } from 'react-native';
 
-const SelectEmotionPage = () => {
-  const { postDiaryMutate } = usePostDiaryMutate();
+type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'EditDiary'>;
+
+const EditSelectEmotionPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
+  const diaryId = route.params.diaryId;
+  const { data: diaryData } = useDiaryDetailQuery(diaryId);
+  const setDiaryStep = useSetDiaryStep();
+
+  const { editDiaryMutate } = useDiaryEditMutation(diaryId);
+
   const { data } = useCharacterQuery();
-  const [selectedDetails, setSelectedDetails] = useState<string[]>([]);
+  const { emotionList, content, writtenAt, setEmotionList } = useDiaryStore();
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const { emotionList, content, writtenAt } = useDiaryStore();
+
+  useEffect(() => {
+    if (diaryData?.emotionList) {
+      setEmotionList(diaryData.emotionList);
+    }
+  }, [diaryData, setEmotionList]);
 
   useEffect(() => {
     setIsDisabled(emotionList.length === 0 || emotionList.length > 3);
-  }, [emotionList.length, selectedDetails]);
+  }, [emotionList]);
 
   const handlePress = () => {
     if (!isDisabled) {
       setIsLoading(true);
-      postDiaryMutate(
+      editDiaryMutate(
         { emotionList, content, writtenAt },
         {
           onSettled: () => {
@@ -43,9 +59,15 @@ const SelectEmotionPage = () => {
   };
 
   const handleDetailSelect = (detail: string) => {
-    setSelectedDetails((prev) =>
-      prev.includes(detail) ? prev.filter((item) => item !== detail) : [...prev, detail]
-    );
+    const newEmotionList = emotionList.includes(detail)
+      ? emotionList.filter((item) => item !== detail)
+      : [...emotionList, detail];
+
+    setEmotionList(newEmotionList);
+  };
+
+  const handlePressBack = () => {
+    setDiaryStep('일기');
   };
 
   return (
@@ -58,11 +80,15 @@ const SelectEmotionPage = () => {
             : [color.sinabroPink, color.sinabroCream]
         }
       >
-        <Header />
+        <StyledHeader>
+          <IconContainer onPress={handlePressBack}>
+            <IconWhiteArrow width={23} height={17} />
+          </IconContainer>
+        </StyledHeader>
         <ContentContainer>
           <ExplainBox />
           <EmotionList
-            onDetailsChange={setSelectedDetails}
+            onDetailsChange={setEmotionList}
             onDetailSelect={handleDetailSelect}
           />
         </ContentContainer>
@@ -82,7 +108,7 @@ const SelectEmotionPage = () => {
   );
 };
 
-export default SelectEmotionPage;
+export default EditSelectEmotionPage;
 
 const StyledSelectEmotionPage = styled(LinearGradient)`
   flex: 1;
@@ -99,4 +125,20 @@ const ButtonContainer = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'flex-end' })}
   width: 100%;
   padding-bottom: 63px;
+`;
+
+const StyledHeader = styled.View`
+  position: absolute;
+  top: ${calculateHeight(67)}px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+`;
+
+const IconContainer = styled.TouchableOpacity`
+  padding: 9px;
+  position: absolute;
+  left: ${calculateWidth(20)}px;
+  z-index: 1;
 `;

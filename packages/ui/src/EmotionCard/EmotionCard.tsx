@@ -16,31 +16,24 @@ interface Props {
   detail1: string;
   detail2: string;
   detail3: string;
+  selectedDetails: string[];
 }
 
 const EmotionCard = ({
-                       indexNumber,
-                       onPress,
-                       onDetailSelect,
-                       children,
-                       emotion,
-                       englishEmotion,
-                       isSelected,
-                       detail1,
-                       detail2,
-                       detail3,
-                     }: Props) => {
-  const handlePress = () => {
-    onPress();
-  };
-
-  const handleDetailSelect = (detail: string) => {
-    onDetailSelect(detail);
-  };
-
+  onPress,
+  onDetailSelect,
+  children,
+  emotion,
+  englishEmotion,
+  isSelected,
+  detail1,
+  detail2,
+  detail3,
+  selectedDetails,
+}: Props) => {
   return (
     <Container>
-      <StyledEmotionCard onPress={handlePress} isSelected={isSelected}>
+      <StyledEmotionCard onPress={onPress} isSelected={isSelected}>
         <ImageContainer>{children}</ImageContainer>
         <TextContainer>
           <CustomText fontType="B2" color={isSelected ? color.gray900 : color.white100}>
@@ -57,13 +50,22 @@ const EmotionCard = ({
 
       {isSelected && (
         <DetailsContainer>
-          <DetailedCard onPress={() => handleDetailSelect(detail1)}>
+          <DetailedCard
+            onPress={() => onDetailSelect(detail1)}
+            isFocused={selectedDetails.includes(detail1)}
+          >
             {detail1}
           </DetailedCard>
-          <DetailedCard onPress={() => handleDetailSelect(detail2)}>
+          <DetailedCard
+            onPress={() => onDetailSelect(detail2)}
+            isFocused={selectedDetails.includes(detail2)}
+          >
             {detail2}
           </DetailedCard>
-          <DetailedCard onPress={() => handleDetailSelect(detail3)}>
+          <DetailedCard
+            onPress={() => onDetailSelect(detail3)}
+            isFocused={selectedDetails.includes(detail3)}
+          >
             {detail3}
           </DetailedCard>
         </DetailsContainer>
@@ -75,33 +77,33 @@ const EmotionCard = ({
 export default EmotionCard;
 
 const DetailsContainer = styled.View`
-    ${flex({ justifyContent: 'center', flexDirection: 'column' })};
-    margin-left: ${calculateWidth(10)}px;
-    gap: ${calculateHeight(7.6)}px;
+  ${flex({ justifyContent: 'center', flexDirection: 'column' })};
+  margin-left: ${calculateWidth(10)}px;
+  gap: ${calculateHeight(7.6)}px;
 `;
 
 const Container = styled.View`
-    flex-direction: row;
-    gap: ${calculateWidth(5)}px;
+  flex-direction: row;
+  gap: ${calculateWidth(5)}px;
 `;
 
 const StyledEmotionCard = styled.Pressable<{ isSelected: boolean }>`
-    ${flex({ alignItems: 'center', justifyContent: 'center' })};
-    width: ${calculateWidth(160)}px;
-    height: 208px;
-    background-color: ${({ isSelected }: any) =>
-            isSelected ? color.white80 : color.glassWhite};
-    border: 1px solid ${color.glassStroke};
-    border-radius: 12px;
-    padding-top: ${calculateHeight(20)}px;
+  ${flex({ alignItems: 'center', justifyContent: 'center' })};
+  width: ${calculateWidth(160)}px;
+  height: 208px;
+  background-color: ${({ isSelected }: any) =>
+    isSelected ? color.white80 : color.glassWhite};
+  border: 1px solid ${color.glassStroke};
+  border-radius: 12px;
+  padding-top: ${calculateHeight(20)}px;
 `;
 
 const ImageContainer = styled.View`
-    padding-bottom: ${calculateHeight(20)}px;
+  padding-bottom: ${calculateHeight(20)}px;
 `;
 
 const TextContainer = styled.View`
-    ${flex({ alignItems: 'flex-start' })};
-    padding-left: ${calculateWidth(15)}px;
-    width: 100%;
+  ${flex({ alignItems: 'flex-start' })};
+  padding-left: ${calculateWidth(15)}px;
+  width: 100%;
 `;

@@ -1,16 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { color } from '@sinabro/design-token';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Header } from 'components/common';
-import { flex } from '@sinabro/util';
+import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 import { Category, Column, CustomText, Row } from '@sinabro/ui';
-import { IconPad1 } from '@sinabro/icon';
+import { IconPad1, IconWhiteArrow } from '@sinabro/icon';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useCharacterQuery } from 'services/character/quries';
+import { useDiaryDetailQuery } from 'services/diary/quries';
+import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from 'navigation/navigation';
+import dayjs from 'dayjs';
+import { Alert } from 'react-native';
+import { useDeleteDiaryMutation } from 'services/diary/mutations';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const CheckDiaryPage = () => {
+type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
+
+const emotionMap: { [key: string]: string } = {
+  FRUITFUL: '보람찬',
+  CALM: '안정된',
+  HOPELESS: '절망스러운',
+  FURIOUS: '분한',
+  AMAZED: '놀라운',
+  COMFORTABLE: '안락한',
+  PUZZELD: '의아한',
+  ENRAGED: '울화통 터지는',
+  REGRETFUL: '아쉬운',
+  DEDICATED: '헌신적인',
+  PEACEFUL: '평화로운',
+  EMBARRASSED: '당혹스러운',
+  DISAPPOINTED: '섭섭한',
+  GLOOMY: '시무룩한',
+  IMPRESSED: '감탄한',
+  PROUD: '뿌듯한',
+  EXCITED: '설레는',
+  ASTOUNDED: '경악한',
+  UPSET: '속상한',
+  IRRITATED: '짜증나는',
+  POUNDING: '두근거리는',
+  VAIN: '허무한',
+  ECSTATIC: '황홀한',
+  BITTER: '떨떠름한',
+};
+
+const CheckDiaryPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackParamList, 'CheckDiary'>>();
+
+  const toggleMenuOpen = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const diaryId = route?.params?.diaryId;
   const { data } = useCharacterQuery();
+  const { data: detailData } = useDiaryDetailQuery(diaryId);
+  const { deleteDiaryMutate } = useDeleteDiaryMutation(diaryId);
+
+  const formattedDate = detailData?.createdAt
+    ? dayjs(detailData.createdAt).format('YYYY년 MM월 DD일')
+    : '';
+
+  const handleDiaryClick = () => {
+    if (!diaryId) {
+      console.warn('Invalid diary ID');
+      return;
+    }
+    navigation.navigate('EditDiary', { diaryId });
+  };
 
   return (
     <StyledCheckDiaryPage
@@ -20,10 +78,49 @@ const CheckDiaryPage = () => {
           : [color.sinabroPink, color.sinabroCream]
       }
     >
-      <Header />
+      <StyledHeader>
+        <LeftIconContainer
+          onPress={() => {
+            navigation.navigate('Diary');
+          }}
+        >
+          <IconWhiteArrow width={23} height={17} />
+        </LeftIconContainer>
+        <RightIconContainer onPress={toggleMenuOpen}>
+          <Row alignItems="center" gap={3.18}>
+            <Indicator />
+            <Indicator />
+            <Indicator />
+          </Row>
+        </RightIconContainer>
+        {isMenuOpen && (
+          <MenuListBox>
+            <MenuItem onPress={handleDiaryClick}>
+              <CustomText fontType="B5" color={color.gray900}>
+                수정하기
+              </CustomText>
+            </MenuItem>
+            <MenuItem
+              onPress={() => {
+                Alert.alert('정말로 삭제하시겠습니까?', '', [
+                  {
+                    text: '아니요',
+                    style: 'cancel',
+                  },
+                  { text: '네', onPress: () => deleteDiaryMutate() },
+                ]);
+              }}
+            >
+              <CustomText fontType="B5" color={color.gray900}>
+                삭제하기
+              </CustomText>
+            </MenuItem>
+          </MenuListBox>
+        )}
+      </StyledHeader>
       <ContentContainer>
         <CustomText fontType="B5" color={color.white100}>
-          2024년 6월 2일
+          {formattedDate}
         </CustomText>
         <Column alignItems="center" gap={12}>
           <CustomText fontType="H2" color={color.white100}>
@@ -31,9 +128,9 @@ const CheckDiaryPage = () => {
           </CustomText>
           <Column alignItems="center" gap={16}>
             <Row alignItems="center" gap={8}>
-              <Category>흐뭇한</Category>
-              <Category>놀라운</Category>
-              <Category>안락한</Category>
+              {detailData?.emotionList.map((emotion) => (
+                <Category key={emotion}>{emotionMap[emotion] || emotion}</Category>
+              ))}
             </Row>
           </Column>
           <IconWrapper>
@@ -41,12 +138,7 @@ const CheckDiaryPage = () => {
             <TextOverlay>
               <ScrollView>
                 <CustomText fontType="cursive2" color={color.gray900}>
-                  가야 할 때가 언제인가를 분명히 알고 가는 이의 뒷모습은 얼마나
-                  아름다운가. 봄 한철 격정을 인내한 나의 사랑은 지고 있다. 분분한 낙화.[1]
-                  결별이 이룩하는 축복에 싸여 지금은 가야 할 때. 무성한 녹음과 그리고
-                  머지않아 열매 맺는 가을을 향하여 나의 청춘은 꽃답게 죽는다. 헤어지자
-                  섬세한 손길을 흔들며 하롱하롱 꽃잎이 지는 어느 날. 나의 사랑, 나의 결별
-                  샘터에 물 고이듯 성숙하는 내 영혼의 슬픈 눈.
+                  {detailData?.content}
                 </CustomText>
               </ScrollView>
             </TextOverlay>
@@ -63,6 +155,28 @@ const StyledCheckDiaryPage = styled(LinearGradient)`
   flex: 1;
 `;
 
+const StyledHeader = styled.View`
+  ${flex({ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' })}
+  position: absolute;
+  top: ${calculateHeight(67)}px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+`;
+
+const LeftIconContainer = styled.TouchableOpacity`
+  padding: 9px;
+  position: absolute;
+  left: ${calculateWidth(20)}px;
+`;
+
+const RightIconContainer = styled.TouchableOpacity`
+  padding: 9px;
+  position: absolute;
+  right: ${calculateWidth(22)}px;
+`;
+
 const ContentContainer = styled.View`
   ${flex({ alignItems: 'center' })}
   width: 100%;
@@ -74,7 +188,7 @@ const IconWrapper = styled.View`
   position: relative;
   width: 348px;
   height: 497.14px;
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}; /* 중앙 정렬 */
+  ${flex({ alignItems: 'center', justifyContent: 'center' })};
 `;
 
 const TextOverlay = styled.View`
@@ -83,6 +197,29 @@ const TextOverlay = styled.View`
   width: 100%;
   height: 100%;
   padding: 26px 22px;
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}; /* 중앙 정렬 */
+  ${flex({ alignItems: 'flex-start', justifyContent: 'center' })};
   text-align: center;
+`;
+
+const Indicator = styled.View`
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: ${color.white100};
+`;
+
+const MenuListBox = styled.View`
+  position: absolute;
+  top: 35px;
+  right: ${calculateWidth(22)}px;
+  width: ${calculateWidth(110)}px;
+  background-color: ${color.white100};
+  border-radius: 8px;
+  z-index: 20;
+  padding: 8px 0;
+`;
+
+const MenuItem = styled.TouchableOpacity`
+  padding: 13px 8px;
+  align-items: left;
 `;

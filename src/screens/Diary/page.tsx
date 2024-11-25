@@ -8,11 +8,26 @@ import { Calender, Column } from '@sinabro/ui';
 import { Header } from 'components/common';
 import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
+import { useDiaryListQuery } from 'services/diary/quries';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from 'navigation/navigation';
+
+type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Diary'>;
 
 const DiaryPage = () => {
   const { data } = useCharacterQuery();
-  const datesWithDiarys = ['2024-11-02'];
-  const navigation = useNavigation();
+  const { data: diaryData } = useDiaryListQuery('2024-01-01', '2024-12-31');
+
+  const datesWithDiarys = diaryData ? diaryData.map((diary) => diary.writtenAt) : [];
+
+  const navigation = useNavigation<DiaryScreenNavigationProp>();
+
+  const handleDiaryClick = (id: number | null) => {
+    if (id === null) {
+      return;
+    }
+    navigation.navigate('CheckDiary', { diaryId: id });
+  };
 
   return (
     <StyledDiaryPage
@@ -25,12 +40,22 @@ const DiaryPage = () => {
       <Header title="하루일기" />
       <ContentContainer>
         <Column alignItems="center" gap={22}>
-          <IconContainer onPress={() => navigation.navigate('WriteDiary' as never)}>
+          <IconContainer onPress={() => navigation.navigate('WriteDiary')}>
             <IconNote width={140} height={135} />
           </IconContainer>
           <Calender
             datesWithDiary={datesWithDiarys}
-            onPressDiary={() => navigation.navigate('CheckDiary' as never)}
+            onPressDiary={(date: string) => {
+              const selectedDiary = diaryData?.find((diary) => diary.writtenAt === date);
+              if (selectedDiary) {
+                const id =
+                  typeof selectedDiary.id === 'string'
+                    ? parseInt(selectedDiary.id, 10)
+                    : selectedDiary.id;
+                handleDiaryClick(id);
+              } else {
+              }
+            }}
           />
         </Column>
       </ContentContainer>

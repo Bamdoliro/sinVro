@@ -11,9 +11,9 @@ export interface GetDiaryListRes {
 }
 
 export interface PutDiaryReq {
-  title: string;
   content: string;
-  category: string;
+  emotionList: string[];
+  writtenAt: string;
 }
 
 export interface GetDiaryDetailRes {

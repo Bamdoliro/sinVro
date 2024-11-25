@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import { RouteProp } from '@react-navigation/native';
 import { color } from '@sinabro/design-token';
-import styled from 'styled-components/native';
-import { DiaryInput, Header } from 'components/WriteDiary';
 import { Column, CompleteButton, CustomText } from '@sinabro/ui';
 import { flex } from '@sinabro/util';
-import dayjs from 'dayjs';
-import { useNavigation } from '@react-navigation/native';
-import { useDiaryStore } from 'stores/diary/diary';
+import { DiaryInput, Header } from 'components/WriteDiary';
+import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { useDiaryStore } from 'stores/diary/diary';
+import styled from 'styled-components/native';
+import React from 'react';
+import dayjs from 'dayjs';
+import { useDiaryDetailQuery } from 'services/diary/quries';
+import { RootStackParamList } from 'navigation/navigation';
+import { useSetDiaryStep } from 'stores/diary/diaryStep';
 
-const WriteDiaryPage = () => {
-  const navigation = useNavigation();
-  const [textValue, setTextValue] = useState<string>('');
+type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'EditDiary'>;
+
+const EditWritePage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
+  const diaryId = route?.params?.diaryId;
+  const { data } = useDiaryDetailQuery(diaryId);
+  const { content, setContent, setWrittenAt } = useDiaryStore();
+  const setDiaryStep = useSetDiaryStep();
+  const [textValue, setTextValue] = useState<string>(content || '');
+
   const formatDate = dayjs().format('YYYY.MM.DD');
   const formatTime = dayjs().format('YYYY-MM-DD');
-  const { setContent, setWrittenAt } = useDiaryStore();
+
+  useEffect(() => {
+    if (!content && data?.content) {
+      setTextValue(data.content);
+      setContent(data.content);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleComplete = () => {
     if (textValue.trim() === '') {
@@ -24,8 +41,7 @@ const WriteDiaryPage = () => {
 
     setContent(textValue);
     setWrittenAt(formatTime);
-
-    navigation.navigate('SelectEmotion' as never);
+    setDiaryStep('감정');
   };
 
   return (
@@ -44,7 +60,7 @@ const WriteDiaryPage = () => {
   );
 };
 
-export default WriteDiaryPage;
+export default EditWritePage;
 
 const StyledWriteDiaryPage = styled.View`
   ${flex({ alignItems: 'center' })}
