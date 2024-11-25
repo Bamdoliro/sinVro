@@ -8,11 +8,27 @@ import styled from 'styled-components/native';
 import { Header } from 'components/common';
 import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
+import { useLetterListQuery } from 'services/letter/quries';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from 'navigation/Navigation';
+
+type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MailBox'>;
 
 const MailBoxPage = () => {
   const { data } = useCharacterQuery();
-  const datesWithLetters = ['2024-11-02'];
-  const navigation = useNavigation();
+  const { data: letterData } = useLetterListQuery();
+  const navigation = useNavigation<DiaryScreenNavigationProp>();
+
+  const datesWithLetters = letterData
+    ? letterData.map((letter) => letter.createdAt).filter((date) => date !== null)
+    : [];
+
+  const handleDiaryClick = (id: number | null) => {
+    if (id === null) {
+      return;
+    }
+    navigation.navigate('CheckLetter', { letterId: id });
+  };
 
   return (
     <StyledMailBoxPage
@@ -27,8 +43,18 @@ const MailBoxPage = () => {
         <Column alignItems="center" gap={15}>
           <IconMailBox width={144} height={135} />
           <Calender
-            datesWithLetter={datesWithLetters}
-            onPressLetter={() => navigation.navigate('CheckLetter' as never)}
+            datesWithLetter={datesWithLetters as string[]}
+            onPressLetter={(date: string) => {
+              const selectedDiary = letterData?.find((diary) => diary.createdAt === date);
+              if (selectedDiary) {
+                const id =
+                  typeof selectedDiary.id === 'string'
+                    ? parseInt(selectedDiary.id, 10)
+                    : selectedDiary.id;
+                handleDiaryClick(id);
+              } else {
+              }
+            }}
           />
         </Column>
       </ContentContainer>

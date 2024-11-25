@@ -17,7 +17,7 @@ const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일'];
 interface CalenderProps {
   datesWithLetter?: string[];
   datesWithDiary?: string[];
-  onPressLetter?: () => void;
+  onPressLetter?: (date: string) => void;
   onPressDiary?: (date: string) => void;
 }
 

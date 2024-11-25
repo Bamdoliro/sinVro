@@ -16,7 +16,7 @@ export type RootStackParamList = {
   WriteDiary: undefined;
   SelectEmotion: undefined;
   CheckDiary: { diaryId: number };
-  CheckLetter: undefined;
+  CheckLetter: { letterId: number };
   Test: undefined;
   EditDiary: { diaryId: number };
 };
