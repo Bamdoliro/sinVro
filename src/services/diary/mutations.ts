@@ -5,6 +5,9 @@ import { PostDiaryReq, PutDiaryReq } from 'types/diary/remote';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDiaryStore } from 'stores/diary/diary';
+import { AxiosResponse } from 'axios';
+import { ID } from 'constants/common/contant';
+import { Storage } from 'apis/storage/storage';
 
 export const usePostDiaryMutate = () => {
   const { handleError } = useApiError();
@@ -13,12 +16,16 @@ export const usePostDiaryMutate = () => {
 
   const { mutate: postDiaryMutate, ...restMutation } = useMutation({
     mutationFn: (diaryData: PostDiaryReq) => postDiary(diaryData),
-    onSuccess: () => {
+    onSuccess: (res: AxiosResponse) => {
+      const { id } = res.data;
+      Storage.setItem(ID.DIARY, id);
       Alert.alert('편지 작성이 완료되었습니다!');
+
       navigation.reset({
         index: 0,
         routes: [{ name: 'Diary' as never }],
       });
+
       setContent('');
       setEmotionList([]);
       setWrittenAt('');

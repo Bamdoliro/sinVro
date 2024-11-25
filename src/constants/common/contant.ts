@@ -3,6 +3,10 @@ export const TOKEN = {
   REFRESH: 'refresh-token',
 } as const;
 
+export const ID = {
+  DIARY: 'diaryId',
+} as const;
+
 export const KEY = {
   USER: 'useUser',
   DIARYLIST: 'useDiaryList',
