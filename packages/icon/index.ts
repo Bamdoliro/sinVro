@@ -43,3 +43,5 @@ export { default as IconHeon } from './src/IconHeon';
 export { default as IconRadio } from './src/IconRadio';
 export { default as IconGoogle } from './src/IconGoogle';
 export { default as IconSol } from './src/IconSol';
+export { default as IconCompleteHeon } from './src/IconCompleteHeon';
+export { default as IconCompleteSol } from './src/IconCompleteSol';
