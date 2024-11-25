@@ -16,7 +16,7 @@ const SelectEmotionPage = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if (selectedDetails.length === 0 || selectedDetails.length > 2) {
+    if (selectedDetails.length === 0 || selectedDetails.length > 3) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
