@@ -18,10 +18,15 @@ interface CalenderProps {
   datesWithLetter?: string[];
   datesWithDiary?: string[];
   onPressLetter?: () => void;
-  onPressDiary?: () => void;
+  onPressDiary?: (date: string) => void;
 }
 
-const Calender: React.FC<CalenderProps> = ({ datesWithLetter, datesWithDiary, onPressDiary, onPressLetter }) => {
+const Calender: React.FC<CalenderProps> = ({
+  datesWithLetter,
+  datesWithDiary,
+  onPressDiary,
+  onPressLetter,
+}) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
 
   const handlePreviousMonth = () => {
@@ -106,7 +111,9 @@ const Calender: React.FC<CalenderProps> = ({ datesWithLetter, datesWithDiary, on
                           </IconLetterWrapper>
                         )}
                         {hasDiary(day) && (
-                          <IconLetterWrapper onPress={onPressDiary}>
+                          <IconLetterWrapper
+                            onPress={() => onPressDiary?.(day.format('YYYY-MM-DD'))}
+                          >
                             <IconBook width={34} height={26} />
                           </IconLetterWrapper>
                         )}

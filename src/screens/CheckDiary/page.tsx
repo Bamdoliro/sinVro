@@ -8,10 +8,48 @@ import { Category, Column, CustomText, Row } from '@sinabro/ui';
 import { IconPad1 } from '@sinabro/icon';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useCharacterQuery } from 'services/character/quries';
+import { useDiaryDetailQuery } from 'services/diary/quries';
+import { RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from 'navigation/navigation';
+import dayjs from 'dayjs';
 
-const CheckDiaryPage = () => {
+type CheckDiaryPageRouteProp = RouteProp<RootStackParamList, 'CheckDiary'>;
+
+const emotionMap: { [key: string]: string } = {
+  FRUITFUL: '보람찬',
+  CALM: '안정된',
+  HOPELESS: '절망스러운',
+  FURIOUS: '분한',
+  AMAZED: '놀라운',
+  COMFORTABLE: '안락한',
+  PUZZELD: '의아한',
+  ENRAGED: '울화통 터지는',
+  REGRETFUL: '아쉬운',
+  DEDICATED: '헌신적인',
+  PEACEFUL: '평화로운',
+  EMBARRASSED: '당혹스러운',
+  DISAPPOINTED: '섭섭한',
+  GLOOMY: '시무룩한',
+  IMPRESSED: '감탄한',
+  PROUD: '뿌듯한',
+  EXCITED: '설레는',
+  ASTOUNDED: '경악한',
+  UPSET: '속상한',
+  IRRITATED: '짜증나는',
+  POUNDING: '두근거리는',
+  VAIN: '허무한',
+  ECSTATIC: '황홀한',
+  BITTER: '떨떠름한',
+};
+
+const CheckDiaryPage = ({ route }: { route: CheckDiaryPageRouteProp }) => {
+  const diaryId = route?.params?.diaryId;
   const { data } = useCharacterQuery();
+  const { data: detailData } = useDiaryDetailQuery(diaryId);
 
+  const formattedDate = detailData?.createdAt
+    ? dayjs(detailData.createdAt).format('YYYY년MM월DD일')
+    : '';
   return (
     <StyledCheckDiaryPage
       colors={
@@ -23,7 +61,7 @@ const CheckDiaryPage = () => {
       <Header />
       <ContentContainer>
         <CustomText fontType="B5" color={color.white100}>
-          2024년 6월 2일
+          {formattedDate}
         </CustomText>
         <Column alignItems="center" gap={12}>
           <CustomText fontType="H2" color={color.white100}>
@@ -31,9 +69,9 @@ const CheckDiaryPage = () => {
           </CustomText>
           <Column alignItems="center" gap={16}>
             <Row alignItems="center" gap={8}>
-              <Category>흐뭇한</Category>
-              <Category>놀라운</Category>
-              <Category>안락한</Category>
+              {detailData?.emotionList.map((emotion) => (
+                <Category key={emotion}>{emotionMap[emotion] || emotion}</Category>
+              ))}
             </Row>
           </Column>
           <IconWrapper>
@@ -41,12 +79,7 @@ const CheckDiaryPage = () => {
             <TextOverlay>
               <ScrollView>
                 <CustomText fontType="cursive2" color={color.gray900}>
-                  가야 할 때가 언제인가를 분명히 알고 가는 이의 뒷모습은 얼마나
-                  아름다운가. 봄 한철 격정을 인내한 나의 사랑은 지고 있다. 분분한 낙화.[1]
-                  결별이 이룩하는 축복에 싸여 지금은 가야 할 때. 무성한 녹음과 그리고
-                  머지않아 열매 맺는 가을을 향하여 나의 청춘은 꽃답게 죽는다. 헤어지자
-                  섬세한 손길을 흔들며 하롱하롱 꽃잎이 지는 어느 날. 나의 사랑, 나의 결별
-                  샘터에 물 고이듯 성숙하는 내 영혼의 슬픈 눈.
+                  {detailData?.content}
                 </CustomText>
               </ScrollView>
             </TextOverlay>
@@ -74,7 +107,7 @@ const IconWrapper = styled.View`
   position: relative;
   width: 348px;
   height: 497.14px;
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}; /* 중앙 정렬 */
+  ${flex({ alignItems: 'center', justifyContent: 'center' })};
 `;
 
 const TextOverlay = styled.View`
@@ -83,6 +116,6 @@ const TextOverlay = styled.View`
   width: 100%;
   height: 100%;
   padding: 26px 22px;
-  ${flex({ alignItems: 'center', justifyContent: 'center' })}; /* 중앙 정렬 */
+  ${flex({ alignItems: 'left', justifyContent: 'center' })};
   text-align: center;
 `;
