@@ -18,4 +18,5 @@ export type RootStackParamList = {
   CheckDiary: { diaryId: number };
   CheckLetter: undefined;
   Test: undefined;
+  EditDiary: { diaryId: number };
 };

@@ -11,3 +11,5 @@ export interface DiaryDetail {
   createdAt: string | null;
   updatedAt: string | null;
 }
+
+export type DiaryStep = '일기' | '감정';

@@ -10,13 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryListQuery } from 'services/diary/quries';
 import { StackNavigationProp } from '@react-navigation/stack';
-
-// 네비게이션 타입 정의
-type RootStackParamList = {
-  Diary: undefined;
-  CheckDiary: { diaryId: number };
-  WriteDiary: undefined;
-};
+import { RootStackParamList } from 'navigation/Navigation';
 
 type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Diary'>;
 
