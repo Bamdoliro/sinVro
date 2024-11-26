@@ -1,7 +1,7 @@
 import { sinabro } from 'apis/instance/instance';
 import authorization from 'apis/token/token';
 
-export const postFcmToken = async (token: string) => {
+export const postFcmToken = async (token: string | null) => {
   const authConfig = await authorization();
 
   const { data } = await sinabro.post('/fcm-token', token, authConfig);
@@ -9,7 +9,7 @@ export const postFcmToken = async (token: string) => {
   return data;
 };
 
-export const deleteFcmToken = async (token: string) => {
+export const deleteFcmToken = async (token: string | null) => {
   const authConfig = await authorization();
 
   const { data } = await sinabro.delete('/fcm-token', {

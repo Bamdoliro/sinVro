@@ -1,6 +1,7 @@
 export const TOKEN = {
   ACCESS: 'access-token',
   REFRESH: 'refresh-token',
+  FCM: 'fcmToken',
 } as const;
 
 export const ID = {

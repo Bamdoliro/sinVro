@@ -6,7 +6,7 @@ export const usePostFcmTokenMutation = () => {
   const { handleError } = useApiError();
 
   const { mutate: postFacmTokenMutate, ...restMutation } = useMutation({
-    mutationFn: (token: string) => postFcmToken(token),
+    mutationFn: (token: string | null) => postFcmToken(token),
     onSuccess: () => {},
     onError: handleError,
   });
@@ -18,7 +18,7 @@ export const useDeleteFcmTokenMutation = () => {
   const { handleError } = useApiError();
 
   const { mutate: deleteFcmTokenMutate, ...restMutation } = useMutation({
-    mutationFn: (token: string) => deleteFcmToken(token),
+    mutationFn: (token: string | null) => deleteFcmToken(token),
     onSuccess: () => {},
     onError: handleError,
   });
