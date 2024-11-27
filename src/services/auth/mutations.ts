@@ -27,7 +27,7 @@ export const useLoginMutation = () => {
       Storage.setItem(TOKEN.REFRESH, refreshToken);
       navigation.reset({
         index: 0,
-        routes: [{ name: 'test' as never }],
+        routes: [{ name: 'Test' as never }],
       });
     },
     onError: handleError,
