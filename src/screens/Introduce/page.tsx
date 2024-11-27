@@ -34,7 +34,6 @@ const List: PageData[] = [
 const IntroducePage = () => {
   const flatListRef = useRef<FlatList<PageData>>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasScrolledPastEnd, setHasScrolledPastEnd] = useState(false);
   const navigation = useNavigation();
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -42,12 +41,12 @@ const IntroducePage = () => {
     setCurrentIndex(index);
   };
 
-  const onScrollEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetX = event.nativeEvent.contentOffset.x;
     const maxOffsetX = (List.length - 1) * width;
 
-    if (currentIndex === List.length - 1 && offsetX > maxOffsetX && !hasScrolledPastEnd) {
-      setHasScrolledPastEnd(true);
+    if (currentIndex === List.length - 1 && offsetX >= maxOffsetX) {
+      // 마지막 페이지에서 스크롤 완료 후 로그인 페이지로 이동
       navigation.reset({
         index: 0,
         routes: [{ name: 'Login' as never }],
@@ -73,7 +72,7 @@ const IntroducePage = () => {
         horizontal
         pagingEnabled
         onScroll={onScroll}
-        onScrollEndDrag={onScrollEndDrag}
+        onMomentumScrollEnd={onMomentumScrollEnd} // 수정: onMomentumScrollEnd 사용
         showsHorizontalScrollIndicator={false}
       />
       <IndicatorContainer>
