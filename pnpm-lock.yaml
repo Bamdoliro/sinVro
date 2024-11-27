@@ -11,9 +11,6 @@ dependencies:
   '@react-native-community/masked-view':
     specifier: ^0.1.11
     version: 0.1.11(react-native@0.74.4)(react@18.2.0)
-  '@react-native-google-signin/google-signin':
-    specifier: ^13.1.0
-    version: 13.1.0(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0)
   '@react-navigation/bottom-tabs':
     specifier: ^6.6.1
     version: 6.6.1(@react-navigation/native@6.1.18)(react-native-safe-area-context@4.11.0)(react-native-screens@3.34.0)(react-native@0.74.4)(react@18.2.0)
@@ -77,12 +74,12 @@ dependencies:
   react-native-toast-message:
     specifier: ^2.2.0
     version: 2.2.0(react-native@0.74.4)(react@18.2.0)
+  recoil:
+    specifier: ^0.7.7
+    version: 0.7.7(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0)
   styled-components:
     specifier: ^6.1.12
     version: 6.1.12(react-dom@18.2.0)(react@18.2.0)
-  zustand:
-    specifier: 5.0.0-rc.2
-    version: 5.0.0-rc.2(@types/react@18.3.3)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -2144,24 +2141,6 @@ packages:
       react-native: '>=0.57'
     dependencies:
       react: 18.2.0
-      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
-    dev: false
-
-  /@react-native-google-signin/google-signin@13.1.0(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0):
-    resolution: {integrity: sha512-C2/sqb0/s0c+Dwc/mykASZsRuHxGqn7SFrCxCY9D8p8IOQO05haInhCc7lzraJshRixGva5c/4usQZ71HMYSEQ==}
-    peerDependencies:
-      expo: '>=50.0.0'
-      react: '*'
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      expo:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
     dev: false
 
@@ -4789,6 +4768,10 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
+  /hamt_plus@1.0.2:
+    resolution: {integrity: sha512-t2JXKaehnMb9paaYA7J0BX8QQAY8lwfQ9Gjf4pg/mk4krt+cmwmU652HOoWonf+7+EQV97ARPMhhVgU1ra2GhA==}
+    dev: false
+
   /has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
     dev: true
@@ -6969,6 +6952,24 @@ packages:
       source-map: 0.6.1
       tslib: 2.6.3
 
+  /recoil@0.7.7(react-dom@18.2.0)(react-native@0.74.4)(react@18.2.0):
+    resolution: {integrity: sha512-8Og5KPQW9LwC577Vc7Ug2P0vQshkv1y3zG3tSSkWMqkWSwHmE+by06L8JtnGocjW6gcCvfwB3YtrJG6/tWivNQ==}
+    peerDependencies:
+      react: '>=16.13.1'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      hamt_plus: 1.0.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+    dev: false
+
   /reflect.getprototypeof@1.0.6:
     resolution: {integrity: sha512-fmfw4XgoDke3kdI6h4xcUz1dG8uaiv5q9gcEwLS4Pnth2kxT+GZ7YehS1JTMGBQmtV7Y4GFGbs2re2NqhdozUg==}
     engines: {node: '>= 0.4'}
@@ -7999,25 +8000,3 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-
-  /zustand@5.0.0-rc.2(@types/react@18.3.3)(react@18.2.0):
-    resolution: {integrity: sha512-o2Nwuvnk8vQBX7CcHL8WfFkZNJdxB/VKeWw0tNglw8p4cypsZ3tRT7rTRTDNeUPFS0qaMBRSKe+fVwL5xpcE3A==}
-    engines: {node: '>=12.20.0'}
-    peerDependencies:
-      '@types/react': '>=18.0.0'
-      immer: '>=9.0.6'
-      react: '>=18.0.0'
-      use-sync-external-store: '>=1.2.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-      use-sync-external-store:
-        optional: true
-    dependencies:
-      '@types/react': 18.3.3
-      react: 18.2.0
-    dev: false
