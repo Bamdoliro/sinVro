@@ -46,7 +46,6 @@ const IntroducePage = () => {
     const maxOffsetX = (List.length - 1) * width;
 
     if (currentIndex === List.length - 1 && offsetX >= maxOffsetX) {
-      // 마지막 페이지에서 스크롤 완료 후 로그인 페이지로 이동
       navigation.reset({
         index: 0,
         routes: [{ name: 'Login' as never }],
@@ -72,7 +71,7 @@ const IntroducePage = () => {
         horizontal
         pagingEnabled
         onScroll={onScroll}
-        onMomentumScrollEnd={onMomentumScrollEnd} // 수정: onMomentumScrollEnd 사용
+        onMomentumScrollEnd={onMomentumScrollEnd}
         showsHorizontalScrollIndicator={false}
       />
       <IndicatorContainer>
