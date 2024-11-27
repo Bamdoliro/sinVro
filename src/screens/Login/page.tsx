@@ -18,27 +18,17 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
-  const { loginMutate } = useLoginMutation({ email, password });
+  const { loginMutate } = useLoginMutation();
+  const data = { email, password };
 
   const handleLogin = () => {
     if (!email || !password) {
       Alert.alert('모든 필드를 입력해주세요.');
       return;
     }
+    console.log(data);
 
-    loginMutate(undefined, {
-      onSuccess: () => {
-        console.log('로그인 성공');
-        Alert.alert('로그인 성공!');
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'test' as never }],
-        });
-      },
-      onError: () => {
-        Alert.alert('로그인 실패', '이메일 또는 비밀번호를 확인해주세요.');
-      },
-    });
+    loginMutate(data);
   };
 
   return (
@@ -51,8 +41,8 @@ const LoginPage = () => {
       </CustomText>
       <Container>
         <Column gap={8}>
-          <EmailInput value={email} onChange={setEmail} />
-          <PasswordInput value={password} onChange={setPassword} />
+          <EmailInput value={email} onChangeText={setEmail} />
+          <PasswordInput value={password} onChangeText={setPassword} />
         </Column>
       </Container>
       <LoginButton onPress={handleLogin} />

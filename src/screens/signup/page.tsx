@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
-import { Alert } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
 import { IconWhiteArrow } from '@sinabro/icon';
@@ -31,7 +31,6 @@ const SignInPage = () => {
   const { requestVerificationCodeMutate } = useRequestVerificationCodeMutation(email);
   const { verificationMutate } = useVerificationMutation(setIsEmailVerified);
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   const isValidEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -47,8 +46,6 @@ const SignInPage = () => {
       Alert.alert('올바른 이메일 형식을 입력해주세요.');
       return;
     }
-
-    console.log('Requesting verification code for email:', email);
 
     requestVerificationCodeMutate(undefined);
   };
@@ -84,52 +81,67 @@ const SignInPage = () => {
   };
 
   return (
-    <StyledSignInPage>
-      <StyledHeader>
-        <IconContainer onPress={() => navigation.goBack()}>
-          <IconWhiteArrow width={23} height={17} />
-        </IconContainer>
-        <TitleContainer>
-          <CustomText fontType="H3" color={color.white100}>
-            회원가입
-          </CustomText>
-        </TitleContainer>
-      </StyledHeader>
-      <NameInput value={name} onChangeText={setName} />
-      <LimitInput
-        placeholder="이메일을 입력해주세요"
-        label="이메일"
-        buttonText="인증 요청"
-        value={email}
-        onChangeText={setEmail}
-        onPress={handleEmailVerificationRequest}
-      />
-      <LimitInput
-        placeholder="인증번호 확인"
-        label="인증 확인"
-        buttonText="확인"
-        value={verificationCode}
-        onChangeText={setVerificationCode}
-        onPress={handleVerifyCode}
-      />
-      <SignUpPasswordInput label="비밀번호" value={password} onChangeText={setPassword} />
-      <SignUpPasswordInput
-        label="비밀번호 재확인"
-        value={passwordConfirmation}
-        onChangeText={setPasswordConfirmation}
-      />
-      <SignUpButton onPress={handleSignUp}>회원가입</SignUpButton>
-    </StyledSignInPage>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <Container>
+        <StyledHeader>
+          <IconContainer onPress={() => navigation.goBack()}>
+            <IconWhiteArrow width={23} height={17} />
+          </IconContainer>
+          <TitleContainer>
+            <CustomText fontType="H3" color={color.white100}>
+              회원가입
+            </CustomText>
+          </TitleContainer>
+        </StyledHeader>
+        <StyledScrollView>
+          <NameInput value={name} onChangeText={setName} />
+          <LimitInput
+            placeholder="이메일을 입력해주세요"
+            label="이메일"
+            buttonText="인증 요청"
+            value={email}
+            onChangeText={setEmail}
+            onPress={handleEmailVerificationRequest}
+          />
+          <LimitInput
+            placeholder="인증번호 확인"
+            label="인증 확인"
+            buttonText="확인"
+            value={verificationCode}
+            onChangeText={setVerificationCode}
+            onPress={handleVerifyCode}
+          />
+          <SignUpPasswordInput
+            label="비밀번호"
+            value={password}
+            onChangeText={setPassword}
+          />
+          <SignUpPasswordInput
+            label="비밀번호 재확인"
+            value={passwordConfirmation}
+            onChangeText={setPasswordConfirmation}
+          />
+          <SignUpButton onPress={handleSignUp}>회원가입</SignUpButton>
+        </StyledScrollView>
+      </Container>
+    </KeyboardAvoidingView>
   );
 };
 
 export default SignInPage;
 
-const StyledSignInPage = styled.View`
-  ${flex({ alignItems: 'center' })}
+const Container = styled.View`
+  flex: 1;
   background-color: ${color.gray900};
-  width: 100%;
-  height: 100%;
+`;
+
+const StyledScrollView = styled.ScrollView.attrs({
+  contentContainerStyle: flex({ alignItems: 'center' }),
+})`
+  padding: ${calculateHeight(20)}px ${calculateWidth(16)}px;
 `;
 
 const StyledHeader = styled.View`

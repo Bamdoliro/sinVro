@@ -15,12 +15,12 @@ import { Alert } from 'react-native';
 import { Dispatch, SetStateAction } from 'react';
 import { TOKEN } from 'constants/common/contant';
 
-export const useLoginMutation = ({ email, password }: PostAuthReq) => {
+export const useLoginMutation = () => {
   const navigation = useNavigation();
   const { handleError } = useApiError();
 
   const { mutate: loginMutate, ...restMutation } = useMutation({
-    mutationFn: () => postLogin({ email, password }),
+    mutationFn: ({ email, password }: PostAuthReq) => postLogin({ email, password }),
     onSuccess: (res: AxiosResponse) => {
       const { accessToken, refreshToken } = res.data;
       Storage.setItem(TOKEN.ACCESS, accessToken);
@@ -41,10 +41,13 @@ export const useJoinUserMutation = () => {
   const { handleError } = useApiError();
 
   const { mutate: joinUserMutate, ...restMutation } = useMutation({
-    mutationFn: (data: PostJoinAuthReq) => postSignUp(data), // 인자 받도록 수정
+    mutationFn: (data: PostJoinAuthReq) => postSignUp(data),
     onSuccess: () => {
       Alert.alert('회원가입 성공!');
-      navigation.navigate('login' as never);
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' as never }],
+      });
     },
     onError: handleError,
   });
@@ -57,6 +60,7 @@ export const useRequestVerificationCodeMutation = (email: string) => {
 
   const { mutate: requestVerificationCodeMutate, ...restMutation } = useMutation({
     mutationFn: () => postVerifyCode(email),
+    onSuccess: () => Alert.alert('인증 코드가 발송되었습니다.'),
     onError: handleError,
   });
 

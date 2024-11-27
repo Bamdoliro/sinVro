@@ -6,10 +6,10 @@ import React from 'react';
 
 interface Props {
   value: string;
-  onChange: (text: string) => void;
+  onChangeText: (text: string) => void;
 }
 
-const EmailInput = ({ value, onChange }: Props) => {
+const EmailInput = ({ value, onChangeText }: Props) => {
   return (
     <StyledEmailInput>
       <CustomText fontType="B5" color={color.white100}>
@@ -17,7 +17,7 @@ const EmailInput = ({ value, onChange }: Props) => {
       </CustomText>
       <StyledInput
         value={value}
-        onChange={onChange}
+        onChangeText={onChangeText}
         placeholder="이메일을 입력하세요"
         placeholderTextColor={color.gray300}
       />
