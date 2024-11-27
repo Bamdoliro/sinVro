@@ -57,7 +57,6 @@ const CategoryList = ({ freiendship, type }: CharacterProps) => {
         <Category>친밀도 {freiendship}</Category>
         <Category>{relationship}</Category>
         <Category>받은 편지 {letterCount}개</Category>
-        <Category>만난 후 행복했던 날 3일</Category>
       </StyledRow>
     </StyledScrollView>
   );
