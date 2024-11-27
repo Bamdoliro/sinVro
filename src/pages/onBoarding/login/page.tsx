@@ -9,10 +9,13 @@ import {
   PasswordInput,
   SignInButton,
 } from 'components/onBoarding';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigation = useNavigation();
 
   return (
     <StyledLoginPage>
@@ -29,7 +32,11 @@ const LoginPage = () => {
         </Column>
       </Container>
       <LoginButton onPress={() => {}} />
-      <SignInButton onPress={() => {}} />
+      <SignInButton
+        onPress={() => {
+          navigation.navigate('signup' as never);
+        }}
+      />
     </StyledLoginPage>
   );
 };
