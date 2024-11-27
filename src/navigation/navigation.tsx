@@ -2,7 +2,6 @@ import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import IntroducePage from '../screens/Introduce/page';
-import LoginPage from '../screens/Login/page';
 import SelectCharacterPage from '../screens/SelectCharacter/page';
 import StoryPage from '../screens/Story/page';
 import SubmitInquiryPage from '../screens/Inquiry/SubmitInquiry';
@@ -22,6 +21,8 @@ import CheckLetterPage from '../screens/CheckLetter/page';
 import TestPage from '../screens/test/page';
 import EditDiaryPage from '../screens/editDiary/page';
 import { RootStackParamList } from './navigationType';
+import LoginPage from 'screens/login/page';
+import SignInPage from 'screens/signup/page';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -58,6 +59,11 @@ const Navigation = ({ initialRoute }: { initialRoute: keyof RootStackParamList }
         <Stack.Screen
           name="Inquiry"
           component={InquiryPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="signup"
+          component={SignInPage}
           options={{ headerShown: false }}
         />
         <Stack.Screen

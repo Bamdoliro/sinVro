@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BASE_URL } from '@env';
+
+const BASE_URL = 'https://sinabro.maru-base.com';
 
 export const sinabro = axios.create({
   baseURL: BASE_URL,

@@ -19,4 +19,5 @@ export type RootStackParamList = {
   CheckLetter: { letterId: number };
   Test: undefined;
   EditDiary: { diaryId: number };
+  signup: undefined;
 };

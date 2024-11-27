@@ -1,19 +1,29 @@
 import { sinabro } from 'apis/instance/instance';
 import refreshAuthorization from 'apis/token/refresh';
-import authorization from 'apis/token/token';
+import { PatchVerificationReq, PostAuthReq, PostJoinAuthReq } from 'types/auth/remote';
 
-export const postAppAuthCode = async (token: string | undefined | null) => {
-  const authConfig = await authorization();
-
-  const { data } = await sinabro.post('/auth/google/app', { token }, authConfig);
+export const postVerifyCode = async (email: string) => {
+  const { data } = await sinabro.post('/users/verify', email);
 
   return data;
 };
 
-export const deleteLogout = async () => {
-  const authConfig = await authorization();
+export const patchVerify = async ({ email, code }: PatchVerificationReq) => {
+  const { data } = await sinabro.patch('/users/verify', { email, code });
 
-  await sinabro.delete('/auth', authConfig);
+  return data;
+};
+
+export const postSignUp = async ({ email, name, password }: PostJoinAuthReq) => {
+  const { data } = await sinabro.post('/users', { email, name, password });
+
+  return data;
+};
+
+export const postLogin = async ({ email, password }: PostAuthReq) => {
+  const { data } = await sinabro.post('/auth', { email, password });
+
+  return data;
 };
 
 export const postRefreshToken = async () => {
