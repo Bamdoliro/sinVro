@@ -2,10 +2,9 @@ import React from 'react';
 import { color } from '@sinabro/design-token';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
-import { flex } from '@sinabro/util';
-import { IconNote } from '@sinabro/icon';
-import { Calender, Column } from '@sinabro/ui';
-import { Header } from 'components/common';
+import { calculateHeight, flex } from '@sinabro/util';
+import { IconNote, IconWhiteArrow } from '@sinabro/icon';
+import { Calender, Column, CustomText } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
 import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryListQuery } from 'services/diary/quries';
@@ -37,7 +36,23 @@ const DiaryPage = () => {
           : [color.sinabroPink, color.sinabroCream]
       }
     >
-      <Header title="하루일기" />
+      <StyledHeader>
+        <IconContainer
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Main' as never }],
+            });
+          }}
+        >
+          <IconWhiteArrow width={23} height={17} />
+        </IconContainer>
+        <TitleContainer>
+          <CustomText fontType="H3" color={color.white100}>
+            하루 일기
+          </CustomText>
+        </TitleContainer>
+      </StyledHeader>
       <ContentContainer>
         <Column alignItems="center" gap={22}>
           <IconContainer onPress={() => navigation.navigate('WriteDiary')}>
@@ -80,4 +95,18 @@ const ContentContainer = styled.View`
 const IconContainer = styled.TouchableOpacity`
   margin-left: 134px;
   margin-right: 101px;
+`;
+
+const StyledHeader = styled.View`
+  position: absolute;
+  top: ${calculateHeight(67)}px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+`;
+
+const TitleContainer = styled.View`
+  ${flex({ alignItems: 'center', justifyContent: 'center' })}
+  flex: 1;
 `;

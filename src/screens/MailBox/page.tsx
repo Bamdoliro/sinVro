@@ -20,12 +20,10 @@ const MailBoxPage = () => {
   const { data: letterData } = useLetterListQuery();
   const navigation = useNavigation<DiaryScreenNavigationProp>();
 
-  console.log('Letter Data:', letterData);
-
   const datesWithLetters = letterData
     ? letterData
         .map((letter) => dayjs(letter.createdAt).format('YYYY-MM-DD'))
-        .filter((date) => dayjs(date).isValid()) // 유효한 날짜만 필터링
+        .filter((date) => dayjs(date).isValid())
     : [];
 
   const handleDiaryClick = (id: number) => {
@@ -44,11 +42,7 @@ const MailBoxPage = () => {
       const id = selectedDiary.id;
       if (id !== null) {
         handleDiaryClick(id);
-      } else {
-        console.error('Diary ID is null for date:', date);
       }
-    } else {
-      console.error('No diary found for date:', date);
     }
   };
 
@@ -68,7 +62,6 @@ const MailBoxPage = () => {
             datesWithLetter={datesWithLetters}
             onPressLetter={(date: string | number | null) => {
               if (!date) {
-                console.error('Invalid date:', date);
                 return;
               }
 
@@ -80,7 +73,6 @@ const MailBoxPage = () => {
                   : null;
 
               if (!formattedDate || !dayjs(formattedDate).isValid()) {
-                console.error('Invalid formatted date:', formattedDate);
                 return;
               }
 
