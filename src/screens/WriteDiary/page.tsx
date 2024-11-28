@@ -7,7 +7,7 @@ import { calculateHeight, flex } from '@sinabro/util';
 import dayjs from 'dayjs';
 import { useNavigation } from '@react-navigation/native';
 import { useDiaryStore } from 'stores/diary/diary';
-import { Alert } from 'react-native';
+import { Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 const WriteDiaryPage = () => {
   const navigation = useNavigation();
@@ -29,18 +29,20 @@ const WriteDiaryPage = () => {
   };
 
   return (
-    <StyledWriteDiaryPage>
-      <Header />
-      <ContentContainer>
-        <Column gap={calculateHeight(27)} alignItems="center">
-          <CustomText fontType="H3" color={color.gray900}>
-            {formatDate}
-          </CustomText>
-          <DiaryInput textValue={textValue} setTextValue={setTextValue} />
-        </Column>
-        <CompleteButton onPress={handleComplete}>작성 완료</CompleteButton>
-      </ContentContainer>
-    </StyledWriteDiaryPage>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <StyledWriteDiaryPage>
+        <Header />
+        <ContentContainer>
+          <Column gap={calculateHeight(27)} alignItems="center">
+            <CustomText fontType="H3" color={color.gray900}>
+              {formatDate}
+            </CustomText>
+            <DiaryInput textValue={textValue} setTextValue={setTextValue} />
+          </Column>
+          <CompleteButton onPress={handleComplete}>작성 완료</CompleteButton>
+        </ContentContainer>
+      </StyledWriteDiaryPage>
+    </TouchableWithoutFeedback>
   );
 };
 

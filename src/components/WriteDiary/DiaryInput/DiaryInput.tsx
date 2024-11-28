@@ -19,6 +19,8 @@ const DiaryInput = ({ textValue, setTextValue }: InputProps) => {
         scrollEnabled={true}
         onChangeText={setTextValue}
         textAlign="left"
+        textAlignVertical="top"
+        style={{ paddingTop: 16, paddingHorizontal: 16 }}
       />
     </StyledInput>
   );
@@ -33,7 +35,7 @@ const StyledInput = styled.View`
   background-color: ${color.paleYellow};
 `;
 
-const StyledTextInput = styled.TextInput<{ textValue: string }>`
+const StyledTextInput = styled.TextInput<{ textValue?: string }>`
   width: 100%;
   height: 100%;
   color: ${color.gray800};
