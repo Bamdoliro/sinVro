@@ -11,17 +11,19 @@ interface InputProps {
 const DiaryInput = ({ textValue, setTextValue }: InputProps) => {
   return (
     <StyledInput>
-      <StyledTextInput
-        value={textValue}
-        placeholder="텍스트를 입력해주세요."
-        placeholderTextColor={color.gray300}
-        multiline
-        scrollEnabled={true}
-        onChangeText={setTextValue}
-        textAlign="left"
-        textAlignVertical="top"
-        style={{ paddingTop: 16, paddingHorizontal: 16 }}
-      />
+      <StyledScrollView>
+        <StyledTextInput
+          value={textValue}
+          placeholder="텍스트를 입력해주세요."
+          placeholderTextColor={color.gray300}
+          multiline
+          scrollEnabled={true}
+          onChangeText={setTextValue}
+          textAlign="left"
+          textAlignVertical="top"
+          style={{ paddingTop: 16, paddingHorizontal: 16 }}
+        />
+      </StyledScrollView>
     </StyledInput>
   );
 };
@@ -35,9 +37,15 @@ const StyledInput = styled.View`
   background-color: ${color.paleYellow};
 `;
 
-const StyledTextInput = styled.TextInput<{ textValue?: string }>`
+const StyledScrollView = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})`
   width: 100%;
   height: 100%;
+`;
+
+const StyledTextInput = styled.TextInput<{ textValue?: string }>`
+  flex: 1;
   color: ${color.gray800};
   ${font.B5Letter}
 `;
