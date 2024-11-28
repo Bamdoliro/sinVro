@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784498296988",
+    "project_id": "sinabro-441415",
+    "storage_bucket": "sinabro-441415.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784498296988:android:ac5d7513e8d459aadc0559",
+        "android_client_info": {
+          "package_name": "com.sinabro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784498296988-p1f2i38jgt53sdvtkhg0tntojepu43cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb4y1590097gelYuhE-hhBb0NIlwMGiPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784498296988-p1f2i38jgt53sdvtkhg0tntojepu43cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

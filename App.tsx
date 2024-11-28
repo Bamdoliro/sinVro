@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from 'navigation/navigation';
 import SplashScreen from 'react-native-splash-screen';
-import { Animated } from 'react-native';
 import Splash from 'screens/splash/page';
 import { Storage } from 'apis/storage/storage';
 import { TOKEN } from 'constants/common/contant';
@@ -10,10 +10,12 @@ import { useCharacterQuery } from 'services/character/quries';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRefreshTokenMutation } from 'services/auth/mutations';
 import { RootStackParamList } from 'navigation/navigationType';
+import messaging from '@react-native-firebase/messaging';
+import notifee from '@notifee/react-native';
 
 const queryClient = new QueryClient();
 
-function AppContent() {
+const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [initialRoute, setInitialRoute] = useState<keyof RootStackParamList>('Introduce');
   const fadeAnim = useRef(new Animated.Value(1)).current;
@@ -22,6 +24,8 @@ function AppContent() {
 
   useEffect(() => {
     const initializeApp = async () => {
+      await setupFCM();
+
       const accessToken = await Storage.getItem(TOKEN.ACCESS);
 
       if (accessToken) {
@@ -69,9 +73,31 @@ function AppContent() {
       )}
     </>
   );
-}
+};
 
-function App() {
+const setupFCM = async () => {
+  const authStatus = await messaging().requestPermission();
+  const isAuthorized =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  if (isAuthorized) {
+    try {
+      const fcmToken = await messaging().getToken();
+
+      await Storage.setItem(TOKEN.FCM, fcmToken);
+    } catch (error) {}
+  }
+
+  messaging().onMessage(async (remoteMessage: any) => {
+    await notifee.displayNotification({
+      title: remoteMessage.notification?.title || '알림',
+      body: remoteMessage.notification?.body || '새로운 알림이 있습니다.',
+    });
+  });
+};
+
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
@@ -79,6 +105,6 @@ function App() {
       </NavigationContainer>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;
