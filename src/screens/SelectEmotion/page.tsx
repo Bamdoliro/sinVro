@@ -19,6 +19,7 @@ const SelectEmotionPage = () => {
   const [selectedDetails, setSelectedDetails] = useState<string[]>([]);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLetterLoading, setIsLetterLoading] = useState(false);
   const { emotionList, content, writtenAt } = useDiaryStore();
   const { postLetterMutate } = usePostLetterMutate();
 
@@ -34,7 +35,7 @@ const SelectEmotionPage = () => {
         {
           onSettled: () => {
             setIsLoading(false);
-            postLetterMutate();
+            handlePostLetter();
           },
           onError: () => {
             setIsLoading(false);
@@ -45,6 +46,18 @@ const SelectEmotionPage = () => {
     }
   };
 
+  const handlePostLetter = () => {
+    setIsLetterLoading(true);
+    postLetterMutate(undefined, {
+      onSettled: () => {
+        setIsLetterLoading(false);
+      },
+      onError: () => {
+        setIsLetterLoading(false);
+      },
+    });
+  };
+
   const handleDetailSelect = (detail: string) => {
     setSelectedDetails((prev) =>
       prev.includes(detail) ? prev.filter((item) => item !== detail) : [...prev, detail]
@@ -53,7 +66,7 @@ const SelectEmotionPage = () => {
 
   return (
     <>
-      {isLoading && <Progress />}
+      {(isLoading || isLetterLoading) && <Progress />}
       <StyledSelectEmotionPage
         colors={
           data?.data.type === 'HEON'
