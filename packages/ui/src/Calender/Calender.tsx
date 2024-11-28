@@ -106,7 +106,11 @@ const Calender: React.FC<CalenderProps> = ({
                     {day ? (
                       <DayWrapper>
                         {hasLetter(day) && (
-                          <IconLetterWrapper onPress={onPressLetter}>
+                          <IconLetterWrapper
+                            onPress={() =>
+                              onPressLetter?.(day?.format('YYYY-MM-DD'))
+                            }
+                          >
                             <IconLetter width={39} height={23} />
                           </IconLetterWrapper>
                         )}
