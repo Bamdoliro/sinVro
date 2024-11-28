@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { color } from '@sinabro/design-token';
@@ -16,27 +16,10 @@ import { Column, Row } from '@sinabro/ui';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import { useCharacterQuery } from 'services/character/quries';
-import { usePostLetterMutate } from 'services/letter/mutations';
-import dayjs from 'dayjs';
 
 const MainPage = () => {
   const { data } = useCharacterQuery();
-  const { postLetterMutate } = usePostLetterMutate();
   const navigation = useNavigation();
-  const hasPostedLetter = useRef(false);
-
-  useEffect(() => {
-    if (!hasPostedLetter.current && data?.data.createdAt) {
-      const createdDate = dayjs(data.data.createdAt);
-      const currentDate = dayjs();
-      const differenceInDays = currentDate.diff(createdDate, 'day');
-
-      if (differenceInDays % 7 === 0) {
-        postLetterMutate();
-        hasPostedLetter.current = true;
-      }
-    }
-  }, [data, postLetterMutate]);
 
   return (
     <StyledMainPage

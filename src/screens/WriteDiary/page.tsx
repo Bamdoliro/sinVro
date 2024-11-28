@@ -3,7 +3,7 @@ import { color } from '@sinabro/design-token';
 import styled from 'styled-components/native';
 import { DiaryInput, Header } from 'components/WriteDiary';
 import { Column, CompleteButton, CustomText } from '@sinabro/ui';
-import { flex } from '@sinabro/util';
+import { calculateHeight, flex } from '@sinabro/util';
 import dayjs from 'dayjs';
 import { useNavigation } from '@react-navigation/native';
 import { useDiaryStore } from 'stores/diary/diary';
@@ -32,7 +32,7 @@ const WriteDiaryPage = () => {
     <StyledWriteDiaryPage>
       <Header />
       <ContentContainer>
-        <Column gap={27} alignItems="center">
+        <Column gap={calculateHeight(27)} alignItems="center">
           <CustomText fontType="H3" color={color.gray900}>
             {formatDate}
           </CustomText>
@@ -57,6 +57,6 @@ const ContentContainer = styled.View`
   ${flex({ alignItems: 'center' })}
   width: 100%;
   height: 100%;
-  top: 97px;
+  top: ${calculateHeight(97)}px;
   bottom: 34px;
 `;

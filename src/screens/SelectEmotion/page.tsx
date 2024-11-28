@@ -11,6 +11,7 @@ import { useDiaryStore } from 'stores/diary/diary';
 import { usePostDiaryMutate } from 'services/diary/mutations';
 import Progress from 'components/WriteDiary/progress/progress';
 import { Alert } from 'react-native';
+import { usePostLetterMutate } from 'services/letter/mutations';
 
 const SelectEmotionPage = () => {
   const { postDiaryMutate } = usePostDiaryMutate();
@@ -19,6 +20,7 @@ const SelectEmotionPage = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { emotionList, content, writtenAt } = useDiaryStore();
+  const { postLetterMutate } = usePostLetterMutate();
 
   useEffect(() => {
     setIsDisabled(emotionList.length === 0 || emotionList.length > 3);
@@ -32,6 +34,7 @@ const SelectEmotionPage = () => {
         {
           onSettled: () => {
             setIsLoading(false);
+            postLetterMutate();
           },
           onError: () => {
             setIsLoading(false);
