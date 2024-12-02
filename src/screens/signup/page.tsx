@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
-import { Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native';
 import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
 import { IconWhiteArrow } from '@sinabro/icon';
+import CheckBox from 'react-native-check-box';
 import {
   LimitInput,
   NameInput,
@@ -26,6 +27,7 @@ const SignInPage = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isTermsChecked, setIsTermsChecked] = useState(false);
 
   const { joinUserMutate } = useJoinUserMutation();
   const { requestVerificationCodeMutate } = useRequestVerificationCodeMutation(email);
@@ -72,6 +74,11 @@ const SignInPage = () => {
 
     if (!isEmailVerified) {
       Alert.alert('이메일 인증을 완료해주세요.');
+      return;
+    }
+
+    if (!isTermsChecked) {
+      Alert.alert('약관에 동의해주세요.');
       return;
     }
 
@@ -124,6 +131,26 @@ const SignInPage = () => {
             value={passwordConfirmation}
             onChangeText={setPasswordConfirmation}
           />
+          <CheckboxContainer>
+            <CheckBox
+              isChecked={isTermsChecked}
+              onClick={() => setIsTermsChecked(!isTermsChecked)}
+              checkBoxColor={isTermsChecked ? color.primary : color.white100}
+            />
+            <CustomText
+              fontType="B5"
+              color={color.white100}
+              style={{ marginLeft: 8, marginRight: 8 }}
+            >
+              개인정보 수집 이용동의
+            </CustomText>
+            <TouchableOpacity onPress={() => navigation.navigate('privacy' as never)}>
+              <CustomText fontType="B5" color={color.primary}>
+                [필수]
+              </CustomText>
+            </TouchableOpacity>
+          </CheckboxContainer>
+
           <SignUpButton onPress={handleSignUp}>회원가입</SignUpButton>
         </StyledScrollView>
       </Container>
@@ -163,4 +190,11 @@ const IconContainer = styled.TouchableOpacity`
 const TitleContainer = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
   flex: 1;
+`;
+
+const CheckboxContainer = styled.View`
+  width: 100%;
+  margin: ${calculateHeight(20)}px 0;
+  flex-direction: row;
+  align-items: center;
 `;
