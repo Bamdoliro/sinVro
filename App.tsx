@@ -17,15 +17,28 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
-  const [initialRoute] = useState<keyof RootStackParamList>('Introduce');
+  const [initialRoute, setInitialRoute] = useState<keyof RootStackParamList>('Introduce');
   const fadeAnim = useRef(new Animated.Value(1)).current;
-  const { data } = useCharacterQuery();
+  const { data: character, isFetched: isCharacterFetched } = useCharacterQuery();
   const { refreshToeknMutate } = useRefreshTokenMutation();
 
   useEffect(() => {
     const initializeApp = async () => {
+      const token = await Storage.getItem(TOKEN.ACCESS);
+
+      if (token) {
+        if (isCharacterFetched && character?.data?.type) {
+          setInitialRoute('Main');
+        } else {
+          setInitialRoute('Test');
+        }
+      } else {
+        setInitialRoute('Introduce');
+      }
+
       refreshToeknMutate();
       await setupFCM();
+
       const timer = setTimeout(() => {
         Animated.timing(fadeAnim, {
           toValue: 0,
@@ -41,7 +54,7 @@ const AppContent = () => {
     };
 
     initializeApp();
-  }, [fadeAnim, data, refreshToeknMutate]);
+  }, [fadeAnim, refreshToeknMutate, isCharacterFetched, character?.data?.type]);
 
   return (
     <>
