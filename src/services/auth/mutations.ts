@@ -95,7 +95,6 @@ export const useRefreshTokenMutation = () => {
       Storage.setItem(TOKEN.ACCESS, accessToken);
     },
     onError: () => {
-      Alert.alert('토큰 만료', '다시 로그인해주세요.');
       Storage.removeItem(TOKEN.ACCESS);
       Storage.removeItem(TOKEN.REFRESH);
       navigation.reset({
