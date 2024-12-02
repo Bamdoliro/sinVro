@@ -20,4 +20,5 @@ export type RootStackParamList = {
   Test: undefined;
   EditDiary: { diaryId: number };
   signup: undefined;
+  privacy: undefined;
 };

@@ -21,19 +21,22 @@ import CheckLetterPage from '../screens/CheckLetter/page';
 import TestPage from '../screens/test/page';
 import EditDiaryPage from '../screens/editDiary/page';
 import { RootStackParamList } from './navigationType';
-import LoginPage from 'screens/login/page';
 import SignInPage from 'screens/signup/page';
+import LoginPage from 'screens/Login/page';
+import PrivcyPage from 'screens/privacy/page';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const Navigation = ({ initialRoute }: { initialRoute: keyof RootStackParamList }) => {
+  const defaultInitialRoute: keyof RootStackParamList = 'Introduce';
+
   return (
     <GestureHandlerRootView>
       <Stack.Navigator
         screenOptions={{
           ...TransitionPresets.SlideFromRightIOS,
         }}
-        initialRouteName={initialRoute}
+        initialRouteName={initialRoute || defaultInitialRoute}
       >
         <Stack.Screen
           name="Introduce"
@@ -97,6 +100,11 @@ const Navigation = ({ initialRoute }: { initialRoute: keyof RootStackParamList }
         <Stack.Screen
           name="MailBox"
           component={MailBoxPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="privacy"
+          component={PrivcyPage}
           options={{ headerShown: false }}
         />
         <Stack.Screen
