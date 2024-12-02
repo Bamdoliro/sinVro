@@ -53,6 +53,9 @@ dependencies:
   react-native:
     specifier: 0.74.4
     version: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+  react-native-check-box:
+    specifier: ^2.1.7
+    version: 2.1.7(react-native@0.74.4)
   react-native-dotenv:
     specifier: ^3.4.11
     version: 3.4.11(@babel/runtime@7.25.0)
@@ -7346,6 +7349,15 @@ packages:
 
   /react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  /react-native-check-box@2.1.7(react-native@0.74.4):
+    resolution: {integrity: sha512-dPVOoz4jKs2je2HSHp7+XJXNyZFq8Kij7IHutigrQKzB550Dko6ZAQu/1mG1FzdUMFxxkZ2nX59KmbR0Co0T8Q==}
+    peerDependencies:
+      react-native: '>=0.20.0'
+    dependencies:
+      prop-types: 15.8.1
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(@types/react@18.3.3)(react@18.2.0)
+    dev: false
 
   /react-native-dotenv@3.4.11(@babel/runtime@7.25.0):
     resolution: {integrity: sha512-6vnIE+WHABSeHCaYP6l3O1BOEhWxKH6nHAdV7n/wKn/sciZ64zPPp2NUdEUf1m7g4uuzlLbjgr+6uDt89q2DOg==}
