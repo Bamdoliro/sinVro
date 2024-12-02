@@ -2,25 +2,21 @@ import { color } from '@sinabro/design-token';
 import styled from 'styled-components/native';
 import React, { ReactNode } from 'react';
 import { CustomText } from '@sinabro/ui';
-import { ActivityIndicator } from 'react-native';
 import { calculateHeight, calculateWidth, flex } from '@sinabro/util';
 
 interface Props {
   onPress: () => void;
   isLoading?: boolean;
   children: ReactNode;
+  disabled?: boolean;
 }
 
 const LoginButton = ({ onPress, isLoading = false, children }: Props) => {
   return (
-    <StyledLoginButton onPress={!isLoading ? onPress : undefined} disabled={isLoading}>
-      {isLoading ? (
-        <ActivityIndicator color={color.white100} />
-      ) : (
-        <CustomText fontType="B4" color={color.white100}>
-          {children}
-        </CustomText>
-      )}
+    <StyledLoginButton onPress={!isLoading ? onPress : undefined}>
+      <CustomText fontType="B4" color={color.white100}>
+        {children}
+      </CustomText>
     </StyledLoginButton>
   );
 };
