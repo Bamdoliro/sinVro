@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useMutation } from '@tanstack/react-query';
 import { PatchVerificationReq, PostAuthReq, PostJoinAuthReq } from 'types/auth/remote';
 import {
+  deleteLogoutUser,
   patchVerify,
   postLogin,
   postRefreshToken,
@@ -105,4 +106,24 @@ export const useRefreshTokenMutation = () => {
   });
 
   return { refreshToeknMutate, ...restMutation };
+};
+
+export const useLogoutUserMutation = () => {
+  const navigation = useNavigation();
+
+  const { mutate: logoutUserMutate, ...restMutation } = useMutation({
+    mutationFn: deleteLogoutUser,
+    onSuccess: () => {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' as never }],
+      });
+      Storage.clear();
+    },
+    onError: () => {
+      navigation.navigate('Main' as never);
+    },
+  });
+
+  return { logoutUserMutate, ...restMutation };
 };

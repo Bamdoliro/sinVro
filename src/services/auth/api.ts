@@ -33,3 +33,9 @@ export const postRefreshToken = async () => {
 
   return data;
 };
+
+export const deleteLogoutUser = async () => {
+  const authConfig = await refreshAuthorization();
+
+  await sinabro.delete('/auth', authConfig);
+};
