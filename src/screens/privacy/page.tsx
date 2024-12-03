@@ -17,7 +17,7 @@ const PrivcyPage = () => {
         </IconContainer>
         <TitleContainer>
           <CustomText fontType="H3" color={color.white100}>
-            회원가입
+            약관
           </CustomText>
         </TitleContainer>
       </StyledHeader>
