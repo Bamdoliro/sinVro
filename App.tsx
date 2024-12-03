@@ -17,25 +17,15 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const [showSplash, setShowSplash] = useState(true);
-  const [initialRoute, setInitialRoute] = useState<keyof RootStackParamList | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [initialRoute, setInitialRoute] = useState<keyof RootStackParamList>('Introduce');
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const { data: character, isFetched: isCharacterFetched } = useCharacterQuery();
   const { refreshToeknMutate } = useRefreshTokenMutation();
 
   useEffect(() => {
     const initializeApp = async () => {
-      const token = await Storage.getItem(TOKEN.ACCESS);
       refreshToeknMutate();
-
-      if (token) {
-        if (isCharacterFetched && character?.data?.type) {
-          setInitialRoute('Main');
-        } else {
-          setInitialRoute('Test');
-        }
-      } else {
-        setInitialRoute('Introduce');
-      }
 
       await setupFCM();
 
@@ -62,9 +52,9 @@ const AppContent = () => {
         <Animated.View style={{ opacity: fadeAnim }}>
           <Splash />
         </Animated.View>
-      ) : initialRoute ? (
+      ) : (
         <Navigation initialRoute={initialRoute} />
-      ) : null}
+      )}
     </>
   );
 };
