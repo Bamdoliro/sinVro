@@ -27,13 +27,10 @@ const MailBoxPage = () => {
     : [];
 
   const handleDiaryClick = (id: number) => {
-    console.log(`Navigating to letter with ID: ${id}`);
     navigation.navigate('CheckLetter', { letterId: id });
   };
 
   const handleDateClick = (date: string) => {
-    console.log('Clicked date:', date);
-
     const selectedDiary = letterData?.find(
       (diary) => dayjs(diary.createdAt).format('YYYY-MM-DD') === date
     );
