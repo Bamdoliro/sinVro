@@ -137,18 +137,18 @@ const SignInPage = () => {
               onClick={() => setIsTermsChecked(!isTermsChecked)}
               checkBoxColor={isTermsChecked ? color.primary : color.white100}
             />
-            <CustomText
-              fontType="B5"
-              color={color.white100}
-              style={{ marginLeft: 8, marginRight: 8 }}
-            >
-              개인정보 수집 이용동의
-            </CustomText>
             <TouchableOpacity onPress={() => navigation.navigate('privacy' as never)}>
-              <CustomText fontType="B5" color={color.primary}>
-                [필수]
+              <CustomText
+                fontType="B5"
+                color={color.white100}
+                style={{ marginLeft: 8, marginRight: 8 }}
+              >
+                개인정보 수집 이용동의
               </CustomText>
             </TouchableOpacity>
+            <CustomText fontType="B5" color={color.primary}>
+              [필수]
+            </CustomText>
           </CheckboxContainer>
 
           <SignUpButton onPress={handleSignUp}>회원가입</SignUpButton>
