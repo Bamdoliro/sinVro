@@ -99,7 +99,7 @@ export const useRefreshTokenMutation = () => {
       Storage.removeItem(TOKEN.REFRESH);
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Login' as never }],
+        routes: [{ name: 'Introduce' as never }],
       });
     },
   });
