@@ -19,6 +19,7 @@ interface CalenderProps {
   datesWithDiary?: string[];
   onPressLetter?: (date: string) => void;
   onPressDiary?: (date: string) => void;
+  showNotDiary: boolean;
 }
 
 const Calender: React.FC<CalenderProps> = ({
@@ -26,6 +27,7 @@ const Calender: React.FC<CalenderProps> = ({
   datesWithDiary,
   onPressDiary,
   onPressLetter,
+  showNotDiary = true,
 }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
 
@@ -107,20 +109,33 @@ const Calender: React.FC<CalenderProps> = ({
                       <DayWrapper>
                         {hasLetter(day) && (
                           <IconLetterWrapper
-                            onPress={() =>
-                              onPressLetter?.(day?.format('YYYY-MM-DD'))
-                            }
+                            onPress={() => onPressLetter?.(day?.format('YYYY-MM-DD'))}
                           >
                             <IconLetter width={39} height={23} />
                           </IconLetterWrapper>
                         )}
-                        {hasDiary(day) && (
+                        {hasDiary(day) ? (
                           <IconLetterWrapper
                             onPress={() => onPressDiary?.(day.format('YYYY-MM-DD'))}
                           >
                             <IconBook width={34} height={26} />
                           </IconLetterWrapper>
-                        )}
+                        ) : showNotDiary ? (
+                          <IconLetterWrapper
+                            onPress={
+                              () =>
+                                hasDiary(day)
+                                  ? onPressDiary?.(day.format('YYYY-MM-DD'))
+                                  : onPressDiary?.(day.format('YYYY-MM-DD'))
+                            }
+                          >
+                            {hasDiary(day) ? (
+                              <IconBook width={34} height={26} />
+                            ) : showNotDiary ? (
+                              <NotDiary />
+                            ) : null}
+                          </IconLetterWrapper>
+                        ) : null}
                         <CustomText fontType="B5" color={color.white100}>
                           {day.date()}
                         </CustomText>
@@ -177,4 +192,13 @@ const IconLetterWrapper = styled.TouchableOpacity`
   position: absolute;
   top: -20px;
   left: 5px;
+`;
+
+const NotDiary = styled.View`
+  position: absolute;
+  left: 5px;
+  width: 34px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: ${color.glassDark};
 `;

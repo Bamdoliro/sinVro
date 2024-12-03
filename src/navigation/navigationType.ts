@@ -13,7 +13,7 @@ export type RootStackParamList = {
   Main: undefined;
   Diary: undefined;
   MailBox: undefined;
-  WriteDiary: undefined;
+  WriteDiary: { selectedDate?: string };
   SelectEmotion: undefined;
   CheckDiary: { diaryId: number };
   CheckLetter: { letterId: number };

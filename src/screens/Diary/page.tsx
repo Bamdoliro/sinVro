@@ -10,6 +10,7 @@ import { useCharacterQuery } from 'services/character/quries';
 import { useDiaryListQuery } from 'services/diary/quries';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from 'navigation/navigationType';
+import dayjs from 'dayjs';
 
 type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Diary'>;
 
@@ -57,10 +58,16 @@ const DiaryPage = () => {
       </StyledHeader>
       <ContentContainer>
         <Column alignItems="center" gap={22}>
-          <IconContainer onPress={() => navigation.navigate('WriteDiary')}>
+          <IconContainer
+            onPress={() => {
+              const today = dayjs().format('YYYY-MM-DD');
+              navigation.navigate('WriteDiary', { selectedDate: today });
+            }}
+          >
             <IconNote width={140} height={135} />
           </IconContainer>
           <Calender
+            showNotDiary={true}
             datesWithDiary={datesWithDiarys}
             onPressDiary={(date: string) => {
               const selectedDiary = diaryData?.find((diary) => diary.writtenAt === date);
@@ -70,6 +77,8 @@ const DiaryPage = () => {
                     ? parseInt(selectedDiary.id, 10)
                     : selectedDiary.id;
                 handleDiaryClick(id);
+              } else {
+                navigation.navigate('WriteDiary', { selectedDate: date });
               }
             }}
           />

@@ -9,11 +9,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useDiaryStore } from 'stores/diary/diary';
 import { Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
-const WriteDiaryPage = () => {
+const WriteDiaryPage = ({ route }: { route: any }) => {
   const navigation = useNavigation();
+  const selectedDate = route?.params?.selectedDate || dayjs().format('YYYY-MM-DD');
   const [textValue, setTextValue] = useState<string>('');
-  const formatDate = dayjs().format('YYYY.MM.DD');
-  const formatTime = dayjs().format('YYYY-MM-DD');
   const { setContent, setWrittenAt } = useDiaryStore();
 
   const handleComplete = () => {
@@ -23,7 +22,7 @@ const WriteDiaryPage = () => {
     }
 
     setContent(textValue);
-    setWrittenAt(formatTime);
+    setWrittenAt(selectedDate);
 
     navigation.navigate('SelectEmotion' as never);
   };
@@ -35,7 +34,7 @@ const WriteDiaryPage = () => {
         <ContentContainer>
           <Column gap={calculateHeight(27)} alignItems="center">
             <CustomText fontType="H3" color={color.gray900}>
-              {formatDate}
+              {dayjs(selectedDate).format('YYYY.MM.DD')}
             </CustomText>
             <DiaryInput textValue={textValue} setTextValue={setTextValue} />
           </Column>

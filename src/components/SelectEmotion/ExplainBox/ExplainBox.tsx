@@ -1,7 +1,7 @@
 import React from 'react';
 import { color } from '@sinabro/design-token';
 import { CustomText } from '@sinabro/ui';
-import { flex } from '@sinabro/util';
+import { calculateWidth, flex } from '@sinabro/util';
 import styled from 'styled-components/native';
 
 const ExplainBox = () => {
@@ -21,7 +21,7 @@ export default ExplainBox;
 
 const StyledExplainBox = styled.View`
   ${flex({ alignItems: 'center', justifyContent: 'center' })}
-  width: 335px;
+  width: ${calculateWidth(335)}px;
   height: 76px;
   background-color: ${color.glassWhite};
   border-radius: 12px;

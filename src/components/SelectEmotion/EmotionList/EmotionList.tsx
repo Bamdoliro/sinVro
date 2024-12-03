@@ -9,6 +9,7 @@ import {
   IconSad,
 } from '@sinabro/icon';
 import { EmotionCard } from '@sinabro/ui';
+import { calculateHeight, calculateWidth } from '@sinabro/util';
 import React, { useState, useEffect, useCallback } from 'react';
 import { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -256,14 +257,14 @@ const scrollViewContentStyle: ViewStyle = {
 };
 
 const StyledEmotionList = styled.View`
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 85px;
+  padding-left: ${calculateWidth(20)}px;
+  padding-right: ${calculateWidth(20)}px;
+  margin-bottom: ${calculateHeight(85)}px;
 `;
 
 const StyledEmotionCard = styled.View`
-  max-width: 335px;
-  margin-bottom: 15px;
+  max-width: ${calculateWidth(335)}px;
+  margin-bottom: ${calculateHeight(15)}px;
   align-items: center;
   justify-content: center;
 `;

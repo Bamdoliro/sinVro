@@ -56,6 +56,7 @@ const MailBoxPage = () => {
         <Column alignItems="center" gap={15}>
           <IconMailBox width={144} height={135} />
           <Calender
+            showNotDiary={false}
             datesWithLetter={datesWithLetters}
             onPressLetter={(date: string | number | null) => {
               if (!date) {

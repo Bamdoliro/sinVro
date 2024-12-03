@@ -45,7 +45,10 @@ const CheckLetterPage = ({ route }: { route: CheckLetterPageRouteProp }) => {
             <IconPad2 width={348} height={493} />
             <TextOverlay>
               <ScrollView>
-                <CustomText fontType="cursive2" color={color.gray900}>
+                <CustomText
+                  fontType={data?.data.type === 'HEON' ? 'letterHeon' : 'letterSol'}
+                  color={color.gray900}
+                >
                   {letterData?.content}
                 </CustomText>
               </ScrollView>
