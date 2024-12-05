@@ -18,7 +18,7 @@ const PasswordInput = ({ value, onChangeText }: Props) => {
       <StyledInput
         value={value}
         onChangeText={onChangeText}
-        placeholder="이메일을 입력하세요"
+        placeholder="비밀번호를 입력하세요"
         placeholderTextColor={color.gray300}
       />
     </StyledPasswordInputt>
